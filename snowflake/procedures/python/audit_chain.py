@@ -164,7 +164,7 @@ def _append_without_head(
         "INSERT INTO RIPPLE.OPS.AUDIT_EVENT "
         "(event_id, event_sequence, entity_type, entity_id, event_type, actor, "
         "correlation_id, payload_hash, previous_event_hash, event_hash) "
-        "SELECT ?, ?, ?, ?, ?, ?, ?, ?, ?, ?",
+        "SELECT ?, ?, ?, ?, ?, ?, ?, ?, NULLIF(?, 'None'), ?",
         params=[
             event_id,
             sequence,
