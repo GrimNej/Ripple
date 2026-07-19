@@ -999,7 +999,7 @@ def run_pending(session: Session) -> dict[str, object]:
         session.sql("ROLLBACK").collect()
         return {"code": "TRIGGER_CONSUME_FAILED", "ok": False}
     rows: list[Row] = session.sql(
-        "SELECT DISTINCT r.run_id FROM RIPPLE.PIPELINE.PIPELINE_RUN AS r JOIN "
+        "SELECT DISTINCT r.run_id, r.created_at FROM RIPPLE.PIPELINE.PIPELINE_RUN AS r JOIN "
         "RIPPLE.PIPELINE.TRIGGER_CONSUMED AS c ON c.run_id = r.run_id "
         "WHERE r.status IN ('QUEUED', 'RUNNING') ORDER BY r.created_at LIMIT 5"
     ).collect()
