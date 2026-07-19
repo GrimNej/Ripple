@@ -163,7 +163,7 @@ def _call_verify(
 ) -> dict[str, Any]:
     cursor.execute(
         "CALL RIPPLE.API.VERIFY_PATCH(?, ?, ?, ?)",
-        (patch_id, row_version, key, "phase4-verify-gate"),
+        (patch_id, row_version, key, "phase4-verify-gate"),  # gitleaks:allow
     )
     row = cursor.fetchone()
     if row is None:
