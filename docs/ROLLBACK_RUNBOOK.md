@@ -19,3 +19,5 @@ If live services fail, show only the latest completed real run with its run ID, 
 ## Preflight recovery
 
 The current project footprint includes disclosed P0 fixture data and applied migrations. For a migration-only reversal, apply paired rollback files in reverse manifest order only after recording/exporting evidence and confirming data loss is intended. For complete teardown, suspend every pipeline/preflight task, drop the two service users, drop the `RIPPLE` database, drop the warehouse and resource monitor, then drop read-only/app/pipeline/migrator/admin roles. Remove the two ignored local RSA key pairs only after their Snowflake users are gone. `scripts/teardown_snowflake.sql` is destructive and must be reviewed against this order before execution.
+
+Phase 3 rollback order is `004_pipeline_procedures.sql` followed by `003_pipeline_state.sql`. The first suspends and removes the root/child task graph and its Python procedure boundary; the second removes Stream/retrieval/admission/chaos/task-proof state. Run them only after accepting loss of persisted pipeline evidence and before rolling back Phase 2.

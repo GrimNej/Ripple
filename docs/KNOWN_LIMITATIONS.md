@@ -1,6 +1,6 @@
 # Known limitations
 
-- The mandatory platform preflight and deterministic Snowflake foundation pass, but bounded AI orchestration, patch transactions, product API, final visual system, and deployment are not complete yet.
+- The mandatory platform preflight, deterministic Snowflake foundation, and bounded AI task graph pass, but patch transactions, product API, final visual system, and deployment are not complete yet.
 - P0 uses disclosed prepared Markdown/plain-text snapshots and does not crawl arbitrary URLs.
 - Trial-account external network access is treated as unavailable until verified otherwise and is not part of the critical architecture.
 - P0 handles only version requirements, endpoint replacements/deprecations, and numeric limits.

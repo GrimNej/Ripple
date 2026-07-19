@@ -25,8 +25,8 @@
       "forwardSha256": "a5e7472d9389931516f03c415c9bbac23fe6906f32c315a23bedac0b967bc9d2",
       "rollbackFilename": "003_pipeline_state.sql",
       "rollbackSha256": "c024894361cd834ba1ec56d81e7c7b2250a23e5cfec1e810454bcab2d9a56ba3",
-      "appliedAt": null,
-      "appliedCommit": null
+      "appliedAt": "2026-07-19T01:31:32.197-07:00",
+      "appliedCommit": "48d2774724486811b8b65b068560b60182da2537"
     },
     {
       "order": 4,
@@ -34,8 +34,8 @@
       "forwardSha256": "12570c4e645f5b0fa1e97ff48d60ac3a22aaec0ae5d74cdd54c2db0ec211bfd7",
       "rollbackFilename": "004_pipeline_procedures.sql",
       "rollbackSha256": "f673a0171ab1a152eab1842a7c237d12fc599ea2e7cfcad69d03d392d1c7e5f8",
-      "appliedAt": null,
-      "appliedCommit": null
+      "appliedAt": "2026-07-19T01:31:36.077-07:00",
+      "appliedCommit": "48d2774724486811b8b65b068560b60182da2537"
     }
   ]
 }

@@ -13,3 +13,10 @@ CoCo is installed as `cortex` version 1.1.41. Published evidence is sanitized: n
 - **Persistent mutation:** None from CoCo. A session-scoped temporary function vanished with the session; persistent procedure creation under the wrong primary role failed harmlessly.
 - **Artifact:** [sanitized preflight evidence](../artifacts/coco/2026-07-19-preflight.md)
 - **Related implementation commit:** `4c5005e`
+
+## 2026-07-19 — Phase 3 review attempt
+
+- **Goal:** Have CoCo independently inspect the deployed task graph and then perform a repository-only architecture review of the bounded AI implementation.
+- **Mode:** Read-only SQL/repository access, no MCP, no mutation permissions, bounded turns.
+- **Result:** Both attempts stopped before review because the CoCo process required browser authentication and its callback timed out. No repository or Snowflake state was changed.
+- **Decision:** Do not weaken authentication or grant a broader role. Phase 3 was gated through the unattended project automation identity, executable task history, persisted stage/AI/finding counts, paired migrations, and local static/property tests. A successful CoCo Phase 3 review remains required before submission freeze.

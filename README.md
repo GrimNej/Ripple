@@ -6,7 +6,7 @@ Ripple is a Snowflake CoCo CLI Hackathon 2026 project for evidence-backed downst
 
 ## Current status
 
-Phase 0 repository bootstrap is in progress. No Snowflake or Cloudflare resources have been created, no application key has been generated, no third-party runtime dependency has been installed, and no product capability is being claimed yet.
+Phases 0 through 3 are complete. The repository/toolchain contract, nine-probe capability preflight, deterministic Snowflake foundation, disclosed golden fixture, one authoritative Stream/task graph, bounded structured AI, evidence validation, retry handling, and review-patch generation all pass their local and live gates. Phase 4 atomic patch application and deterministic verification are next; the edge API, final visual system, deployment, and submission artifacts remain intentionally incomplete.
 
 The complete binding specification is `RIPPLE_IMPLEMENTATION_BLUEPRINT_CORRECTED.md`. Contributor rules are in `AGENTS.md`.
 
@@ -36,4 +36,4 @@ The project intentionally excludes live crawling, External Access Integration, S
 8. Five production-quality frontend surfaces.
 9. Benchmark, hardening, clean-account reproduction, and submission freeze.
 
-Setup commands will be published only after the capability preflight fixes the exact supported stack and fallback decisions. This avoids presenting unverified infrastructure steps as reproducible instructions.
+Provisioning, preflight, seed, rollback, and teardown scripts are versioned under `scripts/` and `snowflake/`. Do not run destructive rollback or teardown paths without following `docs/ROLLBACK_RUNBOOK.md`.

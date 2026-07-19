@@ -61,3 +61,13 @@ This is the consolidated implementation ledger. Times use Nepal Time (UTC+05:45)
 - **Decision or issue:** Snowflake rejected a multi-column inline `CHECK`; offsets remain protected by trusted code, half-open-span property tests, size caps, and integration evidence. The failed first migration attempt created only empty idempotent objects and was corrected/re-hashed before the migration was recorded as applied. Windows OAuth credential persistence was repaired by disabling the failing temporary Credential Manager write; the account-owner connection then tested successfully.
 - **Related commits:** `035b88b`, `f84d0f3`, `eac92e0`, `36b1df0`, `428377d`
 - **Rollback point:** Paired migrations `002`, then `001`, after explicitly accepting loss of disclosed fixture/run data; complete teardown follows `scripts/teardown_snowflake.sql` and the rollback runbook.
+
+## 2026-07-19 14:17 NPT — Task graph and bounded AI
+
+- **Goal:** Deliver Phase 3 orchestration with one Stream/task graph, deterministic stage identities, bounded structured AI, server-validated evidence, persisted retries, daily admission control, and review-patch preparation.
+- **Files affected:** Pipeline Python modules/tests, forward/rollback migrations `003` and `004`, migration manifest, and project evidence ledgers.
+- **Commands:** Ruff, strict mypy, pytest; stage upload and procedure/task recreation; scheduled root-task execution with one injected retrieval failure; persisted result/task-proof queries; replay calls; bounded read-only CoCo review attempts.
+- **Test evidence:** Nineteen local tests pass. The fresh live run completed all seven stages; retrieval completed on attempt two; both structured AI calls succeeded; eight candidates yielded six `CONFIRMED`, one `REJECTED`, and one `UNCERTAIN`; three review patches and one child-task proof were persisted. Start/run replay returned the prior result without duplicate work.
+- **Decision or issue:** Snowflake structured output rejects JSON Schema `maxItems`, so caps remain enforced by bounded candidate construction and server-side validators. Content-free stage checkpoints preserve useful failure codes without exposing exception/model data. CoCo review attempts were blocked by browser-auth callback timeout and remain a submission-freeze item; the unattended project identity and live gate were unaffected.
+- **Related commits:** `c9afe3f`, `442f3c7`, `c2b6816`, `b59bf68`, `48d2774`
+- **Rollback point:** Paired migrations `004`, then `003`, after accepting loss of Phase 3 task/run evidence; Phase 2 remains independently reversible.
