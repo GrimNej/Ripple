@@ -1,0 +1,5 @@
+-- Remove deterministic procedure registrations; staged code remains for audit/recovery.
+USE DATABASE RIPPLE;
+
+DROP PROCEDURE IF EXISTS CORE.DIFF_SNAPSHOTS(STRING, STRING, STRING);
+DROP PROCEDURE IF EXISTS CORE.FINALIZE_SNAPSHOT(STRING, STRING);

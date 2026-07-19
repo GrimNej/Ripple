@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "ripple-migration-manifest-v1",
+  "migrations": [
+    {
+      "order": 1,
+      "forwardFilename": "001_foundation.sql",
+      "forwardSha256": "e68f26fb301fea38e625f6b48a59f6631537a713bbc7fb9495aa36c10701cce2",
+      "rollbackFilename": "001_foundation.sql",
+      "rollbackSha256": "cc0263b3c78b1064f0d25f0728847e4ca5235b5e8e729e1a219f27a79c3b170b",
+      "appliedAt": null,
+      "appliedCommit": null
+    },
+    {
+      "order": 2,
+      "forwardFilename": "002_deterministic_procedures.sql",
+      "forwardSha256": "e3df0419fb31ef93edee7b65cc0e06278f9db02e03df391ba6275f18e01ce217",
+      "rollbackFilename": "002_deterministic_procedures.sql",
+      "rollbackSha256": "ffda8fb6acb30f4424df462540df1b0a377198e08cd634c3c978872235186501",
+      "appliedAt": null,
+      "appliedCommit": null
+    }
+  ]
+}
