@@ -1,0 +1,42 @@
+# JavaScript
+node_modules/
+.next/
+out/
+coverage/
+playwright-report/
+test-results/
+
+# Python
+.venv/
+__pycache__/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+*.py[cod]
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p8
+*.p12
+*.jwk
+*.jwt
+
+# Local tool state and raw evidence
+.wrangler/
+.dev.vars
+artifacts/coco/raw/
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.log
+*.tmp
+tmp/

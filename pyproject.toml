@@ -1,0 +1,6 @@
+[project]
+name = "ripple-snowflake"
+version = "0.0.0"
+description = "Snowflake procedures, fixtures, and reproducibility tooling for Ripple"
+requires-python = "==3.11.*"
+dependencies = []
