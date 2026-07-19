@@ -36,6 +36,21 @@ The initial JavaScript stack lock was verified against current package metadata 
 | --------- | -------------- | ---------------------------------------------------------------------- | ---------------------------------------------- |
 | `postcss` | 8.5.19         | Replaces vulnerable transitive 8.4.31 while remaining within PostCSS 8 | GHSA-qx2v-qp2m-jg93; clean audit on 2026-07-19 |
 
+## Python development and Snowpark dependencies
+
+| Package                      | Version | Licence    | Official source                                                                     | Purpose                                                        |
+| ---------------------------- | ------- | ---------- | ----------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| `snowflake-snowpark-python`  | 1.53.0  | Apache-2.0 | [Snowpark Python](https://docs.snowflake.com/en/developer-guide/snowpark/python/)   | Account-matched Python 3.11 procedure/runtime contract         |
+| `snowflake-connector-python` | 4.7.1   | Apache-2.0 | [Python connector](https://docs.snowflake.com/en/developer-guide/python-connector/) | Reproducible fixture upload and integration verification       |
+| `chardet`                    | 5.2.0   | LGPL       | [chardet](https://github.com/chardet/chardet)                                       | Connector-compatible transitive pin; prevents invalid v7 range |
+| `pytest`                     | 9.1.1   | MIT        | [pytest](https://docs.pytest.org/)                                                  | Python unit and integration test runner                        |
+| `hypothesis`                 | 6.156.9 | MPL-2.0    | [Hypothesis](https://hypothesis.readthedocs.io/)                                    | Unicode/offset/parser property testing                         |
+| `mypy`                       | 2.3.0   | MIT        | [mypy](https://www.mypy-lang.org/)                                                  | Strict owned-Python type gate                                  |
+| `ruff`                       | 0.15.22 | MIT        | [Ruff](https://docs.astral.sh/ruff/)                                                | Python lint and deterministic format gate                      |
+| `sqlfluff`                   | 4.2.2   | MIT        | [SQLFluff](https://www.sqlfluff.com/)                                               | Snowflake-dialect SQL lint gate                                |
+
+These exact versions were resolved and metadata-checked on 2026-07-19. The Python connector dependency set was also checked through the project audit workflow before the phase gate.
+
 ## Local toolchain
 
 | Tool            |          Version | Role                                                   |

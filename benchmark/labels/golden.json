@@ -1,11 +1,7 @@
 {
   "schemaVersion": "ripple-benchmark-labels-v1",
   "scenarioId": "golden-source-change-v1",
-  "expectedChangeAtoms": [
-    "VERSION_REQUIREMENT",
-    "ENDPOINT_REPLACEMENT",
-    "NUMERIC_LIMIT"
-  ],
+  "expectedChangeAtoms": ["VERSION_REQUIREMENT", "ENDPOINT_REPLACEMENT", "NUMERIC_LIMIT"],
   "expectedFindings": {
     "CONFIRMED": [
       "asset-sdk-readme",

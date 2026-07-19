@@ -18,4 +18,4 @@ If live services fail, show only the latest completed real run with its run ID, 
 
 ## Preflight recovery
 
-The current preflight footprint is external state. With no production fixture data present, suspend the child/root tasks, drop the two service users, drop the `RIPPLE` database, drop the warehouse and its resource monitor, then drop the app/admin roles. Remove the two ignored local RSA key pairs only after their Snowflake users are gone. Do not use the Phase 0 assumption that no cloud objects exist.
+The current project footprint includes disclosed P0 fixture data and applied migrations. For a migration-only reversal, apply paired rollback files in reverse manifest order only after recording/exporting evidence and confirming data loss is intended. For complete teardown, suspend every pipeline/preflight task, drop the two service users, drop the `RIPPLE` database, drop the warehouse and resource monitor, then drop read-only/app/pipeline/migrator/admin roles. Remove the two ignored local RSA key pairs only after their Snowflake users are gone. `scripts/teardown_snowflake.sql` is destructive and must be reviewed against this order before execution.

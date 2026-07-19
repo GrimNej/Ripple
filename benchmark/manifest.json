@@ -147,7 +147,7 @@
   ],
   "labels": {
     "path": "benchmark/labels/golden.json",
-    "byteSize": 590,
-    "sha256": "18e98c1e0149a93821be4cb5b0a835eac42f123d07dbd939d0f7bc5ee22d9774"
+    "byteSize": 574,
+    "sha256": "9b1f723623462f6f55f60b72f888ea10fb90d046d7374d75cccf3a072dbe65f3"
   }
 }

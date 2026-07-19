@@ -51,3 +51,13 @@ This is the consolidated implementation ledger. Times use Nepal Time (UTC+05:45)
 - **Decision or issue:** Keep the minimal reviewed Web Crypto JWT implementation; adding a JWT library is unnecessary at the measured bundle/CPU cost.
 - **Related commit:** `4c5005e`
 - **Rollback point:** Revert `4c5005e` while retaining the Snowflake provisioning rollback procedure.
+
+## 2026-07-19 13:50 NPT — Deterministic Snowflake foundation
+
+- **Goal:** Deliver the Phase 2 schema, disclosed golden fixture, hash-verified snapshot flow, versioned normalization/sectioning, deterministic section diff, and validated three-atom extraction.
+- **Files affected:** Python/Snowpark procedures and tests, paired migrations and manifest, `benchmark/`, reproducibility scripts, Python lock/configuration, and project ledgers.
+- **Commands:** `uv sync`; Ruff, mypy, pytest, and SQLFluff gates; manifest/hash verifiers; reviewed forward migrations; stage uploads; `CORE.FINALIZE_SNAPSHOT`; `CORE.DIFF_SNAPSHOTS`; repeated idempotency seed.
+- **Test evidence:** Fifteen unit/property tests pass. Both disclosed source snapshots finalized from scoped stage URLs with exact byte/SHA checks. The live comparison produced three changed sections and exactly three `VALID` deterministic atoms. A second full seed reused the existing three section diffs and created no duplicate snapshots or atoms.
+- **Decision or issue:** Snowflake rejected a multi-column inline `CHECK`; offsets remain protected by trusted code, half-open-span property tests, size caps, and integration evidence. The failed first migration attempt created only empty idempotent objects and was corrected/re-hashed before the migration was recorded as applied. Windows OAuth credential persistence was repaired by disabling the failing temporary Credential Manager write; the account-owner connection then tested successfully.
+- **Related commits:** `035b88b`, `f84d0f3`, `eac92e0`, `36b1df0`, `428377d`
+- **Rollback point:** Paired migrations `002`, then `001`, after explicitly accepting loss of disclosed fixture/run data; complete teardown follows `scripts/teardown_snowflake.sql` and the rollback runbook.
