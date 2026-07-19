@@ -1,0 +1,2 @@
+# Immutable capability probe contains Snowflake procedure/task syntax that SQLFluff 4 cannot parse.
+snowflake/tests/preflight_capabilities.sql

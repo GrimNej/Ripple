@@ -4,3 +4,49 @@ version = "0.0.0"
 description = "Snowflake procedures, fixtures, and reproducibility tooling for Ripple"
 requires-python = "==3.11.*"
 dependencies = []
+
+[dependency-groups]
+dev = [
+  "chardet==5.2.0",
+  "hypothesis==6.156.9",
+  "mypy==2.3.0",
+  "pytest==9.1.1",
+  "ruff==0.15.22",
+  "snowflake-connector-python==4.7.1",
+  "snowflake-snowpark-python==1.53.0",
+  "sqlfluff==4.2.2",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["B", "E", "F", "I", "N", "PERF", "RUF", "S", "SIM", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+"snowflake/tests/**/*.py" = ["S101"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+files = ["snowflake", "scripts"]
+mypy_path = "snowflake/procedures/python"
+
+[tool.pytest.ini_options]
+addopts = "-q --strict-config --strict-markers"
+testpaths = ["snowflake/tests"]
+pythonpath = ["snowflake/procedures/python"]
+
+[tool.sqlfluff.core]
+dialect = "snowflake"
+exclude_rules = "RF04,CP02"
+max_line_length = 100
+templater = "raw"
+
+[tool.sqlfluff.indentation]
+indent_unit = "space"
+tab_space_size = 4
