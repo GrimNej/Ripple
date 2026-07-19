@@ -56,9 +56,7 @@ def _variant(value: object) -> dict[str, Any]:
 
 
 def _connect(connection_name: str) -> SnowflakeConnection:
-    connection: SnowflakeConnection = snowflake.connector.connect(
-        connection_name=connection_name
-    )
+    connection: SnowflakeConnection = snowflake.connector.connect(connection_name=connection_name)
     with connection.cursor() as cursor:
         cursor.execute("USE ROLE RIPPLE_ADMIN_ROLE")
         cursor.execute("USE WAREHOUSE RIPPLE_WH")

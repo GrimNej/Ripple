@@ -40,8 +40,7 @@ def _golden_verification_inputs() -> tuple[VerificationInput, ...]:
     assets: list[AssetInput] = []
     explicit: set[tuple[str, str]] = set()
     labels = {
-        cast(str, row["assetId"]): cast(str, row["expectedStatus"])
-        for row in manifest["assets"]
+        cast(str, row["assetId"]): cast(str, row["expectedStatus"]) for row in manifest["assets"]
     }
     for record in manifest["assets"]:
         content = (ROOT / record["path"]).read_text("utf-8")

@@ -319,11 +319,7 @@ def _execute_stage(
         except Exception as error:
             if transaction_started:
                 session.sql("ROLLBACK").collect()
-            code = (
-                error.code
-                if isinstance(error, PipelineError)
-                else f"STAGE_{checkpoint}_FAILED"
-            )
+            code = error.code if isinstance(error, PipelineError) else f"STAGE_{checkpoint}_FAILED"
             _mark_stage_failure(
                 session,
                 run_id=run_id,

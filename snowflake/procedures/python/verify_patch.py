@@ -87,9 +87,11 @@ def run(
         return _failure("PATCH_NOT_FOUND")
     row = rows[0]
     if row["STATUS"] != "APPLIED":
-        return _failure("PATCH_ALREADY_VERIFIED" if row["STATUS"] in {
-            "VERIFIED", "VERIFICATION_FAILED", "HUMAN_VERIFICATION_REQUIRED"
-        } else "PATCH_NOT_APPLIED")
+        return _failure(
+            "PATCH_ALREADY_VERIFIED"
+            if row["STATUS"] in {"VERIFIED", "VERIFICATION_FAILED", "HUMAN_VERIFICATION_REQUIRED"}
+            else "PATCH_NOT_APPLIED"
+        )
     if int(row["ROW_VERSION"]) != expected_patch_row_version:
         return _failure("STALE_PATCH_REVISION")
     if row["APPLIED_ASSET_VERSION_ID"] is None or row["APPROVED_CONTENT"] is None:
