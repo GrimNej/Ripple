@@ -1,0 +1,5 @@
+SNOWFLAKE_ACCOUNT_LOCATOR="set-locally"
+SNOWFLAKE_HOST="set-locally.snowflakecomputing.com"
+SNOWFLAKE_PRIVATE_KEY="set-locally"
+SNOWFLAKE_PUBLIC_KEY_FINGERPRINT="set-locally"
+SNOWFLAKE_USER="RIPPLE_APP_USER"

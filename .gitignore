@@ -5,6 +5,9 @@ out/
 coverage/
 playwright-report/
 test-results/
+worker-dist/
+*.cpuprofile
+*.tsbuildinfo
 
 # Python
 .venv/

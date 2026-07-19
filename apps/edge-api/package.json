@@ -1,0 +1,23 @@
+{
+  "name": "@ripple/edge-api",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "build": "wrangler deploy --dry-run --outdir worker-dist",
+    "cf-typegen": "wrangler types --env-file .dev.vars.example --env-interface CloudflareBindings",
+    "cf-typegen:check": "wrangler types --env-file .dev.vars.example --env-interface CloudflareBindings --check",
+    "dev": "wrangler dev",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit && tsc --noEmit --project tsconfig.test.json"
+  },
+  "dependencies": {
+    "hono": "4.12.31"
+  },
+  "devDependencies": {
+    "@cloudflare/vitest-pool-workers": "0.18.6",
+    "@cloudflare/workers-types": "5.20260719.1",
+    "@types/node": "26.1.1",
+    "vitest": "4.1.10",
+    "wrangler": "4.112.0"
+  }
+}
