@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "ripple-benchmark-labels-v1",
+  "scenarioId": "golden-source-change-v1",
+  "expectedChangeAtoms": [
+    "VERSION_REQUIREMENT",
+    "ENDPOINT_REPLACEMENT",
+    "NUMERIC_LIMIT"
+  ],
+  "expectedFindings": {
+    "CONFIRMED": [
+      "asset-sdk-readme",
+      "asset-install-guide",
+      "asset-quota-support",
+      "asset-jobs-troubleshooting",
+      "asset-nightly-workflow",
+      "asset-billing-support"
+    ],
+    "UNCERTAIN": ["asset-ambiguous-jobs"],
+    "REJECTED": ["asset-unrelated-node"]
+  },
+  "expectedPatchCount": 3,
+  "authoredBeforeModelExecution": true
+}

@@ -1,0 +1,153 @@
+{
+  "schemaVersion": "ripple-fixture-manifest-v1",
+  "scenarioId": "golden-source-change-v1",
+  "disclosure": "Synthetic, project-authored fixture. It does not represent a real vendor, product, or live documentation source.",
+  "licenceBasis": "Project-authored synthetic test data used within this repository.",
+  "retrievedAt": "2026-07-19T00:00:00Z",
+  "sources": [
+    {
+      "snapshotId": "snapshot-golden-baseline-v1",
+      "sourceId": "source-acme-jobs-docs",
+      "versionLabel": "baseline",
+      "canonicalUrl": "https://docs.ripple-fixture.invalid/jobs/baseline",
+      "path": "benchmark/sources/golden-baseline.md",
+      "contentType": "text/markdown; charset=utf-8",
+      "byteSize": 173,
+      "rawSha256": "e47caecae14ec105763115105ac96ae4601b55fe3e4190f2e05a7df39b7cfa30"
+    },
+    {
+      "snapshotId": "snapshot-golden-updated-v1",
+      "sourceId": "source-acme-jobs-docs",
+      "versionLabel": "updated",
+      "canonicalUrl": "https://docs.ripple-fixture.invalid/jobs/updated",
+      "path": "benchmark/sources/golden-updated.md",
+      "contentType": "text/markdown; charset=utf-8",
+      "byteSize": 233,
+      "rawSha256": "0e3ce5e22847ac20c1adb22f20d050f2c67364d9ddcddb7802a1e983b320fdc2"
+    }
+  ],
+  "assets": [
+    {
+      "assetId": "asset-sdk-readme",
+      "stableKey": "sdk-readme",
+      "assetType": "README",
+      "title": "Acme Python SDK",
+      "criticality": "HIGH",
+      "versionId": "asset-version-sdk-readme-v1",
+      "path": "benchmark/assets/sdk-readme.md",
+      "contentType": "text/markdown; charset=utf-8",
+      "byteSize": 95,
+      "contentSha256": "4593f86964cc5e246b5aa4e212ade502492f6cd2825c174b52fe2da84765893f",
+      "expectedStatus": "CONFIRMED",
+      "expectedChangeType": "VERSION_REQUIREMENT",
+      "sourceSectionKey": "runtime-requirements::0000"
+    },
+    {
+      "assetId": "asset-install-guide",
+      "stableKey": "install-guide",
+      "assetType": "INSTALL_GUIDE",
+      "title": "Install the jobs client",
+      "criticality": "HIGH",
+      "versionId": "asset-version-install-guide-v1",
+      "path": "benchmark/assets/install-guide.md",
+      "contentType": "text/markdown; charset=utf-8",
+      "byteSize": 112,
+      "contentSha256": "d052f30dcb077a9faabaa5fbc25e4c8fa103b5f6c88ba6c45b3231c79fee707b",
+      "expectedStatus": "CONFIRMED",
+      "expectedChangeType": "VERSION_REQUIREMENT",
+      "sourceSectionKey": "runtime-requirements::0000"
+    },
+    {
+      "assetId": "asset-quota-support",
+      "stableKey": "quota-support-macro",
+      "assetType": "SUPPORT_MACRO",
+      "title": "Free plan quota response",
+      "criticality": "CRITICAL",
+      "versionId": "asset-version-quota-support-v1",
+      "path": "benchmark/assets/quota-support-macro.md",
+      "contentType": "text/markdown; charset=utf-8",
+      "byteSize": 129,
+      "contentSha256": "5b2707c3fd2a61168f477e5870978bbdcb25c24df2f8efd49db3fd8bd3663971",
+      "expectedStatus": "CONFIRMED",
+      "expectedChangeType": "NUMERIC_LIMIT",
+      "sourceSectionKey": "free-plan::0002"
+    },
+    {
+      "assetId": "asset-jobs-troubleshooting",
+      "stableKey": "jobs-troubleshooting",
+      "assetType": "TROUBLESHOOTING",
+      "title": "Job creation troubleshooting",
+      "criticality": "CRITICAL",
+      "versionId": "asset-version-jobs-troubleshooting-v1",
+      "path": "benchmark/assets/jobs-troubleshooting.md",
+      "contentType": "text/markdown; charset=utf-8",
+      "byteSize": 128,
+      "contentSha256": "650f012ce4614e74a285b0b8b2a39014496e3f79d607f357c1aa287e832fe05a",
+      "expectedStatus": "CONFIRMED",
+      "expectedChangeType": "ENDPOINT_REPLACEMENT",
+      "sourceSectionKey": "jobs-api::0001"
+    },
+    {
+      "assetId": "asset-nightly-workflow",
+      "stableKey": "nightly-workflow",
+      "assetType": "WORKFLOW",
+      "title": "Nightly job workflow",
+      "criticality": "HIGH",
+      "versionId": "asset-version-nightly-workflow-v1",
+      "path": "benchmark/assets/nightly-workflow.md",
+      "contentType": "text/markdown; charset=utf-8",
+      "byteSize": 72,
+      "contentSha256": "eef18fa81efc0ee5081f1ba3bc3eab145263015207dca36a1382a1541a3995e1",
+      "expectedStatus": "CONFIRMED",
+      "expectedChangeType": "ENDPOINT_REPLACEMENT",
+      "sourceSectionKey": "jobs-api::0001"
+    },
+    {
+      "assetId": "asset-billing-support",
+      "stableKey": "billing-support-macro",
+      "assetType": "SUPPORT_MACRO",
+      "title": "Free plan billing response",
+      "criticality": "MEDIUM",
+      "versionId": "asset-version-billing-support-v1",
+      "path": "benchmark/assets/billing-support-macro.md",
+      "contentType": "text/markdown; charset=utf-8",
+      "byteSize": 99,
+      "contentSha256": "3fd9473cdf8b63a62e07fda0260f475b6d15888de98e4d78d339e9599fae22a7",
+      "expectedStatus": "CONFIRMED",
+      "expectedChangeType": "NUMERIC_LIMIT",
+      "sourceSectionKey": "free-plan::0002"
+    },
+    {
+      "assetId": "asset-ambiguous-jobs",
+      "stableKey": "ambiguous-jobs-note",
+      "assetType": "TROUBLESHOOTING",
+      "title": "Jobs migration note",
+      "criticality": "MEDIUM",
+      "versionId": "asset-version-ambiguous-jobs-v1",
+      "path": "benchmark/assets/ambiguous-jobs-note.md",
+      "contentType": "text/markdown; charset=utf-8",
+      "byteSize": 106,
+      "contentSha256": "ce91a0581597f6f074cc3a2368c66ca08394da477b8ce666635f0c58ae2250e9",
+      "expectedStatus": "UNCERTAIN",
+      "expectedChangeType": "ENDPOINT_REPLACEMENT"
+    },
+    {
+      "assetId": "asset-unrelated-node",
+      "stableKey": "unrelated-node-readme",
+      "assetType": "README",
+      "title": "Node events client",
+      "criticality": "LOW",
+      "versionId": "asset-version-unrelated-node-v1",
+      "path": "benchmark/assets/unrelated-node-readme.md",
+      "contentType": "text/markdown; charset=utf-8",
+      "byteSize": 101,
+      "contentSha256": "718d231738d1b8e8a134f232b72111e8f7d4f44a0359ab3c9183a7df2f296d30",
+      "expectedStatus": "REJECTED"
+    }
+  ],
+  "labels": {
+    "path": "benchmark/labels/golden.json",
+    "byteSize": 590,
+    "sha256": "18e98c1e0149a93821be4cb5b0a835eac42f123d07dbd939d0f7bc5ee22d9774"
+  }
+}
