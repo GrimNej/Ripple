@@ -105,7 +105,6 @@ def retrieve_candidates(
 
     candidates_by_asset: dict[str, Candidate] = {}
     for atom in atoms:
-        per_atom: list[Candidate] = []
         atom_words = _words(f"{atom.old_claim} {atom.new_claim}")
         for asset in assets:
             dependency_key = (atom.source_section_key, asset.asset_id)
@@ -121,26 +120,18 @@ def retrieve_candidates(
                     continue
                 basis = "LEXICAL"
                 score = min(1.0, 0.35 + (0.15 * len(overlap)))
-            per_atom.append(Candidate(atom=atom, asset=asset, basis=basis, retrieval_score=score))
-
-        per_atom.sort(
-            key=lambda candidate: (
-                -_BASIS_WEIGHT[candidate.basis],
-                -candidate.retrieval_score,
-                candidate.asset.asset_id,
-            )
-        )
-        eligible = [
-            candidate
-            for candidate in per_atom
-            if (existing := candidates_by_asset.get(candidate.asset.asset_id)) is None
-            or _BASIS_WEIGHT[candidate.basis] > _BASIS_WEIGHT[existing.basis]
-        ]
-        for candidate in eligible[:MAX_CANDIDATES_PER_ATOM]:
+            candidate = Candidate(atom=atom, asset=asset, basis=basis, retrieval_score=score)
             existing = candidates_by_asset.get(candidate.asset.asset_id)
-            if existing is None or _BASIS_WEIGHT[candidate.basis] > _BASIS_WEIGHT[existing.basis]:
+            candidate_rank = (_BASIS_WEIGHT[candidate.basis], candidate.retrieval_score)
+            existing_rank = (
+                (_BASIS_WEIGHT[existing.basis], existing.retrieval_score)
+                if existing is not None
+                else (-1, -1.0)
+            )
+            if candidate_rank > existing_rank:
                 candidates_by_asset[candidate.asset.asset_id] = candidate
 
+    per_atom_counts: dict[str, int] = {}
     ordered = sorted(
         candidates_by_asset.values(),
         key=lambda candidate: (
@@ -149,7 +140,16 @@ def retrieve_candidates(
             candidate.asset.asset_id,
         ),
     )
-    return tuple(ordered[:MAX_CANDIDATES_PER_EVENT])
+    admitted: list[Candidate] = []
+    for candidate in ordered:
+        atom_id = candidate.atom.change_atom_id
+        if per_atom_counts.get(atom_id, 0) >= MAX_CANDIDATES_PER_ATOM:
+            continue
+        admitted.append(candidate)
+        per_atom_counts[atom_id] = per_atom_counts.get(atom_id, 0) + 1
+        if len(admitted) == MAX_CANDIDATES_PER_EVENT:
+            break
+    return tuple(admitted)
 
 
 def find_asset_evidence(atom: AtomInput, content: str) -> EvidenceSpan | None:

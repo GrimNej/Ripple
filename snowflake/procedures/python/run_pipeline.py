@@ -427,7 +427,7 @@ def _call_structured_ai(
             rows: list[Row] = session.sql(
                 "SELECT AI_COMPLETE(model => 'mistral-large2', prompt => ?, "
                 "model_parameters => {'temperature': 0, 'max_tokens': 2048}, "
-                "response_format => PARSE_JSON(?)) AS result",
+                "response_format => TO_OBJECT(PARSE_JSON(?))) AS result",
                 params=[prompt, response_schema],
             ).collect()
             result = _variant(rows[0]["RESULT"])
