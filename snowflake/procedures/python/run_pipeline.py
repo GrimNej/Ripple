@@ -234,7 +234,7 @@ def _mark_stage_failure(
     session.sql(
         "INSERT INTO RIPPLE.PIPELINE.PIPELINE_STAGE "
         "(stage_run_id, run_id, stage_name, input_hash, stage_key, status, attempt_count, "
-        "failure_code, failure_detail) SELECT ?, ?, ?, ?, ?, 'FAILED', 1, ?, ? "
+        "failure_code, failure_detail) SELECT ?, ?, ?, ?, ?, 'FAILED', 0, ?, ? "
         "WHERE NOT EXISTS (SELECT 1 FROM RIPPLE.PIPELINE.PIPELINE_STAGE WHERE stage_key = ?)",
         params=[
             stage_run_id,
@@ -249,7 +249,7 @@ def _mark_stage_failure(
     ).collect()
     session.sql(
         "UPDATE RIPPLE.PIPELINE.PIPELINE_STAGE SET status = 'FAILED', "
-        "attempt_count = attempt_count + IFF(attempt_count = 0, 1, 0), failure_code = ?, "
+        "attempt_count = attempt_count + 1, failure_code = ?, "
         "failure_detail = ?, completed_at = CURRENT_TIMESTAMP() WHERE stage_key = ?",
         params=[code, "terminal" if terminal else "retryable", stage_key],
     ).collect()
@@ -297,9 +297,11 @@ def _execute_stage(
             )
             continue
         transaction_started = False
+        checkpoint = "BEGIN"
         try:
             session.sql("BEGIN TRANSACTION").collect()
             transaction_started = True
+            checkpoint = "RUN_CAS"
             session.sql(
                 "UPDATE RIPPLE.PIPELINE.PIPELINE_RUN SET status = 'RUNNING', "
                 "current_stage = ?, row_version = row_version + 1 WHERE run_id = ? "
@@ -312,6 +314,7 @@ def _execute_stage(
             ).collect()
             if len(current_rows) != 1 or current_rows[0]["CURRENT_STAGE"] != stage_name:
                 raise PipelineError("STAGE_CAS_FAILED")
+            checkpoint = "STAGE_RUNNING"
             session.sql(
                 "INSERT INTO RIPPLE.PIPELINE.PIPELINE_STAGE "
                 "(stage_run_id, run_id, stage_name, input_hash, stage_key, status, "
@@ -334,18 +337,22 @@ def _execute_stage(
                 "failure_code = NULL, failure_detail = NULL WHERE stage_key = ?",
                 params=[attempt, stage_key],
             ).collect()
+            checkpoint = "OPERATION"
             output = operation()
+            checkpoint = "STAGE_OUTPUT"
             session.sql(
                 "UPDATE RIPPLE.PIPELINE.PIPELINE_STAGE SET status = 'COMPLETED', "
                 "completed_at = CURRENT_TIMESTAMP(), output_reference = PARSE_JSON(?) "
                 "WHERE stage_key = ? AND status = 'RUNNING'",
                 params=[_json(output), stage_key],
             ).collect()
+            checkpoint = "RUN_ADVANCE"
             session.sql(
                 "UPDATE RIPPLE.PIPELINE.PIPELINE_RUN SET current_stage = ?, "
                 "row_version = row_version + 1 WHERE run_id = ? AND current_stage = ?",
                 params=[next_stage, run_id, stage_name],
             ).collect()
+            checkpoint = "AUDIT"
             _append_audit(
                 session,
                 entity_type="PIPELINE_RUN",
@@ -355,13 +362,18 @@ def _execute_stage(
                 correlation_id=correlation_id,
                 payload={"inputHash": input_hash, "stageKey": stage_key},
             )
+            checkpoint = "COMMIT"
             session.sql("COMMIT").collect()
             transaction_started = False
             return {"ok": True, "output": output, "reused": False}
         except Exception as error:
             if transaction_started:
                 session.sql("ROLLBACK").collect()
-            code = error.code if isinstance(error, PipelineError) else "STAGE_EXECUTION_FAILED"
+            code = (
+                error.code
+                if isinstance(error, PipelineError)
+                else f"STAGE_{checkpoint}_FAILED"
+            )
             _mark_stage_failure(
                 session,
                 run_id=run_id,
@@ -582,7 +594,6 @@ def _classification_operation(session: Session, run_id: str) -> dict[str, object
                 "properties": {
                     "classifications": {
                         "type": "array",
-                        "maxItems": 3,
                         "items": {
                             "type": "object",
                             "properties": {
@@ -726,7 +737,6 @@ def _verification_operation(session: Session, run_id: str) -> dict[str, object]:
                 "properties": {
                     "findings": {
                         "type": "array",
-                        "maxItems": 12,
                         "items": {
                             "type": "object",
                             "properties": {
