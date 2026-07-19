@@ -81,3 +81,13 @@ This is the consolidated implementation ledger. Times use Nepal Time (UTC+05:45)
 - **Decision or issue:** The first historical audit row stored the Python `None` binding as a literal string while hashing the correct genesis marker. The append-only row was preserved; the verifier normalizes only that sequence-one legacy representation. Forcing UTF-8 output also avoids a Windows Snowflake CLI renderer crash when Rich converts `:ok:` to a Unicode glyph.
 - **Related commits:** `91b23de`, `da5fd31`, `f4c2ef7`
 - **Rollback point:** Paired migrations `007`, `006`, then `005`; immutable foundation rows remain unless the destructive Phase 2 rollback is also selected.
+
+## 2026-07-19 15:30 NPT — Authenticated edge API boundary
+
+- **Goal:** Deliver the complete Phase 5 Hono boundary with access-code authentication, signed sessions, CSRF/origin enforcement, fixed Snowflake SQL, asynchronous statement polling, secure read models, and stable redacted envelopes.
+- **Files affected:** Edge runtime/contracts/security/tests, dependency lock and ledger, migration `008` and manifest, Worker binding examples/types, and security/architecture evidence.
+- **Commands:** TypeScript/ESLint/Prettier/Vitest gates; Python/Ruff/mypy/pytest and SQLFluff gates; Wrangler type check and dry-run build; authenticated local Worker calls to live Snowflake; app-role allow/deny SQL API probes; migration-ledger insertion; deterministic Python formatting followed by scoped stage upload and procedure re-registration.
+- **Test evidence:** Twenty-one edge tests pass with a 1.609 ms local p95 wall-time proxy, alongside 25 Python tests. The bundle is 105.68 KiB gzip. A real local Worker session returned HTTP 200 for health, dashboard, and proof. The app role selected its approved secure view while direct core-table, audit-table, and raw-stage probes each failed with HTTP 422. Mutation defenses reject missing CSRF, wrong Origin, invalid/oversized JSON, and poisoned upstream bodies; async tests prove one submission followed by same-handle polling through `202`, `429`, `5xx`, and a transient network failure. Re-registered procedures returned a healthy status and one proof row.
+- **Decision or issue:** Origin comparison is literal. Submission network failure is reported as an unknown outcome and is never automatically resubmitted; once a handle exists, all retries poll only that handle. Stateless sessions retain the documented revocation limitation, and no unverified global rate-limiting claim is made.
+- **Related commits:** `81aec91`, `d83e4b4`, `5ca8696`
+- **Rollback point:** Revert the edge commit and apply paired rollback migration `008`; rotate/delete local auth material only if deliberately invalidating existing sessions.

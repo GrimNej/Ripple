@@ -18,12 +18,14 @@ RAW → CORE → PIPELINE → APP → OPS/EVAL
 
 - The browser never receives Snowflake credentials and never contacts Snowflake directly.
 - The Worker executes no arbitrary SQL, AI, parsing, graph traversal, or in-memory business workflow.
-- The application role cannot read raw staged files, create objects, or update/delete audit history.
+- The application role selects only seven approved secure views and executes the fixed API procedures; live denial probes confirm it cannot read raw staged files, core tables, or the audit table.
 - Administrative Snowflake roles remain an explicitly documented audit trust-boundary limitation.
 
 ## Authoritative state transitions
 
 Pipeline stages use compare-and-set transitions, deterministic stage keys, persisted outputs, and one Snowflake Stream/task graph. Browser timeouts never authorize resubmission; the original Snowflake statement handle is polled.
+
+The edge client caps parsed upstream bodies at 1 MiB and result sets at 200 rows, validates unknown Snowflake envelopes with Zod, uses bound values for browser-controlled IDs/content, and exposes no arbitrary SQL/object-name endpoint. A submission transport failure becomes an explicit unknown outcome; `202`, `429`, `5xx`, and transient polling failures retain the original statement handle.
 
 Patch approval atomically wins the patch CAS, checks the active asset version, inserts one new asset-version row, advances the current pointer, records the review, appends the audit event, and stores the idempotent replay response. Deterministic change-specific checks alone may mark the patch `VERIFIED`.
 

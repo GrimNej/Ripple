@@ -70,8 +70,8 @@
       "forwardSha256": "facd713413b7cc8c83d3c8f8da7b0fb1ead38fcf2d055544d8d961ea450ff00a",
       "rollbackFilename": "008_api_views.sql",
       "rollbackSha256": "3962411947cc57d54a7f2358359b8ee335a334d0e74f48aef86babb2d7779b34",
-      "appliedAt": null,
-      "appliedCommit": null
+      "appliedAt": "2026-07-19T02:44:24.810-07:00",
+      "appliedCommit": "d83e4b47392e84c45d2fd18ff3a81fb5ac1d1be7"
     }
   ]
 }

@@ -12,6 +12,7 @@ The initial JavaScript stack lock was verified against current package metadata 
 | Web       | `tailwindcss`          | 4.3.3   | MIT     | [Tailwind CSS](https://tailwindcss.com/) | Token-driven CSS build layer                 |
 | Web       | `@tailwindcss/postcss` | 4.3.3   | MIT     | [Tailwind CSS](https://tailwindcss.com/) | PostCSS integration                          |
 | Edge      | `hono`                 | 4.12.31 | MIT     | [Hono](https://hono.dev/)                | Cloudflare Worker routing only               |
+| Edge      | `zod`                  | 4.4.3   | MIT     | [Zod](https://zod.dev/)                  | Runtime validation for API and SQL envelopes |
 
 ## Development dependencies
 

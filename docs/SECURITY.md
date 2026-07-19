@@ -24,4 +24,6 @@ Never commit or log access codes, peppers, session/CSRF values, private keys, Sn
 
 Required security gates include secret scanning, dependency advisory review, role-denial integration tests, session/CSRF/origin/body/upstream-poison API tests, prompt-injection fixtures, audit-chain verification, interruption/idempotency chaos tests, and CSP review.
 
-No threat-control claim is complete until the corresponding test evidence is recorded.
+Phase 5 evidence records 21 passing edge tests, literal Origin and CSRF rejection before any Snowflake call, tampered/expired-session rejection, a 1 MiB upstream cap, a 300,000-byte request cap, same-handle polling without mutation resubmission, and stable redaction of poisoned upstream responses. Live app-role probes confirmed access to an approved secure view and denied direct core, audit, and raw-stage access.
+
+There is deliberately no claim of durable global brute-force prevention: login failures share one visible response, the deployment URL remains private, and a global rate limiter will be added only if a verified free Cloudflare facility is available at deployment time.
