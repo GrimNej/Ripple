@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS CORE.SOURCE_SECTION (
     heading STRING NOT NULL,
     normalized_text STRING NOT NULL,
     start_offset NUMBER NOT NULL CHECK (start_offset >= 0),
-    end_offset NUMBER NOT NULL CHECK (end_offset >= start_offset),
+    end_offset NUMBER NOT NULL,
     text_sha256 STRING NOT NULL,
     normalizer_version STRING NOT NULL,
     created_at TIMESTAMP_TZ NOT NULL DEFAULT CURRENT_TIMESTAMP()

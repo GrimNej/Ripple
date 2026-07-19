@@ -4,7 +4,7 @@
     {
       "order": 1,
       "forwardFilename": "001_foundation.sql",
-      "forwardSha256": "e68f26fb301fea38e625f6b48a59f6631537a713bbc7fb9495aa36c10701cce2",
+      "forwardSha256": "9faacecedddeb07f9b0572f36181639741aeaa69b672454990f6ce155e18ffbb",
       "rollbackFilename": "001_foundation.sql",
       "rollbackSha256": "cc0263b3c78b1064f0d25f0728847e4ca5235b5e8e729e1a219f27a79c3b170b",
       "appliedAt": null,
