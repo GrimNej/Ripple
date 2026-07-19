@@ -101,3 +101,13 @@ This is the consolidated implementation ledger. Times use Nepal Time (UTC+05:45)
 - **Decision or issue:** Direction A, Editorial Systems Cartography, is recommended because it makes evidence and causality more ownable and avoids collapsing into a familiar developer dashboard. Production UI remains intentionally paused until the owner selects A or B; the directions will not be indiscriminately blended.
 - **Related commit:** `6b871e5`
 - **Rollback point:** Remove the isolated `design/visual-lock/` artifacts and restore the prior research-status document; no production UI or external platform state changed.
+
+## 2026-07-19 16:40 NPT — Visual direction round 2 and product identity
+
+- **Goal:** Replace both owner-rejected directions with two premium, template-informed but original product systems; expand each system to include a public landing page; and make the repository front page present Ripple as an enduring product.
+- **Files affected:** `design/visual-lock/round-2.*`, six 1440 x 900 owner-review captures, `docs/VISUAL_DIRECTION.md`, `README.md`, and four original README SVG assets under `docs/assets/`.
+- **Commands:** Current Framer/Webflow marketplace and live product research; real Chromium inspection of template motion, pointer response, typography, and product staging; interactive HTML/CSS/JS composition; 1440 x 900 Playwright rendering; apply-state interaction test; fresh-console inspection; standalone SVG rendering through a GitHub-equivalent HTML image wrapper; exact image-dimension verification.
+- **Test evidence:** Ten new references were recorded with source, date, learned principle, non-copy boundary, and accessibility observation. Direction C and Direction D each include a landing page, Command Center, and Patch Review. All six captures are exactly 1440 x 900. The patch action transitions to a disabled verified state, the final browser session reports zero console errors or warnings, every animation has a reduced-motion resolution, and the logo, banner, animated flow, and architecture SVGs render without clipping.
+- **Decision or issue:** The owner explicitly rejected Directions A and B, so they are historical artifacts only. Public-facing product copy now excludes event, demo, prototype, and golden-scenario language. Direction C is recommended, but production frontend implementation remains paused until the owner chooses C or D.
+- **Related commit:** `3c3b16d`
+- **Rollback point:** Revert the round-2 artifact commit to restore the prior README and visual research record; no production frontend or external platform state changed.
