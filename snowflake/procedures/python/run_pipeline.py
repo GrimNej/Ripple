@@ -8,6 +8,7 @@ from collections.abc import Callable
 from hashlib import sha256
 from typing import Any, cast
 
+from audit_chain import append_audit as _append_audit
 from diff_snapshots import _evidence, _load_sections
 from pipeline_logic import (
     AssetInput,
@@ -61,57 +62,6 @@ def _variant(value: object) -> dict[str, Any]:
 def _assert_safe_identifier(value: str, code: str) -> None:
     if _SAFE_ID.fullmatch(value) is None:
         raise PipelineError(code)
-
-
-def _append_audit(
-    session: Session,
-    *,
-    entity_type: str,
-    entity_id: str,
-    event_type: str,
-    actor: str,
-    correlation_id: str,
-    payload: object,
-) -> None:
-    previous_rows: list[Row] = session.sql(
-        "SELECT event_sequence, event_hash FROM RIPPLE.OPS.AUDIT_EVENT "
-        "ORDER BY event_sequence DESC LIMIT 1"
-    ).collect()
-    sequence = cast(int, previous_rows[0]["EVENT_SEQUENCE"]) + 1 if previous_rows else 1
-    previous_hash = cast(str, previous_rows[0]["EVENT_HASH"]) if previous_rows else None
-    payload_hash = hash_text(_json(payload))
-    event_hash = hash_text(
-        ":".join(
-            [
-                str(sequence),
-                entity_type,
-                entity_id,
-                event_type,
-                actor,
-                correlation_id,
-                payload_hash,
-                previous_hash or "GENESIS",
-            ]
-        )
-    )
-    session.sql(
-        "INSERT INTO RIPPLE.OPS.AUDIT_EVENT "
-        "(event_id, event_sequence, entity_type, entity_id, event_type, actor, "
-        "correlation_id, payload_hash, previous_event_hash, event_hash) "
-        "SELECT ?, ?, ?, ?, ?, ?, ?, ?, ?, ?",
-        params=[
-            _stable_id("audit", str(sequence), event_hash),
-            sequence,
-            entity_type,
-            entity_id,
-            event_type,
-            actor,
-            correlation_id,
-            payload_hash,
-            previous_hash,
-            event_hash,
-        ],
-    ).collect()
 
 
 def start_analysis(

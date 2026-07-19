@@ -1,0 +1,4 @@
+-- Remove Phase 4 deterministic verification boundary.
+USE DATABASE RIPPLE;
+
+DROP PROCEDURE IF EXISTS API.VERIFY_PATCH(STRING, NUMBER, STRING, STRING);

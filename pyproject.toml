@@ -45,6 +45,7 @@ pythonpath = ["snowflake/procedures/python"]
 dialect = "snowflake"
 exclude_rules = "RF04,CP02"
 max_line_length = 100
+large_file_skip_byte_limit = 0
 templater = "raw"
 
 [tool.sqlfluff.indentation]
