@@ -71,3 +71,13 @@ This is the consolidated implementation ledger. Times use Nepal Time (UTC+05:45)
 - **Decision or issue:** Snowflake structured output rejects JSON Schema `maxItems`, so caps remain enforced by bounded candidate construction and server-side validators. Content-free stage checkpoints preserve useful failure codes without exposing exception/model data. CoCo review attempts were blocked by browser-auth callback timeout and remain a submission-freeze item; the unattended project identity and live gate were unaffected.
 - **Related commits:** `c9afe3f`, `442f3c7`, `c2b6816`, `b59bf68`, `48d2774`
 - **Rollback point:** Paired migrations `004`, then `003`, after accepting loss of Phase 3 task/run evidence; Phase 2 remains independently reversible.
+
+## 2026-07-19 14:51 NPT — Atomic patch application and deterministic verification
+
+- **Goal:** Deliver editable append-only patch revisions, transactional apply/reject boundaries, immutable asset-version activation, idempotent replay, deterministic verification, and concurrency-safe audit evidence.
+- **Files affected:** Pure verification/audit Python, SQL/Scripting mutation procedures, paired migrations `005`–`007`, migration manifest, live integration harness, and evidence ledgers.
+- **Commands:** Ruff, strict mypy, pytest, SQLFluff, manifest/fixture verification; stage uploads and forward migrations; twenty independent concurrent Snowflake connections calling `API.APPLY_PATCH`; replay/conflict/verification calls; full audit-chain recomputation.
+- **Test evidence:** Twenty-five local tests pass. Of twenty simultaneous unique apply keys, exactly one returned `PATCH_APPLIED` and nineteen returned `PATCH_ALREADY_DECIDED`. The winning key replayed byte-equivalent structured output; an altered request with that key returned `IDEMPOTENCY_CONFLICT`. Persisted state contains one active repair version, one apply decision, one apply audit event, one replay row, and one `VERIFIED` result with zero failed deterministic checks. All 22 audit events and the CAS head validate.
+- **Decision or issue:** The first historical audit row stored the Python `None` binding as a literal string while hashing the correct genesis marker. The append-only row was preserved; the verifier normalizes only that sequence-one legacy representation. Forcing UTF-8 output also avoids a Windows Snowflake CLI renderer crash when Rich converts `:ok:` to a Unicode glyph.
+- **Related commits:** `91b23de`, `da5fd31`, `f4c2ef7`
+- **Rollback point:** Paired migrations `007`, `006`, then `005`; immutable foundation rows remain unless the destructive Phase 2 rollback is also selected.

@@ -43,8 +43,8 @@
       "forwardSha256": "03c89a7e36ec1c7fd389da0c270dfbf6e0e615214b01772c27fbc81fd084c98d",
       "rollbackFilename": "005_patch_state.sql",
       "rollbackSha256": "8c9d54d6f3763c69dfe7a8967822c497dcf55bea2c4294f75457d05884155c8f",
-      "appliedAt": null,
-      "appliedCommit": null
+      "appliedAt": "2026-07-19T02:06:18.837-07:00",
+      "appliedCommit": "f4c2ef756da9b0b5f32c2d4cac6f693e5043d3c0"
     },
     {
       "order": 6,
@@ -52,8 +52,8 @@
       "forwardSha256": "a9ab857b84e9b2d9fde31d0525ae7f52fb535bb5db630043b4c63f658f916ccd",
       "rollbackFilename": "006_patch_mutations.sql",
       "rollbackSha256": "c313baa05cfc6e322869326188854ced94faabbd4517c154f64a13f26fcb94d6",
-      "appliedAt": null,
-      "appliedCommit": null
+      "appliedAt": "2026-07-19T02:06:23.156-07:00",
+      "appliedCommit": "f4c2ef756da9b0b5f32c2d4cac6f693e5043d3c0"
     },
     {
       "order": 7,
@@ -61,8 +61,8 @@
       "forwardSha256": "490d1e80fe20474c3e036ce06c7f6f9844bc662a4b8d51896a34f63ff1cb8aa6",
       "rollbackFilename": "007_patch_verification.sql",
       "rollbackSha256": "3dc3cc85b7705698d2b55cd5bf7835b70e6368150a439ffd2d9e990c26ed765d",
-      "appliedAt": null,
-      "appliedCommit": null
+      "appliedAt": "2026-07-19T02:06:27.082-07:00",
+      "appliedCommit": "f4c2ef756da9b0b5f32c2d4cac6f693e5043d3c0"
     }
   ]
 }

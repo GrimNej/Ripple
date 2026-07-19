@@ -6,7 +6,7 @@ Ripple is a Snowflake CoCo CLI Hackathon 2026 project for evidence-backed downst
 
 ## Current status
 
-Phases 0 through 3 are complete. The repository/toolchain contract, nine-probe capability preflight, deterministic Snowflake foundation, disclosed golden fixture, one authoritative Stream/task graph, bounded structured AI, evidence validation, retry handling, and review-patch generation all pass their local and live gates. Phase 4 atomic patch application and deterministic verification are next; the edge API, final visual system, deployment, and submission artifacts remain intentionally incomplete.
+Phases 0 through 4 are complete. The repository/toolchain contract, nine-probe capability preflight, deterministic Snowflake foundation, disclosed golden fixture, one authoritative Stream/task graph, bounded structured AI, evidence validation, retry handling, atomic patch review/application, and deterministic verification all pass their local and live gates. The edge API, final visual system, deployment, and submission artifacts remain intentionally incomplete.
 
 The complete binding specification is `RIPPLE_IMPLEMENTATION_BLUEPRINT_CORRECTED.md`. Contributor rules are in `AGENTS.md`.
 

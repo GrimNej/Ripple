@@ -1,6 +1,6 @@
 # Known limitations
 
-- The mandatory platform preflight, deterministic Snowflake foundation, and bounded AI task graph pass, but patch transactions, product API, final visual system, and deployment are not complete yet.
+- The mandatory platform preflight, deterministic Snowflake foundation, bounded AI task graph, and atomic patch/verification flow pass, but the product API, final visual system, and deployment are not complete yet.
 - P0 uses disclosed prepared Markdown/plain-text snapshots and does not crawl arbitrary URLs.
 - Trial-account external network access is treated as unavailable until verified otherwise and is not part of the critical architecture.
 - P0 handles only version requirements, endpoint replacements/deprecations, and numeric limits.
@@ -10,3 +10,4 @@
 - Mobile is a basic read/review experience and uses a list-first impact view.
 - Prepared read-only output may be shown during a service outage only when clearly labeled as a previously completed real run.
 - The table-level `end_offset >= start_offset` relationship is enforced by trusted procedures and property/integration tests because the deployed account rejected Snowflake's inline multi-column check form; both offset columns retain non-negative/bounded procedural validation.
+- The first legacy audit event predates the CAS audit head and stores Python `None` as a literal genesis marker in `previous_event_hash`; its event hash correctly uses `GENESIS`. Verification normalizes only that sequence-one representation, and the append-only row is not rewritten.

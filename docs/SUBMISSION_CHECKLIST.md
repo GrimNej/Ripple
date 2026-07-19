@@ -10,11 +10,11 @@
 
 ## Product proof
 
-- [ ] One disclosed source pair produces three validated material changes.
-- [ ] Six impacted assets, one uncertain candidate, and one known non-dependency are represented honestly.
-- [ ] One reviewed patch creates exactly one active new asset version.
-- [ ] Deterministic verification passes and malformed/fabricated AI evidence fails safely.
-- [ ] Twenty concurrent applies produce one winner and idempotent retries replay the original result.
+- [x] One disclosed source pair produces three validated material changes.
+- [x] Six impacted assets, one uncertain candidate, and one known non-dependency are represented honestly.
+- [x] One reviewed patch creates exactly one active new asset version.
+- [x] Deterministic verification passes and malformed/fabricated AI evidence fails safely.
+- [x] Twenty concurrent applies produce one winner and idempotent retries replay the original result.
 - [ ] Browser/Worker interruption cannot duplicate the Snowflake mutation.
 
 ## Quality and operations
