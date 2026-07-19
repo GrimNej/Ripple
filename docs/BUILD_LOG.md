@@ -21,3 +21,33 @@ This is the consolidated implementation ledger. Times use Nepal Time (UTC+05:45)
 - **Decision or issue:** Use a Git-ignored unencrypted PKCS#8 key for Web Crypto import, a passwordless `TYPE=SERVICE` user, a fixed owner-executed health procedure, and a 5-credit warehouse-only monitor. Cortex/serverless spend remains controlled separately.
 - **Commit SHA:** `405ef1a` is the reviewed repository baseline preceding this plan.
 - **Rollback point:** Revert the gated plan commit; no external state exists to unwind.
+
+## 2026-07-19 12:20 NPT — Snowflake provisioning and unattended project identity
+
+- **Goal:** Create the approved least-privilege Snowflake footprint, prove application key-pair authentication, and eliminate repeated human OAuth by adding a project-scoped automation identity.
+- **Files affected:** `scripts/preflight_provision.sql`, `scripts/preflight_admin_automation.sql`, ignored `.secrets/` key material, and local Snowflake CLI configuration.
+- **Commands:** OpenSSL RSA generation/validation; templated Snowflake provisioning; fixed Node SQL API health call; project automation connection creation/test.
+- **Test evidence:** Roles, X-Small warehouse, five-credit monitor, database/schemas, app service user, and health procedure were created. The Node SQL API call returned HTTP 200. The automation identity authenticated by RSA and received only `RIPPLE_ADMIN_ROLE`.
+- **Decision or issue:** Windows Credential Manager could not persist the human OAuth token. The project-scoped automation identity removes that dependency without granting `ACCOUNTADMIN` or using the exposed chat password.
+- **Related commit:** `4c5005e`
+- **Rollback point:** Remove the automation/app service users, then follow the preflight reversal order while no P0 fixture data exists.
+
+## 2026-07-19 12:45 NPT — Mandatory capability preflight
+
+- **Goal:** Execute all nine blueprint probes before building product features.
+- **Files affected:** `snowflake/tests/preflight_capabilities.sql`, `scripts/preflight_sql_api.mjs`, and `apps/edge-api/`.
+- **Commands:** Snowflake CLI capability script; local Node SQL API call; `cortex` read-only inspection; Next production build; Wrangler dry run/dev/startup profile; TypeScript, ESLint, Prettier, Vitest, and dependency audit.
+- **Test evidence:** Python 3.11/Snowpark 1.53.0, strict `AI_COMPLETE`, `AI_EMBED`, append-only Stream plus root/child task execution, static export, real local Worker health call, 17.93 KiB gzip Worker, and 1.951 ms local p95 CPU proxy all passed. Audit reports no known vulnerabilities.
+- **Decision or issue:** Snowpark 1.9.0 failed due to missing `pkg_resources`; verified 1.53.0 replaced it. All architecture fallbacks remain untriggered.
+- **Related commit:** `4c5005e`
+- **Rollback point:** `4c5005e`; Snowflake probe tasks are suspended and the warehouse auto-suspends.
+
+## 2026-07-19 12:55 NPT — Static web and edge preflight stack lock
+
+- **Goal:** Freeze the current supported Next/React/Hono/Cloudflare toolchain with reproducible generated types and zero-warning gates.
+- **Files affected:** Root workspace configuration, `apps/web/`, `apps/edge-api/`, lockfile, lint/format config, and ignored local Worker configuration generator.
+- **Commands:** `pnpm install`, `wrangler types`, `pnpm build`, `pnpm typecheck`, `pnpm lint`, `pnpm format:check`, `pnpm test`, and `pnpm audit --audit-level moderate`.
+- **Test evidence:** All commands passed. Current Workers types matched 5.20260719.1. PostCSS was forced to patched 8.5.19 after an advisory surfaced in Next's transitive pin.
+- **Decision or issue:** Keep the minimal reviewed Web Crypto JWT implementation; adding a JWT library is unnecessary at the measured bundle/CPU cost.
+- **Related commit:** `4c5005e`
+- **Rollback point:** Revert `4c5005e` while retaining the Snowflake provisioning rollback procedure.

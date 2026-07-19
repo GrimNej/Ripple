@@ -9,6 +9,7 @@ Every mutation requires the plaintext CSRF token in `X-Ripple-CSRF`; the Worker 
 ## Platform boundary
 
 - The Snowflake private key and session/authentication secrets exist only in local secure configuration or Cloudflare secrets, never in browser bundles or Git.
+- The application and project-automation identities use separate RSA keys. Automation has only `RIPPLE_ADMIN_ROLE`; neither service identity receives `ACCOUNTADMIN`.
 - The Worker uses a narrow service user and a fixed stored-procedure/view allowlist. It returns stable error envelopes, never upstream HTML, SQL, stack traces, raw Snowflake errors, secrets, or private identifiers.
 - Source/asset text is untrusted and rendered only through React escaping. Raw HTML and `dangerouslySetInnerHTML` are prohibited.
 - AI has no tools/network, receives explicit untrusted-content boundaries, returns a strict schema, and cannot confirm evidence until server-side offset/hash validation passes.

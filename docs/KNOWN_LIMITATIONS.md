@@ -1,6 +1,6 @@
 # Known limitations
 
-- The repository is at Phase 0; no product capability or cloud preflight has passed.
+- The mandatory platform preflight passed, but production domain migrations, fixtures, pipeline procedures, and product interfaces are not complete yet.
 - P0 uses disclosed prepared Markdown/plain-text snapshots and does not crawl arbitrary URLs.
 - Trial-account external network access is treated as unavailable until verified otherwise and is not part of the critical architecture.
 - P0 handles only version requirements, endpoint replacements/deprecations, and numeric limits.

@@ -16,6 +16,6 @@ Record every deployed Worker version and static artifact hash. Roll back to a kn
 
 If live services fail, show only the latest completed real run with its run ID, hashes, task history, asset-version ID, and audit evidence. Label the live service unavailable and never present cached output as a live run.
 
-## Phase 0 recovery
+## Preflight recovery
 
-No cloud objects exist. Retaining only the owner-supplied blueprint fully restores the pre-bootstrap workspace.
+The current preflight footprint is external state. With no production fixture data present, suspend the child/root tasks, drop the two service users, drop the `RIPPLE` database, drop the warehouse and its resource monitor, then drop the app/admin roles. Remove the two ignored local RSA key pairs only after their Snowflake users are gone. Do not use the Phase 0 assumption that no cloud objects exist.
