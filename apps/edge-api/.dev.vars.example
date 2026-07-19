@@ -1,3 +1,7 @@
+ACCESS_CODE_HMAC="set-locally"
+APP_ORIGIN="http://localhost:3000"
+LOGIN_PEPPER="set-locally-at-least-32-characters"
+SESSION_SIGNING_SECRET="set-locally-at-least-32-characters"
 SNOWFLAKE_ACCOUNT_LOCATOR="set-locally"
 SNOWFLAKE_HOST="set-locally.snowflakecomputing.com"
 SNOWFLAKE_PRIVATE_KEY="set-locally"

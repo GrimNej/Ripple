@@ -11,7 +11,8 @@
     "typecheck": "tsc --noEmit && tsc --noEmit --project tsconfig.test.json"
   },
   "dependencies": {
-    "hono": "4.12.31"
+    "hono": "4.12.31",
+    "zod": "4.4.3"
   },
   "devDependencies": {
     "@cloudflare/vitest-pool-workers": "0.18.6",
