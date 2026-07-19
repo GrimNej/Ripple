@@ -4,6 +4,8 @@ node_modules/
 out/
 coverage/
 playwright-report/
+.playwright-cli/
+output/playwright/
 test-results/
 worker-dist/
 *.cpuprofile
