@@ -1,89 +1,110 @@
 # Visual direction research
 
-**Status:** Four focused mocks complete; awaiting explicit owner selection before production UI implementation.
+**Status:** Round 1 rejected by the product owner. Round 2 complete; awaiting explicit selection of Direction C or D before production UI implementation.
 
 **Research date:** 2026-07-19
 
-## Live reference study
+## Product presentation requirement
 
-No page, proprietary component, illustration, icon, font file, or brand asset below will be copied. The purpose of the study is to extract interaction and information-design principles suited to Ripple's own data and trust model.
+Ripple must present as a complete, enduring product rather than an event artifact or small proof of concept.
 
-| Reference                                                                                                                                                                               | Category                                | Principle carried forward                                                                                                                                             | What must not be copied                                                                                    | Accessibility observation                                                                                                                                                               |
-| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Our World in Data — Data Explorers](https://ourworldindata.org/explorers)                                                                                                              | Editorial data product                  | Let a small chart or map preview establish the subject before the user opens a deeper explorer; titles and prose explain why each view exists.                        | The publication's navy/red identity, card catalogue, and chart styling.                                    | Strong heading hierarchy and visible text labels work well; Ripple must additionally provide a text/table equivalent for every graph relationship.                                      |
-| [Reuters Graphics](https://www.reuters.com/graphics/)                                                                                                                                   | Premium visual journalism               | Lead with the finding, date, and explanatory sentence; the visualization supports a reported claim instead of becoming ambient decoration.                            | Reuters typography, orange identity, story templates, data, graphics, or imagery.                          | A skip-to-content link and descriptive article/figure labeling were present; advertising and consent overlays demonstrated why Ripple should keep operational screens distraction-free. |
-| [GitHub pull-request review](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/reviewing-changes-in-pull-requests/reviewing-proposed-changes-in-a-pull-request) | Version-control diff                    | Review one bounded unit at a time, keep progress visible, tie comments/actions to an exact changed span, and make the final decision consequence explicit.            | GitHub chrome, Octicons, code-centric metaphors, or green/red as the only meaning carrier.                 | Unified/split modes and file progress reduce cognitive load; Ripple must retain text labels, keyboard traversal, and non-color `+`/`−` markers.                                         |
-| [GitHub Primer DataTable](https://primer.style/product/components/data-table/)                                                                                                          | Developer infrastructure pattern        | Use row headers, deliberate column sizing, compact density options, stable skeletons, and pagination only when the data volume warrants it.                           | Primer tokens, GitHub component styling, or default table visuals.                                         | The reference explicitly uses accessible names, row headers, and labeled pagination; Ripple will preserve those semantics in its own visual language.                                   |
-| [Sentry Issue Details](https://docs.sentry.io/product/issues/issue-details/)                                                                                                            | Observability / triage                  | Keep the high-level state and actions fixed above a dense evidence workspace; filters, event distribution, primary detail, and activity metadata form distinct bands. | Sentry purple, its full three-column density, AI actions, or its issue hierarchy.                          | The visual anatomy has persistent text labels beside controls; Ripple should reduce density, preserve logical heading order, and avoid tiny unlabeled icons.                            |
-| [Grafana IRM incident timeline](https://grafana.com/docs/grafana-cloud/alerting-and-irm/irm/manage-incidents/incident-timeline/)                                                        | Incident operations                     | Treat the timeline as a permanent, chronological source of truth and distinguish observations, decisions, and state transitions.                                      | Grafana orange/blue, dashboard chrome, sprawling global navigation, or emoji-dependent semantics.          | Chronology is explained in text and headings; Ripple's task/audit timelines must expose timestamps, event types, and status words to assistive technology.                              |
-| [Marquez](https://marquezproject.ai/)                                                                                                                                                   | Knowledge lineage                       | Center the selected node, maintain directionality, provide a compact overview, and place node metadata adjacent to the graph rather than inside every edge.           | The dark teal brand, node/card design, whole-screen graph, or unlimited lineage depth.                     | The graph is visually legible but not sufficient alone; Ripple's synchronized evidence list is mandatory and must contain the same edge facts and actions.                              |
-| [Linear conceptual model](https://linear.app/docs/conceptual-model)                                                                                                                     | Developer operations                    | Quiet chrome and consistent row rhythm allow dense stateful work to scan quickly; the conceptual hierarchy stays shallow and predictable.                             | Linear's dark palette, gradient-framed screenshots, ultra-muted contrast, or icon-only interactions.       | Clear labels and recurring navigation structure help orientation; Ripple must use stronger secondary-text contrast and 44 px minimum targets.                                           |
-| [Wellcome Collection](https://wellcomecollection.org/collections)                                                                                                                       | Museum / publication information design | Use assertive typography, large search/selection controls, and section rhythm instead of placing every concept inside a rounded card.                                 | Wellcome's logo, mustard/blue palette, irregular hero silhouette, imagery, or collection taxonomy.         | Prominent labels and large targets are strong; consent UI showed a visible focus treatment. Ripple will keep the same target generosity without marketing overlays.                     |
-| [Vercel Geist](https://vercel.com/geist/introduction)                                                                                                                                   | Precision developer system              | A strict grid, fine rules, numeric rhythm, and restrained elevation can create hierarchy without shadows or decorative containers.                                    | Vercel's black/white brand, Geist typeface/assets, dashboard tiles, triangle motifs, or component styling. | The reference calls out high-contrast color; Ripple must keep icons accompanied by text and validate all semantic colors in context.                                                    |
+- The production experience includes a first-class public landing page in addition to the five authenticated product surfaces.
+- Landing, application, authentication, empty/loading/error states, and responsive layouts must share one visual system.
+- Public-facing UI and marketing copy must not mention a demo, hackathon, prototype, golden scenario, judging, or submission context.
+- Historical implementation context may remain in internal engineering documentation and metadata where required.
+- Motion should create recognition and hierarchy, then yield to the work. It must not delay a decision or hide a state change.
 
-MoMA's collection was considered but the live browser inspection reached an anti-bot challenge, so it is deliberately not counted as one of the ten reviewed references.
+## Round 1 disposition
 
-## Direction A — Editorial Systems Cartography
+Direction A, Editorial Systems Cartography, and Direction B, Precision Instrument Panel, were both explicitly rejected by the product owner on 2026-07-19. They are historical artifacts only. Do not reuse, blend, or gradually evolve their palettes, typography, layout language, or aesthetic thesis into production.
 
-**Thesis:** Ripple is an evidence publication with operator controls. The interface should make causal relationships feel mapped, cited, and deliberately annotated.
+## Round 2 live template and product study
 
-- Warm mineral paper and clean off-white working sheets; neither sepia nor beige nostalgia.
-- Georgia/system serif for claims and section titles; Arial/system sans and Courier for controls, evidence coordinates, IDs, and hashes.
-- Fine dark rules, almost no rounded containers, and only one restrained oxide-red signal.
-- Graph edges read as routes on a technical map. Dashed ochre plus a `?` marker identifies uncertainty without relying on color.
-- Evidence is allowed into the margin as editorial annotation, keeping provenance close to the decision.
-- More breathing room and stronger narrative hierarchy; best fit for explaining trust and causality to judges or first-time operators.
+No template, page, proprietary asset, illustration, font file, or brand element below will be copied. The study extracts composition and motion principles for an original Ripple product system.
 
-Token hypothesis:
+| Reference                                                                                              | Date viewed | Principle carried forward                                                                                                                                     | What must not be copied                                                                                                       | Accessibility observation                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [Flames / Framer Marketplace](https://www.framer.com/community/marketplace/templates/flames/)          | 2026-07-19  | A single memorable hero device, staged product-window reveal, and compact floating evidence cards can create depth before the user scrolls.                   | Flames branding, glitch headline, halftone field, dark palette, isometric illustrations, page structure, or product mockups.  | The large headline and labeled CTA are strong; Ripple must avoid the reference's small secondary text and remove all looping effects under reduced motion.           |
+| [Makro / Framer Marketplace](https://www.framer.com/community/marketplace/templates/makro/)            | 2026-07-19  | Oversized type, generous negative space, an art-directed image plane, and very selective chartreuse create immediate confidence without a card grid.          | The portrait, finance narrative, chartreuse/charcoal button treatment, hero selector, or floating finance cards.              | Clear reading order and large controls are useful; decorative image layers require non-essential alt handling and cannot carry product meaning.                      |
+| [Echo Agent / Framer Marketplace](https://www.framer.com/community/marketplace/templates/echo-agent/)  | 2026-07-19  | Bold condensed display type, calm body type, marker reveals, solid accent blocks, and pattern fills can feel human and energetic without becoming childish.   | Its Barlow/Stack/Fragment type combination, multicolor token set, physics footer, CRM content, or highlight animation design. | The template documents responsive behavior; Ripple will keep minimum 44 px targets and ensure marker/color treatments never replace text labels.                     |
+| [Planar / Framer Marketplace](https://www.framer.com/community/marketplace/templates/planar/)          | 2026-07-19  | One repeatable masking motif can give a whole product family visual continuity more effectively than unrelated decorative effects.                            | Planar's mask artwork, colorful gradients, layout modules, product photography, or light/dark compositions.                   | Masked artwork is decorative only; content and focus order must remain intact with imagery, masks, or animation disabled.                                            |
+| [SaaS dashboard hover animation / Webflow](https://saas-hero-dashboard-animation-on-hover.webflow.io/) | 2026-07-19  | A product surface can settle into place on entry and respond subtly to the pointer, giving it physical presence without turning it into a fake terminal.      | The dashboard design, white fade mask, Kanban data, people imagery, exact perspective, or orange CTA pill.                    | Pointer tilt must have no functional meaning, work without hover, and become a still composition for reduced-motion and touch users.                                 |
+| [Resend](https://resend.com/)                                                                          | 2026-07-19  | Cinematic restraint comes from deep black, controlled light, one sculptural object, and a deliberate serif/sans contrast rather than many effects.            | Resend's cube, wordmark, black-on-black lighting setup, navigation, copy, or serif treatment.                                 | Contrast is excellent for primary text; Ripple must raise secondary-label contrast inside dense product screens and never place required content inside a 3D object. |
+| [Raycast](https://www.raycast.com/)                                                                    | 2026-07-19  | A brand can own one high-energy color and directional motion motif across marketing and product framing.                                                      | Raycast's red ribbons, logo, dark shell, exact hero composition, button styling, or download flow.                            | The centered hierarchy is simple and scannable; motion textures must remain behind content and pause under reduced-motion preferences.                               |
+| [Railway](https://railway.com/)                                                                        | 2026-07-19  | A large atmospheric illustration can frame a credible product window while keeping the actual software visible and legible.                                   | Railway's night-sky artwork, purple identity, typography, interface screenshots, or deployment narrative.                     | The product window contains very small text at marketing scale; Ripple's application UI must use production-size text rather than screenshot-scale facsimiles.       |
+| [Superlist](https://www.superlist.com/)                                                                | 2026-07-19  | Strong display type, a confident vermilion signal, a large product reveal, and animated depth can feel expressive while retaining a familiar product promise. | Superlist's logo, red gradient atmosphere, headline, app screenshot, dark plum palette, or sign-up composition.               | Primary controls are clear and prominent; background movement and media require pause/reduced-motion handling, and consent overlays must not obstruct core actions.  |
+| [Spline](https://spline.design/)                                                                       | 2026-07-19  | Interactive depth is strongest when the scene invites exploration but the value proposition and CTA remain independent of the canvas.                         | Spline's 3D shapes, character, rainbow mark, black grid floor, blue CTA, interaction copy, or scene layout.                   | The 3D canvas needs keyboard-independent alternatives; Ripple's causal map always retains an equivalent synchronized evidence list.                                  |
 
-| Role                     | Value                                                                                                     |
-| ------------------------ | --------------------------------------------------------------------------------------------------------- |
-| Canvas / sheet           | `#F1EEE6` / `#FBFAF6`                                                                                     |
-| Primary / secondary text | `#1A211E` / `#69716D`                                                                                     |
-| Rules                    | `#BBB9B0`, with primary rules in `#1A211E`                                                                |
-| Signal                   | oxide `#BD452F`                                                                                           |
-| Evidence highlight       | straw `#EADF9C`                                                                                           |
-| Confirmed / uncertain    | forest `#27745B` / ochre `#D49B20`, always paired with labels/patterns                                    |
-| Radius / depth           | `0` for structural regions; pills only for compact status; one 5 px hard shadow on the prepared-run sheet |
-| Motion                   | 120–180 ms direct state transitions; no parallax, ambient motion, or graph drift                          |
+The current Framer template pages, live product sites, and Webflow interaction were inspected in a real 1440 x 900 Chromium viewport. Marketplace claims were not treated as proof of accessibility or performance.
 
-Mocks:
+## Direction C — Cinematic Signal
 
-- [Command Center](../design/visual-lock/atlas-command.png)
-- [Patch Review](../design/visual-lock/atlas-patch.png)
+**Thesis:** Ripple is the quiet intelligence underneath a living knowledge system. The interface should feel cinematic, exact, and consequential.
 
-## Direction B — Precision Instrument Panel
-
-**Thesis:** Ripple is a calibrated operational instrument. The interface should optimize for state recognition, repeat use, and exact numerical scanning.
-
-- Carbon-black foundation with low-depth charcoal surfaces and hairline rules.
-- Arial/system sans for plain-language entities; Courier/system monospace for state, timing, identifiers, and measured proof.
-- One chartreuse action signal. Cyan indicates confirmed/healthy state; amber and coral remain reserved for uncertainty and failure.
-- State bands, stage tracks, row registers, and numeric banks replace dashboard cards.
-- Patch review behaves like a controlled transaction console with delta, editable plain text, evidence packet, and atomic effects visible at once.
-- Highest density and fastest scanning; best fit for experienced technical operators.
+- Obsidian foundation with restrained smoke texture and one sculpted coral-to-amber signal.
+- Manrope for product text, Instrument Serif for moments of consequence, and DM Mono for evidence coordinates.
+- Concentric signal rings and moving causal paths become Ripple's signature motif; there are no generic glowing orbs or ambient mesh gradients.
+- The landing page stages a real change pipeline inside one dimensional product window, supported by small source and verification objects.
+- The application trades marketing scale for calibrated information density while preserving the same signal, type, and depth language.
+- Motion: product window settles once, signal edges travel continuously at low contrast, evidence objects float by a few pixels, and interactions respond in 150–220 ms.
+- Reduced motion: all entry, float, orbit, dash, and sheen animations resolve immediately to a stable final state.
 
 Token hypothesis:
 
-| Role                           | Value                                                                                                     |
-| ------------------------------ | --------------------------------------------------------------------------------------------------------- |
-| Canvas / surfaces              | `#0B0F0E` / `#111715` / `#151D1A`                                                                         |
-| Primary / secondary text       | `#EDF2EC` / `#8D9A94`                                                                                     |
-| Rules                          | `#2E3934`                                                                                                 |
-| Action signal                  | chartreuse `#D7FF54`                                                                                      |
-| Confirmed / uncertain / failed | cyan `#63D5BB` / amber `#F0BD55` / coral `#EF705E`, always paired with text and geometry                  |
-| Radius / depth                 | `0`; no shadows; hierarchy comes from ruled planes and contrast                                           |
-| Motion                         | 90–140 ms state changes; stage progress may draw once, then remain still; reduced motion removes the draw |
+| Role                     | Value                                                                            |
+| ------------------------ | -------------------------------------------------------------------------------- |
+| Canvas / working surface | `#090B0C` / `#111416` / `#171A1D`                                                |
+| Primary / secondary text | `#F5F2EA` / `#9B9B97`                                                            |
+| Signal                   | coral `#FF735C`, amber `#FFC36E`                                                 |
+| Verified                 | mint `#A8FFD8`, always paired with text and a check                              |
+| Typography               | Manrope, Instrument Serif, DM Mono; all openly licensed Google fonts             |
+| Radius / depth           | 10–24 px; one primary depth plane, not glass cards everywhere                    |
+| Motion                   | 150–220 ms interaction; 6–15 s low-amplitude ambient signal; custom cubic easing |
+| Focus                    | 3 px mint outline with 3 px offset                                               |
 
-Mocks:
+Rendered surfaces:
 
-- [Command Center](../design/visual-lock/console-command.png)
-- [Patch Review](../design/visual-lock/console-patch.png)
+- [Landing page](../design/visual-lock/signal-landing.png)
+- [Command Center](../design/visual-lock/signal-command.png)
+- [Patch Review](../design/visual-lock/signal-patch.png)
+- [Interactive prototype](../design/visual-lock/round-2.html#cinematic-landing)
+
+## Direction D — Kinetic Studio
+
+**Thesis:** Ripple turns operational complexity into visible, controllable movement. The interface should feel bright, physical, confident, and unmistakably alive.
+
+- Cool near-white canvas with solid vermilion, acid lime, cobalt, and black; no purple/blue AI gradients.
+- Bricolage Grotesque for expressive product typography and DM Mono for evidence/status labels.
+- A segmented ripple loop, marker reveals, hard offset shadows, physical panels, and a workflow ticker form one coherent motion system.
+- The landing page presents the real product as an art-directed object rather than a generic screenshot beneath a marketing headline.
+- Authenticated screens become flatter and denser but retain the same outline weight, color logic, circular evidence nodes, and physical feedback.
+- Motion: marker wipes once, product planes settle and respond slightly to pointer position, loop segments travel, and controls compress physically on activation.
+- Reduced motion: ticker, path travel, floats, marker wipes, and pointer tilt stop; all state changes remain immediate and textual.
+
+Token hypothesis:
+
+| Role                         | Value                                                                         |
+| ---------------------------- | ----------------------------------------------------------------------------- |
+| Canvas / working surface     | `#F0F3EF` / `#FBFCF8`                                                         |
+| Primary / secondary text     | `#111410` / `#6F756E`                                                         |
+| Primary signal               | vermilion `#FF5838`                                                           |
+| Changed / verified / related | vermilion / acid lime `#C8FF3D` / cobalt `#4E6CFF`, always paired with labels |
+| Typography                   | Bricolage Grotesque and DM Mono; openly licensed Google fonts                 |
+| Radius / depth               | 8–19 px; 1.5–2 px rules; 4–14 px hard offset shadows                          |
+| Motion                       | 150–180 ms physical feedback; 5–24 s branded loop/ticker movement             |
+| Focus                        | 3 px cobalt outline with 3 px offset                                          |
+
+Rendered surfaces:
+
+- [Landing page](../design/visual-lock/kinetic-landing.png)
+- [Command Center](../design/visual-lock/kinetic-command.png)
+- [Patch Review](../design/visual-lock/kinetic-patch.png)
+- [Interactive prototype](../design/visual-lock/round-2.html#kinetic-landing)
 
 ## Recommendation and decision boundary
 
-**Recommendation: Direction A — Editorial Systems Cartography.** It is more ownable, makes Ripple's evidence and causality promise immediately understandable, and is less likely to collapse into a familiar monitoring console. Direction B is credible and efficient, but its dark high-density language is closer to existing developer tools and therefore less differentiated.
+**Recommendation: Direction C — Cinematic Signal.** It delivers the stronger immediate “wow” moment while retaining the authority and emotional weight required for evidence-backed decisions. Its signal-ring motif also maps naturally from landing-page spectacle to causal graph, pipeline state, focus treatment, and verification seal.
 
-Do not blend the directions after selection. Shared functional requirements—stable skeletons, 44 px targets, literal status text, full keyboard operation, reduced motion, evidence-list parity, and responsive list-first behavior—are product requirements rather than visual motifs.
+Direction D is intentionally not a light variant of C. It is more energetic, optimistic, and memorable at a glance, but its expressive density will require tighter discipline when extended to long technical content.
 
-Production UI work remains paused until the owner explicitly selects Direction A or Direction B.
+Do not blend the directions after selection. The public landing page and five authenticated surfaces will all be implemented in the chosen system. Production frontend work remains paused until the owner explicitly selects Direction C or Direction D.

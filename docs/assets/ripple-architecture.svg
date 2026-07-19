@@ -1,0 +1,292 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1280 650"
+  role="img"
+  aria-labelledby="title description"
+>
+  <title id="title">Ripple system architecture</title>
+  <desc id="description">
+    A high-level view of the Ripple product experience, authenticated edge boundary, Snowflake
+    control plane, task graph, and verification ledger.
+  </desc>
+  <defs>
+    <linearGradient id="archBg" x1="0" y1="0" x2="1280" y2="650" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7F8F4" />
+      <stop offset="1" stop-color="#EEF2EE" />
+    </linearGradient>
+    <pattern id="archGrid" width="28" height="28" patternUnits="userSpaceOnUse">
+      <path d="M28 0H0v28" fill="none" stroke="#111410" stroke-opacity=".035" />
+    </pattern>
+    <filter id="archShadow" x="-20%" y="-30%" width="150%" height="170%">
+      <feDropShadow dx="5" dy="6" stdDeviation="0" flood-color="#111410" flood-opacity=".14" />
+    </filter>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0 0l8 4-8 4Z" fill="#111410" />
+    </marker>
+    <style>
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      }
+      .sans {
+        font-family: Inter, Arial, sans-serif;
+      }
+      .flow {
+        stroke-dasharray: 7 8;
+        animation: archFlow 12s linear infinite;
+      }
+      @keyframes archFlow {
+        to {
+          stroke-dashoffset: -150;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+        }
+      }
+    </style>
+  </defs>
+
+  <rect width="1280" height="650" rx="24" fill="url(#archBg)" />
+  <rect width="1280" height="650" rx="24" fill="url(#archGrid)" />
+  <rect
+    x="1"
+    y="1"
+    width="1278"
+    height="648"
+    rx="23"
+    fill="none"
+    stroke="#111410"
+    stroke-opacity=".2"
+    stroke-width="2"
+  />
+
+  <g transform="translate(48 44)">
+    <rect width="43" height="43" rx="12" fill="#111410" />
+    <circle cx="21.5" cy="21.5" r="14" fill="none" stroke="#FF5838" stroke-width="3" />
+    <circle cx="21.5" cy="21.5" r="8" fill="none" stroke="#C8FF3D" stroke-width="2" />
+    <circle cx="21.5" cy="21.5" r="3" fill="#F7F8F4" />
+  </g>
+  <text x="106" y="64" class="mono" fill="#656B64" font-size="9" letter-spacing="1.5">
+    SYSTEM AT A GLANCE
+  </text>
+  <text
+    x="106"
+    y="88"
+    class="sans"
+    fill="#111410"
+    font-size="24"
+    font-weight="750"
+    letter-spacing="-1"
+  >
+    A narrow path from evidence to verified change.
+  </text>
+  <g class="mono" font-size="7" letter-spacing="1">
+    <circle cx="1016" cy="61" r="5" fill="#FF5838" stroke="#111410" />
+    <text x="1029" y="64" fill="#535952">MUTABLE WORKFLOW</text>
+    <circle cx="1154" cy="61" r="5" fill="#C8FF3D" stroke="#111410" />
+    <text x="1167" y="64" fill="#535952">VERIFIED STATE</text>
+  </g>
+
+  <text x="48" y="143" class="mono" fill="#656B64" font-size="8" letter-spacing="1.4">
+    01 / PRODUCT EXPERIENCE
+  </text>
+  <g filter="url(#archShadow)">
+    <g transform="translate(48 158)">
+      <rect width="278" height="116" rx="14" fill="#111410" stroke="#111410" stroke-width="2" />
+      <circle cx="28" cy="29" r="10" fill="#FF5838" />
+      <text x="47" y="32" class="mono" fill="#A8ACA7" font-size="7" letter-spacing="1">
+        PUBLIC + AUTHENTICATED
+      </text>
+      <text x="21" y="66" class="sans" fill="#F7F8F4" font-size="18" font-weight="750">
+        Next.js product
+      </text>
+      <text x="21" y="88" class="sans" fill="#888E88" font-size="9">
+        Landing · five operator surfaces
+      </text>
+      <text x="21" y="104" class="sans" fill="#888E88" font-size="9">
+        Accessible graph/list parity
+      </text>
+    </g>
+    <g transform="translate(349 158)">
+      <rect width="278" height="116" rx="14" fill="#FFFFFF" stroke="#111410" stroke-width="2" />
+      <circle cx="28" cy="29" r="10" fill="#4E6CFF" stroke="#111410" />
+      <text x="47" y="32" class="mono" fill="#666C65" font-size="7" letter-spacing="1">
+        CLOUDFLARE
+      </text>
+      <text x="21" y="66" class="sans" fill="#111410" font-size="18" font-weight="750">
+        Hono edge API
+      </text>
+      <text x="21" y="88" class="sans" fill="#696F68" font-size="9">
+        Signed session · CSRF · origin
+      </text>
+      <text x="21" y="104" class="sans" fill="#696F68" font-size="9">
+        Stable redacted JSON envelopes
+      </text>
+    </g>
+    <g transform="translate(650 158)">
+      <rect width="278" height="116" rx="14" fill="#FFFFFF" stroke="#111410" stroke-width="2" />
+      <circle cx="28" cy="29" r="10" fill="#C8FF3D" stroke="#111410" />
+      <text x="47" y="32" class="mono" fill="#666C65" font-size="7" letter-spacing="1">
+        FIXED BOUNDARY
+      </text>
+      <text x="21" y="66" class="sans" fill="#111410" font-size="18" font-weight="750">
+        Approved read models
+      </text>
+      <text x="21" y="88" class="sans" fill="#696F68" font-size="9">
+        Allowlisted views + procedures
+      </text>
+      <text x="21" y="104" class="sans" fill="#696F68" font-size="9">
+        No dynamic SQL from clients
+      </text>
+    </g>
+    <g transform="translate(951 158)">
+      <rect width="278" height="116" rx="14" fill="#FFE9E3" stroke="#111410" stroke-width="2" />
+      <circle cx="28" cy="29" r="10" fill="#FF5838" stroke="#111410" />
+      <text x="47" y="32" class="mono" fill="#666C65" font-size="7" letter-spacing="1">
+        HUMAN CONTROL
+      </text>
+      <text x="21" y="66" class="sans" fill="#111410" font-size="18" font-weight="750">
+        Patch decision
+      </text>
+      <text x="21" y="88" class="sans" fill="#696F68" font-size="9">Edit · reject · approve</text>
+      <text x="21" y="104" class="sans" fill="#696F68" font-size="9">
+        Compare-and-swap authority
+      </text>
+    </g>
+  </g>
+
+  <path
+    d="M326 216h17M627 216h17M928 216h17"
+    fill="none"
+    stroke="#111410"
+    stroke-width="1.5"
+    marker-end="url(#arrow)"
+  />
+
+  <rect
+    x="48"
+    y="304"
+    width="1181"
+    height="52"
+    rx="12"
+    fill="#C8FF3D"
+    stroke="#111410"
+    stroke-width="2"
+  />
+  <text x="70" y="325" class="mono" fill="#111410" font-size="7" letter-spacing="1.2">
+    AUTHENTICATED TRUST BOUNDARY
+  </text>
+  <text x="70" y="343" class="sans" fill="#111410" font-size="11" font-weight="700">
+    The application role can reach only approved secure views and procedures; direct core, audit,
+    and stage access is denied.
+  </text>
+  <path d="M628 274v24" stroke="#111410" stroke-width="1.5" marker-end="url(#arrow)" />
+
+  <text x="48" y="395" class="mono" fill="#656B64" font-size="8" letter-spacing="1.4">
+    02 / SNOWFLAKE CONTROL PLANE
+  </text>
+  <g filter="url(#archShadow)">
+    <g transform="translate(48 411)">
+      <rect width="219" height="157" rx="14" fill="#FFFFFF" stroke="#111410" stroke-width="2" />
+      <rect width="219" height="41" rx="13" fill="#E4E8FF" />
+      <path d="M0 41h219" stroke="#111410" stroke-width="2" />
+      <text x="17" y="25" class="mono" fill="#111410" font-size="7" letter-spacing="1">
+        SOURCE REGISTRY
+      </text>
+      <text x="17" y="72" class="sans" fill="#111410" font-size="15" font-weight="750">
+        Versioned evidence
+      </text>
+      <text x="17" y="96" class="sans" fill="#687068" font-size="9">Disclosed snapshots</text>
+      <text x="17" y="114" class="sans" fill="#687068" font-size="9">Exact change spans</text>
+      <text x="17" y="132" class="sans" fill="#687068" font-size="9">Content hashes</text>
+    </g>
+    <g transform="translate(289 411)">
+      <rect width="219" height="157" rx="14" fill="#FFFFFF" stroke="#111410" stroke-width="2" />
+      <rect width="219" height="41" rx="13" fill="#FFE7E0" />
+      <path d="M0 41h219" stroke="#111410" stroke-width="2" />
+      <text x="17" y="25" class="mono" fill="#111410" font-size="7" letter-spacing="1">
+        CHANGE PIPELINE
+      </text>
+      <text x="17" y="72" class="sans" fill="#111410" font-size="15" font-weight="750">
+        Bounded analysis
+      </text>
+      <text x="17" y="96" class="sans" fill="#687068" font-size="9">Stream + task graph</text>
+      <text x="17" y="114" class="sans" fill="#687068" font-size="9">Structured AI_COMPLETE</text>
+      <text x="17" y="132" class="sans" fill="#687068" font-size="9">Evidence validation</text>
+    </g>
+    <g transform="translate(530 411)">
+      <rect width="219" height="157" rx="14" fill="#FFFFFF" stroke="#111410" stroke-width="2" />
+      <rect width="219" height="41" rx="13" fill="#FFF0C8" />
+      <path d="M0 41h219" stroke="#111410" stroke-width="2" />
+      <text x="17" y="25" class="mono" fill="#111410" font-size="7" letter-spacing="1">
+        IMPACT GRAPH
+      </text>
+      <text x="17" y="72" class="sans" fill="#111410" font-size="15" font-weight="750">
+        Causal trace
+      </text>
+      <text x="17" y="96" class="sans" fill="#687068" font-size="9">Direct relationships</text>
+      <text x="17" y="114" class="sans" fill="#687068" font-size="9">Bounded inference</text>
+      <text x="17" y="132" class="sans" fill="#687068" font-size="9">Evidence-list parity</text>
+    </g>
+    <g transform="translate(771 411)">
+      <rect width="219" height="157" rx="14" fill="#FFFFFF" stroke="#111410" stroke-width="2" />
+      <rect width="219" height="41" rx="13" fill="#FFE7E0" />
+      <path d="M0 41h219" stroke="#111410" stroke-width="2" />
+      <text x="17" y="25" class="mono" fill="#111410" font-size="7" letter-spacing="1">
+        PATCH TRANSACTION
+      </text>
+      <text x="17" y="72" class="sans" fill="#111410" font-size="15" font-weight="750">
+        Atomic application
+      </text>
+      <text x="17" y="96" class="sans" fill="#687068" font-size="9">Editable proposal</text>
+      <text x="17" y="114" class="sans" fill="#687068" font-size="9">Idempotency + CAS</text>
+      <text x="17" y="132" class="sans" fill="#687068" font-size="9">Append-only version</text>
+    </g>
+    <g transform="translate(1012 411)">
+      <rect width="217" height="157" rx="14" fill="#111410" stroke="#111410" stroke-width="2" />
+      <rect width="217" height="41" rx="13" fill="#C8FF3D" />
+      <path d="M0 41h217" stroke="#111410" stroke-width="2" />
+      <text x="17" y="25" class="mono" fill="#111410" font-size="7" letter-spacing="1">
+        VERIFICATION LEDGER
+      </text>
+      <text x="17" y="72" class="sans" fill="#F7F8F4" font-size="15" font-weight="750">
+        Deterministic proof
+      </text>
+      <text x="17" y="96" class="sans" fill="#8A8F89" font-size="9">New version + hash</text>
+      <text x="17" y="114" class="sans" fill="#8A8F89" font-size="9">Tamper-evident audit</text>
+      <text x="17" y="132" class="sans" fill="#8A8F89" font-size="9">Expected-value checks</text>
+    </g>
+  </g>
+
+  <path
+    d="M267 490h16M508 490h16M749 490h16M990 490h16"
+    fill="none"
+    stroke="#111410"
+    stroke-width="1.5"
+    marker-end="url(#arrow)"
+    class="flow"
+  />
+
+  <g transform="translate(48 596)">
+    <rect width="1181" height="32" rx="9" fill="#FFFFFF" stroke="#111410" stroke-opacity=".2" />
+    <text x="17" y="20" class="mono" fill="#565D56" font-size="7" letter-spacing=".8">
+      INVARIANTS
+    </text>
+    <text x="112" y="20" class="sans" fill="#111410" font-size="9" font-weight="700">
+      No automatic publishing
+    </text>
+    <circle cx="254" cy="16" r="2.5" fill="#FF5838" />
+    <text x="269" y="20" class="sans" fill="#111410" font-size="9" font-weight="700">
+      No arbitrary client SQL
+    </text>
+    <circle cx="414" cy="16" r="2.5" fill="#FF5838" />
+    <text x="429" y="20" class="sans" fill="#111410" font-size="9" font-weight="700">
+      No in-place knowledge mutation
+    </text>
+    <circle cx="625" cy="16" r="2.5" fill="#FF5838" />
+    <text x="640" y="20" class="sans" fill="#111410" font-size="9" font-weight="700">
+      Every applied fact is versioned, hashed, audited, and verified
+    </text>
+  </g>
+</svg>

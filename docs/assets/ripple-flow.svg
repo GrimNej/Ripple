@@ -1,0 +1,209 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 1280 300"
+  role="img"
+  aria-labelledby="title description"
+>
+  <title id="title">Ripple verified change flow</title>
+  <desc id="description">
+    An animated flow from authoritative source capture through evidence validation, impact mapping,
+    human review, and verified repair.
+  </desc>
+  <defs>
+    <linearGradient id="flowBg" x1="0" y1="0" x2="1280" y2="300" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B0D0E" />
+      <stop offset="1" stop-color="#121516" />
+    </linearGradient>
+    <linearGradient id="flowSignal" x1="106" y1="0" x2="1176" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A8FFD8" />
+      <stop offset=".25" stop-color="#FFC36E" />
+      <stop offset=".7" stop-color="#FF735C" />
+      <stop offset="1" stop-color="#A8FFD8" />
+    </linearGradient>
+    <filter id="flowGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <style>
+      .mono {
+        font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      }
+      .sans {
+        font-family: Inter, Arial, sans-serif;
+      }
+      .edge {
+        stroke-dasharray: 7 9;
+        animation: edge 10s linear infinite;
+      }
+      .ring {
+        animation: ring 2.5s ease-out infinite;
+        transform-box: fill-box;
+        transform-origin: center;
+      }
+      .ring.two {
+        animation-delay: -0.8s;
+      }
+      .ring.three {
+        animation-delay: -1.6s;
+      }
+      @keyframes edge {
+        to {
+          stroke-dashoffset: -160;
+        }
+      }
+      @keyframes ring {
+        0%,
+        20% {
+          opacity: 0.65;
+          transform: scale(0.5);
+        }
+        80%,
+        100% {
+          opacity: 0;
+          transform: scale(1.4);
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+        }
+      }
+    </style>
+  </defs>
+
+  <rect width="1280" height="300" rx="24" fill="url(#flowBg)" />
+  <rect
+    x="1"
+    y="1"
+    width="1278"
+    height="298"
+    rx="23"
+    fill="none"
+    stroke="#FFFFFF"
+    stroke-opacity=".12"
+    stroke-width="2"
+  />
+
+  <text x="48" y="46" class="mono" fill="#A8FFD8" font-size="10" letter-spacing="1.8">
+    FROM SOURCE CHANGE TO VERIFIED REPAIR
+  </text>
+  <text x="1232" y="46" class="mono" fill="#6F7370" font-size="8" text-anchor="end">
+    ONE CONTROLLED PATH
+  </text>
+
+  <path
+    id="mainFlow"
+    d="M121 154H1158"
+    fill="none"
+    stroke="url(#flowSignal)"
+    stroke-width="2"
+    class="edge"
+  />
+  <circle r="6" fill="#F8F6EF" filter="url(#flowGlow)">
+    <animateMotion dur="7s" repeatCount="indefinite"><mpath href="#mainFlow" /></animateMotion>
+  </circle>
+  <circle r="4" fill="#FF735C" filter="url(#flowGlow)">
+    <animateMotion dur="7s" begin="-2.3s" repeatCount="indefinite">
+      <mpath href="#mainFlow" />
+    </animateMotion>
+  </circle>
+  <circle r="4" fill="#A8FFD8" filter="url(#flowGlow)">
+    <animateMotion dur="7s" begin="-4.6s" repeatCount="indefinite">
+      <mpath href="#mainFlow" />
+    </animateMotion>
+  </circle>
+
+  <g transform="translate(115 154)">
+    <circle r="34" fill="#121A17" stroke="#A8FFD8" stroke-opacity=".6" />
+    <circle r="44" fill="none" stroke="#A8FFD8" stroke-opacity=".25" class="ring" />
+    <circle r="8" fill="#A8FFD8" />
+    <text y="72" class="mono" fill="#A8FFD8" font-size="8" text-anchor="middle" letter-spacing="1">
+      01 / CAPTURE
+    </text>
+    <text y="92" class="sans" fill="#F4F2EC" font-size="13" font-weight="700" text-anchor="middle">
+      Authoritative source
+    </text>
+    <text y="109" class="sans" fill="#777B78" font-size="9" text-anchor="middle">
+      Version + exact spans
+    </text>
+  </g>
+
+  <g transform="translate(378 154)">
+    <circle r="34" fill="#201A12" stroke="#FFC36E" stroke-opacity=".7" />
+    <circle r="44" fill="none" stroke="#FFC36E" stroke-opacity=".24" class="ring two" />
+    <path d="M-12-2h24M-8-10h16M-5 6h10" stroke="#FFC36E" stroke-width="2" stroke-linecap="round" />
+    <text y="72" class="mono" fill="#FFC36E" font-size="8" text-anchor="middle" letter-spacing="1">
+      02 / VALIDATE
+    </text>
+    <text y="92" class="sans" fill="#F4F2EC" font-size="13" font-weight="700" text-anchor="middle">
+      Change evidence
+    </text>
+    <text y="109" class="sans" fill="#777B78" font-size="9" text-anchor="middle">
+      Material, bounded, cited
+    </text>
+  </g>
+
+  <g transform="translate(640 154)">
+    <circle r="36" fill="#251512" stroke="#FF735C" stroke-opacity=".72" />
+    <circle r="48" fill="none" stroke="#FF735C" stroke-opacity=".25" class="ring three" />
+    <circle r="5" fill="#FF735C" />
+    <circle cx="-14" cy="8" r="4" fill="#FFC36E" />
+    <circle cx="14" cy="8" r="4" fill="#A8FFD8" />
+    <path d="m-10 6 7-4M10 6 3 2" stroke="#F4F2EC" stroke-opacity=".65" />
+    <text y="72" class="mono" fill="#FF735C" font-size="8" text-anchor="middle" letter-spacing="1">
+      03 / TRACE
+    </text>
+    <text y="92" class="sans" fill="#F4F2EC" font-size="13" font-weight="700" text-anchor="middle">
+      Downstream impact
+    </text>
+    <text y="109" class="sans" fill="#777B78" font-size="9" text-anchor="middle">
+      Causal graph + evidence list
+    </text>
+  </g>
+
+  <g transform="translate(902 154)">
+    <circle r="34" fill="#1B1916" stroke="#F4F2EC" stroke-opacity=".48" />
+    <path
+      d="M-11 2-3 10 13-8"
+      fill="none"
+      stroke="#F4F2EC"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <text y="72" class="mono" fill="#D2D0CA" font-size="8" text-anchor="middle" letter-spacing="1">
+      04 / DECIDE
+    </text>
+    <text y="92" class="sans" fill="#F4F2EC" font-size="13" font-weight="700" text-anchor="middle">
+      Human review
+    </text>
+    <text y="109" class="sans" fill="#777B78" font-size="9" text-anchor="middle">
+      Edit, reject, or approve
+    </text>
+  </g>
+
+  <g transform="translate(1165 154)">
+    <circle r="34" fill="#121A17" stroke="#A8FFD8" stroke-opacity=".7" />
+    <circle r="44" fill="none" stroke="#A8FFD8" stroke-opacity=".23" class="ring two" />
+    <path
+      d="M-12 1-4 9 13-10"
+      fill="none"
+      stroke="#A8FFD8"
+      stroke-width="3"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <text y="72" class="mono" fill="#A8FFD8" font-size="8" text-anchor="middle" letter-spacing="1">
+      05 / VERIFY
+    </text>
+    <text y="92" class="sans" fill="#F4F2EC" font-size="13" font-weight="700" text-anchor="middle">
+      Append-only repair
+    </text>
+    <text y="109" class="sans" fill="#777B78" font-size="9" text-anchor="middle">
+      New hash + audit proof
+    </text>
+  </g>
+</svg>

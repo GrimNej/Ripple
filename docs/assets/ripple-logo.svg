@@ -1,0 +1,68 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 256 256"
+  role="img"
+  aria-labelledby="title description"
+>
+  <title id="title">Ripple logo</title>
+  <desc id="description">
+    Concentric coral, amber, and mint signal rings on an obsidian rounded square.
+  </desc>
+  <defs>
+    <linearGradient id="frame" x1="24" y1="16" x2="232" y2="244" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#181D1F" />
+      <stop offset="1" stop-color="#080A0B" />
+    </linearGradient>
+    <linearGradient id="outer" x1="42" y1="44" x2="215" y2="214" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF735C" />
+      <stop offset="0.55" stop-color="#FFC36E" />
+      <stop offset="1" stop-color="#A8FFD8" />
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="10" result="blur" />
+      <feOffset dy="8" result="offset" />
+      <feColorMatrix in="offset" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .48 0" />
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter id="glow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="7" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  <rect
+    x="12"
+    y="12"
+    width="232"
+    height="232"
+    rx="58"
+    fill="url(#frame)"
+    stroke="#343A3C"
+    stroke-width="2"
+    filter="url(#shadow)"
+  />
+  <path
+    d="M29 128H12M244 128h-17M128 29V12m0 232v-17"
+    stroke="#4B5052"
+    stroke-width="2"
+    stroke-linecap="round"
+  />
+  <circle cx="128" cy="128" r="82" fill="none" stroke="url(#outer)" stroke-width="9" />
+  <circle cx="128" cy="128" r="58" fill="none" stroke="#FF735C" stroke-width="5" opacity=".88" />
+  <circle cx="128" cy="128" r="36" fill="none" stroke="#FFC36E" stroke-width="5" opacity=".94" />
+  <circle cx="128" cy="128" r="13" fill="#A8FFD8" filter="url(#glow)" />
+  <circle cx="128" cy="128" r="4" fill="#0B100E" />
+  <path
+    d="M57 86a82 82 0 0 1 40-34M198 177a82 82 0 0 1-38 29"
+    fill="none"
+    stroke="#F6F3EB"
+    stroke-width="3"
+    stroke-linecap="round"
+    opacity=".72"
+  />
+</svg>

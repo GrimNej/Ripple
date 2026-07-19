@@ -1,0 +1,951 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Ripple visual direction review: two product systems spanning landing, command center, and patch review."
+    />
+    <title>Ripple — Visual Direction Round 2</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ff5838'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%23111410' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='5' fill='none' stroke='white' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='2' fill='%23111410'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=DM+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="round-2.css" />
+    <script src="round-2.js" defer></script>
+  </head>
+  <body>
+    <main class="review-index" data-review-index>
+      <div class="review-index__inner">
+        <span class="review-kicker">Ripple / visual lock / round 02</span>
+        <h1>Two entirely new product worlds.</h1>
+        <p>
+          Each direction includes a public landing page, the operational command center, and patch
+          review. Open a surface to inspect it at 1440 × 900.
+        </p>
+        <div class="review-directions">
+          <section class="review-direction review-direction--cinematic">
+            <span>Direction C</span>
+            <h2>Cinematic Signal</h2>
+            <p>Obsidian depth, sculpted light, editorial type, and a living causal signal.</p>
+            <nav aria-label="Cinematic Signal screens">
+              <a href="#cinematic-landing">Landing</a>
+              <a href="#cinematic-command">Command Center</a>
+              <a href="#cinematic-patch">Patch Review</a>
+            </nav>
+          </section>
+          <section class="review-direction review-direction--kinetic">
+            <span>Direction D</span>
+            <h2>Kinetic Studio</h2>
+            <p>
+              Bright confidence, expressive type, solid color, and physical product choreography.
+            </p>
+            <nav aria-label="Kinetic Studio screens">
+              <a href="#kinetic-landing">Landing</a>
+              <a href="#kinetic-command">Command Center</a>
+              <a href="#kinetic-patch">Patch Review</a>
+            </nav>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <section
+      class="screen cinematic cinematic--landing"
+      id="cinematic-landing"
+      aria-label="Cinematic Signal landing page"
+    >
+      <div class="c-grain" aria-hidden="true"></div>
+      <nav class="c-nav" aria-label="Primary navigation">
+        <a class="c-brand" href="#cinematic-landing" aria-label="Ripple home">
+          <span class="c-brand__mark" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span>Ripple</span>
+        </a>
+        <div class="c-nav__links">
+          <a href="#cinematic-command">Product</a>
+          <a href="#cinematic-command">How it works</a>
+          <a href="#cinematic-patch">Security</a>
+          <a href="#cinematic-patch">Resources</a>
+        </div>
+        <div class="c-nav__actions">
+          <a class="c-link" href="#cinematic-command">Sign in</a>
+          <a class="c-button c-button--small" href="#cinematic-command"
+            >Enter workspace <span>↗</span></a
+          >
+        </div>
+      </nav>
+
+      <div class="c-landing-grid">
+        <div class="c-hero-copy">
+          <div class="c-eyebrow">
+            <span class="c-live-dot"></span> Change intelligence, end to end
+          </div>
+          <h1>Nothing downstream<br />breaks in <em>silence.</em></h1>
+          <p class="c-hero-copy__body">
+            Ripple watches the sources your business trusts, traces every consequence, and turns
+            evidence into controlled repair.
+          </p>
+          <div class="c-hero-actions">
+            <a class="c-button" href="#cinematic-command">Enter workspace <span>↗</span></a>
+            <a class="c-text-action" href="#cinematic-patch"
+              ><i aria-hidden="true">▶</i> Follow a change</a
+            >
+          </div>
+          <div class="c-trust-row" aria-label="Product guarantees">
+            <span><b>01</b> Evidence attached</span>
+            <span><b>02</b> Humans decide</span>
+            <span><b>03</b> Every repair verified</span>
+          </div>
+        </div>
+
+        <div
+          class="c-product-scene"
+          data-tilt-scene
+          aria-label="Animated downstream change preview"
+        >
+          <svg class="c-ripple-field" viewBox="0 0 720 720" aria-hidden="true">
+            <defs>
+              <filter id="softGlow">
+                <feGaussianBlur stdDeviation="5" result="blur" />
+                <feMerge>
+                  <feMergeNode in="blur" />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+              <linearGradient id="signalLine" x1="0" x2="1">
+                <stop stop-color="#ff735c" />
+                <stop offset="0.54" stop-color="#ffc36e" />
+                <stop offset="1" stop-color="#a8ffd8" />
+              </linearGradient>
+            </defs>
+            <circle cx="360" cy="360" r="292" />
+            <circle cx="360" cy="360" r="224" />
+            <circle cx="360" cy="360" r="154" />
+            <path
+              class="c-ripple-field__signal"
+              d="M74 382 C167 254 232 487 329 348 S499 216 645 356"
+            />
+            <circle class="c-orbit-dot c-orbit-dot--one" cx="0" cy="0" r="5" />
+            <circle class="c-orbit-dot c-orbit-dot--two" cx="0" cy="0" r="4" />
+          </svg>
+
+          <div class="c-scene-halo" aria-hidden="true"></div>
+          <article class="c-product-window">
+            <header class="c-window-bar">
+              <div class="c-window-brand">
+                <span class="c-brand__mark c-brand__mark--mini"><i></i><i></i><i></i></span> Ripple
+              </div>
+              <span class="c-window-state"><i></i> Watching 14 sources</span>
+              <span class="c-window-menu">•••</span>
+            </header>
+            <div class="c-window-body">
+              <div class="c-window-title">
+                <span>Change detected</span>
+                <time datetime="2026-07-19T09:42:00+05:45">09:42</time>
+              </div>
+              <h2>Python runtime policy<br />moved to 3.12</h2>
+              <div class="c-flow" aria-label="Change pipeline">
+                <div class="c-flow__step is-done">
+                  <i>✓</i><span>Source<br /><b>Confirmed</b></span>
+                </div>
+                <div class="c-flow__line is-live"></div>
+                <div class="c-flow__step is-live">
+                  <i>12</i><span>Impacts<br /><b>Mapped</b></span>
+                </div>
+                <div class="c-flow__line"></div>
+                <div class="c-flow__step">
+                  <i>3</i><span>Repairs<br /><b>Ready</b></span>
+                </div>
+              </div>
+              <a class="c-window-cta" href="#cinematic-command"
+                ><span>Review material impact</span><b>12 assets</b><i>→</i></a
+              >
+            </div>
+          </article>
+
+          <div class="c-float-card c-float-card--source">
+            <span>Authoritative source</span>
+            <b>docs.python.org</b>
+            <i>Evidence captured</i>
+          </div>
+          <div class="c-float-card c-float-card--verified">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6" /></svg>
+            <span><b>Repair verified</b><small>Hash and audit recorded</small></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="c-landing-footer">
+        <span>Built for living knowledge systems</span>
+        <div><i></i><i></i><i></i><i></i><i></i></div>
+        <a href="#cinematic-command">Explore the product <span>↓</span></a>
+      </div>
+    </section>
+
+    <section
+      class="screen cinematic cinematic--app"
+      id="cinematic-command"
+      aria-label="Cinematic Signal command center"
+    >
+      <div class="c-grain" aria-hidden="true"></div>
+      <aside class="c-sidebar" aria-label="Workspace navigation">
+        <a class="c-sidebar__brand" href="#cinematic-landing" aria-label="Ripple home"
+          ><span class="c-brand__mark"><i></i><i></i><i></i></span
+        ></a>
+        <nav>
+          <a class="is-active" href="#cinematic-command" aria-label="Command Center"
+            ><svg viewBox="0 0 24 24">
+              <path d="M4 13h6V4H4v9Zm0 7h6v-4H4v4Zm10 0h6v-9h-6v9Zm0-16v4h6V4h-6Z" /></svg
+          ></a>
+          <a href="#cinematic-command" aria-label="Changes"
+            ><svg viewBox="0 0 24 24">
+              <path d="M4 17 10 11l4 4 6-7" />
+              <path d="M14 8h6v6" /></svg
+          ></a>
+          <a href="#cinematic-patch" aria-label="Repairs"
+            ><svg viewBox="0 0 24 24">
+              <path d="M14 6 18 10 8 20H4v-4L14 6Z" />
+              <path d="m12 8 4 4" /></svg
+          ></a>
+          <a href="#cinematic-command" aria-label="Sources"
+            ><svg viewBox="0 0 24 24">
+              <ellipse cx="12" cy="6" rx="7" ry="3" />
+              <path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6" />
+              <path d="M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6" /></svg
+          ></a>
+        </nav>
+        <div class="c-sidebar__bottom">
+          <a href="#cinematic-command" aria-label="Settings"
+            ><svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="3" />
+              <path
+                d="M19 12a7 7 0 0 0-.1-1l2-1.6-2-3.4-2.5 1a8 8 0 0 0-1.8-1L14.2 3h-4.4l-.4 3a8 8 0 0 0-1.8 1L5.1 6 3 9.4 5.1 11a7 7 0 0 0 0 2L3 14.6 5.1 18l2.5-1a8 8 0 0 0 1.8 1l.4 3h4.4l.4-3a8 8 0 0 0 1.8-1l2.5 1 2.1-3.4-2.1-1.6a7 7 0 0 0 .1-1Z"
+              /></svg
+          ></a>
+          <span class="c-avatar">MN</span>
+        </div>
+      </aside>
+
+      <div class="c-app-shell">
+        <header class="c-app-topbar">
+          <div><span>Northstar workspace</span><b>/</b><strong>Command Center</strong></div>
+          <div class="c-app-topbar__right">
+            <span class="c-health"><i></i> All systems healthy</span>
+            <button aria-label="Open notifications">
+              <svg viewBox="0 0 24 24">
+                <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9" />
+                <path d="M10 21h4" /></svg
+              ><i></i>
+            </button>
+            <button class="c-command-key">⌘ K</button>
+          </div>
+        </header>
+
+        <div class="c-command-content">
+          <header class="c-command-heading">
+            <div>
+              <span class="c-eyebrow"><span class="c-live-dot"></span> Live across 14 sources</span>
+              <h1>Three changes need<br />your <em>decision.</em></h1>
+            </div>
+            <a class="c-button" href="#cinematic-patch">Review repairs <span>↗</span></a>
+          </header>
+
+          <div class="c-metric-strip" aria-label="Workspace summary">
+            <div>
+              <span>Material changes</span><b>03</b
+              ><small><i class="c-up">↑</i> 2 since yesterday</small>
+            </div>
+            <div><span>Assets affected</span><b>12</b><small>Across 4 collections</small></div>
+            <div><span>Awaiting decision</span><b>03</b><small>Oldest 18 minutes</small></div>
+            <div>
+              <span>Integrity</span><b>99.8<sup>%</sup></b
+              ><small><i class="c-good">●</i> All checks passing</small>
+            </div>
+          </div>
+
+          <div class="c-command-grid">
+            <section class="c-map-panel" aria-labelledby="causal-map-heading">
+              <header>
+                <div>
+                  <span>Live impact map</span>
+                  <h2 id="causal-map-heading">Python runtime policy</h2>
+                </div>
+                <div class="c-map-actions">
+                  <button class="is-active">Map</button><button>List</button
+                  ><button aria-label="Expand map">↗</button>
+                </div>
+              </header>
+              <div class="c-causal-map">
+                <svg viewBox="0 0 770 390" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="mapSignal" x1="0" x2="1">
+                      <stop stop-color="#ff735c" />
+                      <stop offset=".58" stop-color="#ffc36e" />
+                      <stop offset="1" stop-color="#a8ffd8" />
+                    </linearGradient>
+                  </defs>
+                  <path
+                    class="c-map-edge c-map-edge--live"
+                    d="M112 196 C195 196 196 105 284 105 S383 166 448 166"
+                  />
+                  <path class="c-map-edge" d="M112 196 C191 196 206 267 286 267 S372 218 448 218" />
+                  <path class="c-map-edge c-map-edge--live" d="M448 166 C535 166 527 94 625 94" />
+                  <path class="c-map-edge" d="M448 218 C542 218 545 289 638 289" />
+                  <path class="c-map-edge" d="M448 166 C522 166 541 208 632 208" />
+                </svg>
+                <div class="c-map-node c-map-node--source" style="--x: 76px; --y: 158px">
+                  <i></i><span>Source policy<small>Python docs</small></span>
+                </div>
+                <div class="c-map-node c-map-node--change" style="--x: 250px; --y: 67px">
+                  <i>3.12</i><span>Runtime changed<small>Confirmed 09:42</small></span>
+                </div>
+                <div class="c-map-node" style="--x: 250px; --y: 229px">
+                  <i>API</i><span>Endpoint changed<small>/v2/jobs</small></span>
+                </div>
+                <div class="c-map-node c-map-node--impact" style="--x: 414px; --y: 128px">
+                  <i>6</i><span>Runbooks<small>4 direct · 2 inferred</small></span>
+                </div>
+                <div class="c-map-node" style="--x: 414px; --y: 180px">
+                  <i>3</i><span>Policies<small>Review required</small></span>
+                </div>
+                <div class="c-map-node c-map-node--small" style="--x: 592px; --y: 62px">
+                  <i>01</i><span>Payments API</span>
+                </div>
+                <div class="c-map-node c-map-node--small" style="--x: 598px; --y: 176px">
+                  <i>02</i><span>Job worker</span>
+                </div>
+                <div class="c-map-node c-map-node--small" style="--x: 604px; --y: 257px">
+                  <i>03</i><span>Usage policy</span>
+                </div>
+                <div class="c-map-legend">
+                  <span><i class="is-direct"></i> Direct evidence</span
+                  ><span><i></i> Inferred impact</span>
+                </div>
+              </div>
+            </section>
+
+            <aside class="c-decision-queue" aria-labelledby="decision-queue-heading">
+              <header>
+                <div>
+                  <span>Decision queue</span>
+                  <h2 id="decision-queue-heading">Needs your eye</h2>
+                </div>
+                <b>03</b>
+              </header>
+              <a class="c-decision-card is-urgent" href="#cinematic-patch">
+                <div class="c-decision-card__meta">
+                  <span>Runtime</span><time datetime="PT18M">18m</time>
+                </div>
+                <h3>Python 3.10 → 3.12</h3>
+                <p>6 runbooks and 3 policies may now instruct an unsupported runtime.</p>
+                <div>
+                  <span><i></i> 9 affected</span><b>Review <i>→</i></b>
+                </div>
+              </a>
+              <a class="c-decision-card" href="#cinematic-patch">
+                <div class="c-decision-card__meta">
+                  <span>API contract</span><time datetime="PT11M">11m</time>
+                </div>
+                <h3>/v1/jobs → /v2/jobs</h3>
+                <p>Two integration guides reference a retired endpoint.</p>
+                <div>
+                  <span><i></i> 2 affected</span><b>Review <i>→</i></b>
+                </div>
+              </a>
+              <a class="c-decision-card" href="#cinematic-patch">
+                <div class="c-decision-card__meta">
+                  <span>Rate policy</span><time datetime="PT4M">4m</time>
+                </div>
+                <h3>10,000 → 5,000 requests</h3>
+                <p>One customer policy exceeds the new documented ceiling.</p>
+                <div>
+                  <span><i></i> 1 affected</span><b>Review <i>→</i></b>
+                </div>
+              </a>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="screen cinematic cinematic--app cinematic--patch"
+      id="cinematic-patch"
+      aria-label="Cinematic Signal patch review"
+    >
+      <div class="c-grain" aria-hidden="true"></div>
+      <aside class="c-sidebar" aria-label="Workspace navigation">
+        <a class="c-sidebar__brand" href="#cinematic-landing" aria-label="Ripple home"
+          ><span class="c-brand__mark"><i></i><i></i><i></i></span
+        ></a>
+        <nav>
+          <a href="#cinematic-command" aria-label="Command Center"
+            ><svg viewBox="0 0 24 24">
+              <path d="M4 13h6V4H4v9Zm0 7h6v-4H4v4Zm10 0h6v-9h-6v9Zm0-16v4h6V4h-6Z" /></svg
+          ></a>
+          <a href="#cinematic-command" aria-label="Changes"
+            ><svg viewBox="0 0 24 24">
+              <path d="M4 17 10 11l4 4 6-7" />
+              <path d="M14 8h6v6" /></svg
+          ></a>
+          <a class="is-active" href="#cinematic-patch" aria-label="Repairs"
+            ><svg viewBox="0 0 24 24">
+              <path d="M14 6 18 10 8 20H4v-4L14 6Z" />
+              <path d="m12 8 4 4" /></svg
+          ></a>
+          <a href="#cinematic-command" aria-label="Sources"
+            ><svg viewBox="0 0 24 24">
+              <ellipse cx="12" cy="6" rx="7" ry="3" />
+              <path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6" />
+              <path d="M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6" /></svg
+          ></a>
+        </nav>
+        <div class="c-sidebar__bottom">
+          <a href="#cinematic-command" aria-label="Settings">⚙</a><span class="c-avatar">MN</span>
+        </div>
+      </aside>
+
+      <div class="c-app-shell">
+        <header class="c-app-topbar">
+          <div>
+            <a href="#cinematic-command">Command Center</a><b>/</b
+            ><a href="#cinematic-command">Python runtime policy</a><b>/</b
+            ><strong>Repair 01</strong>
+          </div>
+          <div class="c-app-topbar__right">
+            <span class="c-health"><i></i> Evidence locked</span
+            ><button class="c-command-key">⌘ K</button>
+          </div>
+        </header>
+
+        <div class="c-patch-content">
+          <header class="c-patch-heading">
+            <div>
+              <span class="c-eyebrow">Repair proposal / 01 of 03</span>
+              <h1>Update the runtime<br />without losing <em>truth.</em></h1>
+            </div>
+            <div class="c-patch-heading__status">
+              <span>Confidence</span><b>98.4%</b><small>3 evidence spans agree</small>
+            </div>
+          </header>
+
+          <div class="c-patch-workspace">
+            <section class="c-source-change" aria-labelledby="source-change-title">
+              <header>
+                <div>
+                  <span>01 / Source change</span>
+                  <h2 id="source-change-title">Python runtime support</h2>
+                </div>
+                <a href="#cinematic-command">Open source ↗</a>
+              </header>
+              <div class="c-source-lines">
+                <div class="is-removed">
+                  <b>−</b><span>Production jobs run on <del>Python 3.10</del>.</span
+                  ><small>Previous · Jul 18</small>
+                </div>
+                <div class="is-added">
+                  <b>+</b><span>Production jobs run on <ins>Python 3.12</ins>.</span
+                  ><small>Current · Jul 19</small>
+                </div>
+              </div>
+              <footer>
+                <span><i>✓</i> Exact span captured</span><code>src_7f3a…912c</code>
+              </footer>
+            </section>
+
+            <section class="c-repair-editor" aria-labelledby="repair-editor-title">
+              <header>
+                <div>
+                  <span>02 / Proposed repair</span>
+                  <h2 id="repair-editor-title">Payments API runbook</h2>
+                </div>
+                <span class="c-edit-state"><i></i> Editable</span>
+              </header>
+              <div class="c-editor-chrome">
+                <div><button class="is-active">Write</button><button>Preview</button></div>
+                <span>Line 18 · Runtime requirements</span>
+              </div>
+              <div
+                class="c-editor-body"
+                contenteditable="true"
+                role="textbox"
+                aria-label="Proposed replacement content"
+              >
+                <span class="c-editor-line">18</span>
+                <p>
+                  Deploy the worker with <mark>Python 3.12</mark>. Confirm the runtime lock before
+                  promoting the release.
+                </p>
+              </div>
+              <div class="c-editor-delta">
+                <span>Replaces</span><del>Deploy the worker with Python 3.10.</del>
+              </div>
+              <footer>
+                <span>23 words · 1 factual change</span
+                ><span><i>✓</i> Unrelated content preserved</span>
+              </footer>
+            </section>
+
+            <aside class="c-evidence-rail" aria-labelledby="evidence-title">
+              <header>
+                <span>03 / Evidence</span>
+                <h2 id="evidence-title">Why this is safe</h2>
+              </header>
+              <ol>
+                <li>
+                  <i>1</i>
+                  <div>
+                    <b>Source authority</b><span>docs.python.org</span
+                    ><small>Canonical policy · captured 09:42</small>
+                  </div>
+                </li>
+                <li>
+                  <i>2</i>
+                  <div>
+                    <b>Exact causal edge</b><span>Runtime requirement</span
+                    ><small>Direct textual dependency</small>
+                  </div>
+                </li>
+                <li>
+                  <i>3</i>
+                  <div>
+                    <b>Deterministic check</b><span>Expected value: 3.12</span
+                    ><small>Ready to verify after apply</small>
+                  </div>
+                </li>
+              </ol>
+              <a href="#cinematic-command">Inspect complete evidence <span>↗</span></a>
+            </aside>
+          </div>
+
+          <div class="c-apply-bar">
+            <div class="c-apply-bar__proof">
+              <span class="c-proof-seal"><i>✓</i></span>
+              <div>
+                <b>Atomic, append-only repair</b
+                ><span
+                  >A new asset version, hash, audit event, and verification record will be created
+                  together.</span
+                >
+              </div>
+            </div>
+            <div class="c-apply-bar__actions">
+              <a href="#cinematic-command" class="c-reject">Reject</a
+              ><button class="c-button" data-apply data-applied-label="Applied and verified ✓">
+                Apply verified repair <span>↗</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="screen kinetic kinetic--landing"
+      id="kinetic-landing"
+      aria-label="Kinetic Studio landing page"
+    >
+      <div class="k-grid-bg" aria-hidden="true"></div>
+      <nav class="k-nav" aria-label="Primary navigation">
+        <a class="k-brand" href="#kinetic-landing"
+          ><span class="k-brand__mark"><i></i><i></i><i></i></span><b>RIPPLE</b></a
+        >
+        <div class="k-nav__links">
+          <a href="#kinetic-command">Product</a><a href="#kinetic-command">Solutions</a
+          ><a href="#kinetic-patch">Trust</a><a href="#kinetic-patch">Company</a>
+        </div>
+        <div class="k-nav__actions">
+          <a href="#kinetic-command">Sign in</a
+          ><a class="k-pill-button" href="#kinetic-command">Open Ripple <span>↗</span></a>
+        </div>
+      </nav>
+
+      <div class="k-hero">
+        <div class="k-hero__copy">
+          <div class="k-kicker">
+            <span>CHANGE INTELLIGENCE</span><i></i><b>BUILT FOR OPERATORS</b>
+          </div>
+          <h1>A change<br />anywhere.<br /><span>Clarity everywhere.</span></h1>
+          <p>
+            Trace what changed, understand who it affects, and repair downstream knowledge with
+            proof attached.
+          </p>
+          <div class="k-hero__actions">
+            <a class="k-primary" href="#kinetic-command">See Ripple in action <span>↗</span></a
+            ><a class="k-secondary" href="#kinetic-patch">Explore the workflow</a>
+          </div>
+        </div>
+
+        <div class="k-stage" data-tilt-scene aria-label="Layered Ripple product preview">
+          <svg class="k-loop" viewBox="0 0 640 640" aria-hidden="true">
+            <path
+              class="k-loop__black"
+              d="M108 344C108 174 220 88 338 88c143 0 230 105 230 216 0 129-95 249-253 249-121 0-219-65-219-167 0-76 54-138 130-138 68 0 112 43 112 94 0 45-34 80-82 80"
+            />
+            <path class="k-loop__orange" d="M108 344C108 174 220 88 338 88" />
+            <path class="k-loop__blue" d="M338 88c143 0 230 105 230 216" />
+            <path class="k-loop__lime" d="M568 304c0 129-95 249-253 249" />
+          </svg>
+          <article class="k-product-card k-product-card--main">
+            <header>
+              <span class="k-mini-brand">R</span><b>Command Center</b><i></i><small>Live</small
+              ><button>•••</button>
+            </header>
+            <div class="k-product-card__body">
+              <div class="k-product-title">
+                <span>Today</span>
+                <h2>3 changes<br />need a decision.</h2>
+              </div>
+              <div class="k-product-event">
+                <div>
+                  <span class="k-event-icon">↗</span>
+                  <p><b>Runtime policy changed</b><small>Python 3.10 → 3.12</small></p>
+                </div>
+                <strong>9 <small>impacts</small></strong>
+              </div>
+              <div class="k-product-event">
+                <div>
+                  <span class="k-event-icon k-event-icon--blue">⌁</span>
+                  <p><b>Endpoint moved</b><small>/v1/jobs → /v2/jobs</small></p>
+                </div>
+                <strong>2 <small>impacts</small></strong>
+              </div>
+              <a href="#kinetic-command">Open impact map <span>→</span></a>
+            </div>
+          </article>
+          <div class="k-float k-float--top">
+            <span>12</span>
+            <p><b>Assets affected</b><small>Evidence mapped</small></p>
+            <i>↗</i>
+          </div>
+          <div class="k-float k-float--proof">
+            <i>✓</i>
+            <p><b>Integrity 99.8%</b><small>All checks passing</small></p>
+          </div>
+          <div class="k-float k-float--source">
+            <span>●</span>
+            <p><b>14 sources live</b><small>Last scan 42 sec ago</small></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="k-ticker" aria-label="Ripple workflow">
+        <div>
+          <span>Source captured</span><i>✦</i><span>Impact mapped</span><i>✦</i
+          ><span>Human decision</span><i>✦</i><span>Repair verified</span><i>✦</i
+          ><span>Source captured</span><i>✦</i><span>Impact mapped</span><i>✦</i>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="screen kinetic kinetic--app"
+      id="kinetic-command"
+      aria-label="Kinetic Studio command center"
+    >
+      <aside class="k-sidebar" aria-label="Workspace navigation">
+        <a class="k-sidebar__brand" href="#kinetic-landing"
+          ><span class="k-brand__mark"><i></i><i></i><i></i></span
+        ></a>
+        <nav>
+          <a class="is-active" href="#kinetic-command"><span>01</span>Overview</a>
+          <a href="#kinetic-command"><span>02</span>Changes <b>3</b></a>
+          <a href="#kinetic-command"><span>03</span>Impact</a>
+          <a href="#kinetic-patch"><span>04</span>Repairs <b>3</b></a>
+          <a href="#kinetic-command"><span>05</span>Sources</a>
+        </nav>
+        <div class="k-sidebar__footer">
+          <span>MN</span>
+          <p><b>Mina North</b><small>Northstar workspace</small></p>
+          <i>⌄</i>
+        </div>
+      </aside>
+
+      <div class="k-app-main">
+        <header class="k-topbar">
+          <div class="k-workspace"><b>RIPPLE</b><i>/</i><span>COMMAND CENTER</span></div>
+          <div class="k-topbar__right">
+            <span class="k-system-live"><i></i> SYSTEMS HEALTHY</span><button>⌘ K</button
+            ><button aria-label="Notifications">◉<i></i></button>
+          </div>
+        </header>
+
+        <div class="k-command-content">
+          <header class="k-command-heading">
+            <div>
+              <span class="k-kicker">LIVE CHANGE INTELLIGENCE</span>
+              <h1>Here’s what <mark>moved.</mark></h1>
+              <p>
+                Every material change, downstream consequence, and required decision—in one place.
+              </p>
+            </div>
+            <a class="k-primary" href="#kinetic-patch">Review 3 repairs <span>↗</span></a>
+          </header>
+
+          <div class="k-number-ribbon" aria-label="Workspace summary">
+            <div class="is-orange">
+              <span>Material changes</span><b>03</b><small>+2 since yesterday</small>
+            </div>
+            <div class="is-lime">
+              <span>Assets affected</span><b>12</b><small>4 collections</small>
+            </div>
+            <div class="is-blue">
+              <span>Ready to repair</span><b>03</b><small>Evidence attached</small>
+            </div>
+            <div class="is-black">
+              <span>Knowledge integrity</span><b>99.8%</b><small>All checks passing</small>
+            </div>
+          </div>
+
+          <div class="k-command-layout">
+            <section class="k-change-stack" aria-labelledby="k-change-title">
+              <header>
+                <div>
+                  <span>ACTIVE CHANGES</span>
+                  <h2 id="k-change-title">Decisions, not noise.</h2>
+                </div>
+                <div><button class="is-active">Priority</button><button>Newest</button></div>
+              </header>
+              <a class="k-change-row is-selected" href="#kinetic-patch">
+                <span class="k-change-index">01</span>
+                <div class="k-change-name">
+                  <small>RUNTIME POLICY · 18 MIN AGO</small>
+                  <h3>Python 3.10 <i>→</i> 3.12</h3>
+                </div>
+                <div class="k-impact-bubbles">
+                  <span>6<small>RUNBOOKS</small></span
+                  ><span>3<small>POLICIES</small></span>
+                </div>
+                <div class="k-change-state"><span>REPAIR READY</span><i>↗</i></div>
+              </a>
+              <a class="k-change-row" href="#kinetic-patch">
+                <span class="k-change-index">02</span>
+                <div class="k-change-name">
+                  <small>API CONTRACT · 11 MIN AGO</small>
+                  <h3>/v1/jobs <i>→</i> /v2/jobs</h3>
+                </div>
+                <div class="k-impact-bubbles">
+                  <span>2<small>GUIDES</small></span>
+                </div>
+                <div class="k-change-state"><span>REPAIR READY</span><i>↗</i></div>
+              </a>
+              <a class="k-change-row" href="#kinetic-patch">
+                <span class="k-change-index">03</span>
+                <div class="k-change-name">
+                  <small>RATE POLICY · 4 MIN AGO</small>
+                  <h3>10,000 <i>→</i> 5,000 req/day</h3>
+                </div>
+                <div class="k-impact-bubbles">
+                  <span>1<small>POLICY</small></span>
+                </div>
+                <div class="k-change-state"><span>NEEDS REVIEW</span><i>↗</i></div>
+              </a>
+            </section>
+
+            <aside class="k-radar" aria-labelledby="k-radar-title">
+              <header><span>IMPACT RADAR</span><button>EXPAND ↗</button></header>
+              <h2 id="k-radar-title">Python runtime policy</h2>
+              <div class="k-radar-visual">
+                <svg viewBox="0 0 420 300" aria-hidden="true">
+                  <path d="M56 147C116 147 116 72 188 72S262 127 316 127" />
+                  <path d="M56 147c57 0 70 93 140 93s74-60 121-60" />
+                  <path d="M188 72c78 0 75-40 160-40" />
+                  <path d="M196 240c60 0 67 36 148 36" />
+                </svg>
+                <div class="k-radar-node k-radar-node--source" style="--x: 18px; --y: 113px">
+                  SRC<small>Python</small>
+                </div>
+                <div class="k-radar-node k-radar-node--change" style="--x: 146px; --y: 38px">
+                  3.12<small>Changed</small>
+                </div>
+                <div class="k-radar-node" style="--x: 154px; --y: 206px">
+                  09<small>Impacts</small>
+                </div>
+                <div class="k-radar-node k-radar-node--tiny" style="--x: 244px; --y: 0">API</div>
+                <div class="k-radar-node k-radar-node--tiny" style="--x: 250px; --y: 95px">RUN</div>
+                <div class="k-radar-node k-radar-node--tiny" style="--x: 244px; --y: 148px">
+                  POL
+                </div>
+                <div class="k-radar-node k-radar-node--tiny" style="--x: 244px; --y: 236px">
+                  OPS
+                </div>
+              </div>
+              <footer>
+                <span><i class="is-solid"></i>DIRECT</span><span><i></i>INFERRED</span
+                ><b>9 paths mapped</b>
+              </footer>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="screen kinetic kinetic--app kinetic--patch"
+      id="kinetic-patch"
+      aria-label="Kinetic Studio patch review"
+    >
+      <aside class="k-sidebar" aria-label="Workspace navigation">
+        <a class="k-sidebar__brand" href="#kinetic-landing"
+          ><span class="k-brand__mark"><i></i><i></i><i></i></span
+        ></a>
+        <nav>
+          <a href="#kinetic-command"><span>01</span>Overview</a
+          ><a href="#kinetic-command"><span>02</span>Changes <b>3</b></a
+          ><a href="#kinetic-command"><span>03</span>Impact</a
+          ><a class="is-active" href="#kinetic-patch"><span>04</span>Repairs <b>3</b></a
+          ><a href="#kinetic-command"><span>05</span>Sources</a>
+        </nav>
+        <div class="k-sidebar__footer">
+          <span>MN</span>
+          <p><b>Mina North</b><small>Northstar workspace</small></p>
+          <i>⌄</i>
+        </div>
+      </aside>
+      <div class="k-app-main">
+        <header class="k-topbar">
+          <div class="k-workspace">
+            <a href="#kinetic-command">COMMAND CENTER</a><i>/</i
+            ><a href="#kinetic-command">PYTHON RUNTIME</a><i>/</i><span>REPAIR 01</span>
+          </div>
+          <div class="k-topbar__right">
+            <span class="k-system-live"><i></i> EVIDENCE LOCKED</span><button>⌘ K</button>
+          </div>
+        </header>
+
+        <div class="k-patch-content">
+          <header class="k-patch-heading">
+            <div>
+              <span class="k-kicker">REPAIR 01 OF 03 · CONFIDENCE 98.4%</span>
+              <h1>Change the fact.<br /><mark>Keep the truth.</mark></h1>
+            </div>
+            <div class="k-patch-pager">
+              <a href="#kinetic-patch" aria-label="Previous repair">←</a><span><b>01</b> / 03</span
+              ><a href="#kinetic-patch" aria-label="Next repair">→</a>
+            </div>
+          </header>
+
+          <div class="k-patch-grid">
+            <section class="k-diff-card" aria-labelledby="k-source-title">
+              <header>
+                <span>01</span>
+                <div>
+                  <small>AUTHORITATIVE SOURCE</small>
+                  <h2 id="k-source-title">What changed</h2>
+                </div>
+                <a href="#kinetic-command">OPEN ↗</a>
+              </header>
+              <div class="k-diff-statement k-diff-statement--old">
+                <b>−</b>
+                <p>
+                  <small>PREVIOUS · JUL 18</small>Production jobs run on <del>Python 3.10</del>.
+                </p>
+              </div>
+              <div class="k-diff-statement k-diff-statement--new">
+                <b>+</b>
+                <p><small>CURRENT · JUL 19</small>Production jobs run on <ins>Python 3.12</ins>.</p>
+              </div>
+              <footer><span>✓ EXACT SPAN CAPTURED</span><code>src_7f3a…912c</code></footer>
+            </section>
+
+            <section class="k-editor-card" aria-labelledby="k-editor-title">
+              <header>
+                <span>02</span>
+                <div>
+                  <small>PROPOSED REPAIR</small>
+                  <h2 id="k-editor-title">Payments API runbook</h2>
+                </div>
+                <span class="k-editing"><i></i> EDITABLE</span>
+              </header>
+              <div class="k-editor-tabs">
+                <div><button class="is-active">WRITE</button><button>PREVIEW</button></div>
+                <span>LINE 18 · RUNTIME REQUIREMENTS</span>
+              </div>
+              <div
+                class="k-editor-copy"
+                contenteditable="true"
+                role="textbox"
+                aria-label="Proposed replacement content"
+              >
+                <span>18</span>
+                <p>
+                  Deploy the worker with <mark>Python 3.12</mark>. Confirm the runtime lock before
+                  promoting the release.
+                </p>
+              </div>
+              <div class="k-replaces">
+                <b>REPLACES</b><del>Deploy the worker with Python 3.10.</del>
+              </div>
+              <footer>
+                <span>23 WORDS · 1 FACTUAL CHANGE</span><span>✓ UNRELATED CONTENT PRESERVED</span>
+              </footer>
+            </section>
+
+            <aside class="k-proof-card" aria-labelledby="k-proof-title">
+              <header>
+                <span>03</span>
+                <div>
+                  <small>EVIDENCE CHAIN</small>
+                  <h2 id="k-proof-title">Why it’s safe</h2>
+                </div>
+              </header>
+              <ol>
+                <li>
+                  <span>1</span>
+                  <div>
+                    <b>SOURCE AUTHORITY</b>
+                    <p>docs.python.org</p>
+                    <small>Canonical · 09:42</small>
+                  </div>
+                  <i>✓</i>
+                </li>
+                <li>
+                  <span>2</span>
+                  <div>
+                    <b>CAUSAL EDGE</b>
+                    <p>Runtime requirement</p>
+                    <small>Direct dependency</small>
+                  </div>
+                  <i>✓</i>
+                </li>
+                <li>
+                  <span>3</span>
+                  <div>
+                    <b>EXPECTED VALUE</b>
+                    <p>Python 3.12</p>
+                    <small>Ready to verify</small>
+                  </div>
+                  <i>✓</i>
+                </li>
+              </ol>
+              <a href="#kinetic-command">COMPLETE EVIDENCE <span>↗</span></a>
+            </aside>
+          </div>
+
+          <div class="k-apply-panel">
+            <div>
+              <span class="k-atomic-icon">✦</span>
+              <p>
+                <b>ATOMIC, APPEND-ONLY REPAIR</b
+                ><small>New version + hash + audit event + verification record</small>
+              </p>
+            </div>
+            <div>
+              <a href="#kinetic-command">REJECT</a
+              ><button data-apply data-applied-label="APPLIED + VERIFIED ✓">
+                APPLY VERIFIED REPAIR <span>↗</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
