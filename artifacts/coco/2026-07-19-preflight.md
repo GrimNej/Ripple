@@ -1,7 +1,9 @@
 # Sanitized CoCo preflight evidence
 
-Date: 2026-07-19 NPT  
-CLI: Cortex Code 1.1.41  
+Date: 2026-07-19 NPT
+
+CLI: Cortex Code 1.1.41
+
 Scope: read-only Snowflake capability and least-privilege inspection
 
 ## Sanitized interaction summary
