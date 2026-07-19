@@ -63,6 +63,15 @@
       "rollbackSha256": "3dc3cc85b7705698d2b55cd5bf7835b70e6368150a439ffd2d9e990c26ed765d",
       "appliedAt": "2026-07-19T02:06:27.082-07:00",
       "appliedCommit": "f4c2ef756da9b0b5f32c2d4cac6f693e5043d3c0"
+    },
+    {
+      "order": 8,
+      "forwardFilename": "008_api_views.sql",
+      "forwardSha256": "facd713413b7cc8c83d3c8f8da7b0fb1ead38fcf2d055544d8d961ea450ff00a",
+      "rollbackFilename": "008_api_views.sql",
+      "rollbackSha256": "3962411947cc57d54a7f2358359b8ee335a334d0e74f48aef86babb2d7779b34",
+      "appliedAt": null,
+      "appliedCommit": null
     }
   ]
 }
