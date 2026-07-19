@@ -91,3 +91,13 @@ This is the consolidated implementation ledger. Times use Nepal Time (UTC+05:45)
 - **Decision or issue:** Origin comparison is literal. Submission network failure is reported as an unknown outcome and is never automatically resubmitted; once a handle exists, all retries poll only that handle. Stateless sessions retain the documented revocation limitation, and no unverified global rate-limiting claim is made.
 - **Related commits:** `81aec91`, `d83e4b4`, `5ca8696`
 - **Rollback point:** Revert the edge commit and apply paired rollback migration `008`; rotate/delete local auth material only if deliberately invalidating existing sessions.
+
+## 2026-07-19 15:55 NPT — Visual research and owner lock
+
+- **Goal:** Complete the blueprint-mandated live design study, keep two visual hypotheses distinct, and produce one Command Center and Patch Review mock for each direction before production UI coding.
+- **Files affected:** `docs/VISUAL_DIRECTION.md`, `design/visual-lock/`, and ignored local Playwright research output.
+- **Commands:** Current official-site search and page inspection; Chromium snapshots at 1440×900; focused HTML/CSS mock composition; exact PNG dimension verification; manual visual review.
+- **Test evidence:** Ten references cover editorial data, visual journalism, developer infrastructure, observability/incident response, version-control diff, lineage, and museum/publication design. Four rendered mocks are exactly 1440×900 and use the real disclosed golden-scenario claims and Phase 5 read-model fields.
+- **Decision or issue:** Direction A, Editorial Systems Cartography, is recommended because it makes evidence and causality more ownable and avoids collapsing into a familiar developer dashboard. Production UI remains intentionally paused until the owner selects A or B; the directions will not be indiscriminately blended.
+- **Related commit:** `6b871e5`
+- **Rollback point:** Remove the isolated `design/visual-lock/` artifacts and restore the prior research-status document; no production UI or external platform state changed.
