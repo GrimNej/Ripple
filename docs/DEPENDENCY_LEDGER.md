@@ -70,5 +70,6 @@ These exact versions were resolved and metadata-checked on 2026-07-19. The Pytho
 | uv              |          0.11.18 | Python environment/package manager                     |
 | Snowflake CLI   |           3.23.0 | Snowflake scripting and verification                   |
 | Cortex Code CLI |           1.1.41 | Substantive CoCo/Snowflake collaboration               |
+| Gitleaks        |           8.30.1 | Verified repository and staged-diff secret scanning    |
 
 New direct dependencies after this lock require an explicit ledger entry, current advisory check, exact version, licence, official source, purpose, and owner authorization already granted for blueprint-required packages.

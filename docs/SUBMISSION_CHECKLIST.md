@@ -12,6 +12,8 @@ The official introductory session requirements are traced in [`OFFICIAL_SESSION_
 
 ## Product proof
 
+- [x] A public GitHub repository can be connected entirely in the browser, captured at one immutable commit, checked manually, and scheduled automatically.
+- [x] One real GitHub change produced all three supported change families, twelve bounded findings, eight confirmed impacts, and three repair proposals with commit provenance.
 - [x] One disclosed source pair produces three validated material changes.
 - [x] Six impacted assets, one uncertain candidate, and one known non-dependency are represented honestly.
 - [x] One reviewed patch creates exactly one active new asset version.

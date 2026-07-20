@@ -1,14 +1,15 @@
 # Known limitations
 
-- The complete local product, Snowflake backend, atomic patch/verification flow, authenticated API, Direction C visual system, and browser gates pass. Public Cloudflare deployment and DNS remain intentionally deferred until the separate owner-approved release gate.
-- P0 uses disclosed prepared Markdown/plain-text snapshots and does not crawl arbitrary URLs.
-- Trial-account external network access is treated as unavailable until verified otherwise and is not part of the critical architecture.
-- P0 handles only version requirements, endpoint replacements/deprecations, and numeric limits.
-- Standard Snowflake table uniqueness/foreign-key declarations are not treated as concurrency enforcement.
-- Audit history is application-append-only and tamper-evident only within the application trust boundary; Snowflake administrative roles remain privileged.
+- Live monitoring supports public GitHub repositories only. It reads operator-selected Markdown/plain-text paths and does not crawl arbitrary URLs, issues, pull requests, or repository trees.
+- One monitor accepts one authoritative file, one branch, and one to eight downstream knowledge files. Source files are capped at 1 MiB, each asset at 256 KiB, and one capture at 2 MiB.
+- Automatic monitor intervals are currently 12 or 24 hours. The Cloudflare scheduler wakes every 15 minutes to admit due monitors; **Check now** is available for immediate runs.
+- Approved repairs create and activate governed Snowflake asset versions. Ripple does not write commits or pull requests back to GitHub in the current scope.
+- Email delivery depends on Cloudflare sender-domain enrollment. The Worker binding is deployed, but a live recipient receipt remains a release gate because the current CLI token cannot manage Email Sending enrollment.
+- The supported factual changes are version requirements, endpoint replacements/deprecations, and numeric limits. Other edits remain visible at snapshot level but cannot produce a confirmed patch.
+- Standard Snowflake table uniqueness and foreign-key declarations are not treated as concurrency enforcement.
+- Audit history is application-append-only and tamper-evident within the application trust boundary. Snowflake administrative roles remain privileged.
 - The app has one operator and a stateless 30-minute signed session. Logout clears the browser cookie but cannot centrally revoke an already issued session; rotating the signing secret is the emergency invalidation path.
-- P0 does not claim durable global login throttling; the private deployment URL, uniform authentication failures, and client backoff are the available controls until a verified free global Cloudflare rate-limiting facility is selected.
+- The app does not claim durable global login throttling. Uniform failures, signed sessions, exact Origin checks, and CSRF validation remain the current boundary.
 - Mobile supports the complete five-surface workflow and uses a list-first impact view while retaining graph/list information parity.
-- Prepared read-only output may be shown during a service outage only when clearly labeled as a previously completed real run.
-- The table-level `end_offset >= start_offset` relationship is enforced by trusted procedures and property/integration tests because the deployed account rejected Snowflake's inline multi-column check form; both offset columns retain non-negative/bounded procedural validation.
+- The table-level `end_offset >= start_offset` relationship is enforced by trusted procedures and property/integration tests because the account rejected Snowflake's inline multi-column check form.
 - The first legacy audit event predates the CAS audit head and stores Python `None` as a literal genesis marker in `previous_event_hash`; its event hash correctly uses `GENESIS`. Verification normalizes only that sequence-one representation, and the append-only row is not rewritten.

@@ -12,12 +12,13 @@ Ripple targets the Intelligent Workflow Automation Agent track. The organizers d
 
 Ripple meets that intent through this governed workflow:
 
-1. A prepared authoritative source pair enters the Snowflake pipeline.
-2. Deterministic diffing and bounded AI identify material factual changes.
-3. Ripple finds evidence-backed downstream impacts.
-4. A human reviews and edits a repair.
-5. Approval atomically creates and activates one immutable asset version.
-6. Deterministic checks verify the result and the audit chain records it.
+1. An operator connects a public GitHub repository and Ripple captures an immutable baseline at one commit.
+2. A manual or scheduled check resolves the next commit and enters a changed source pair into the Snowflake pipeline.
+3. Deterministic diffing and bounded AI identify material factual changes.
+4. Ripple finds evidence-backed downstream impacts.
+5. A human reviews and edits a repair.
+6. Approval atomically creates and activates one immutable asset version.
+7. Deterministic checks verify the result and the audit chain records it.
 
 The product does not stop at showing an insight. It performs a controlled repair action with human authorization and machine-verifiable proof.
 

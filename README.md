@@ -43,6 +43,19 @@ Business-critical knowledge rarely fails all at once. A source changes first: a 
 
 It maintains versioned source evidence, identifies material factual changes, maps their downstream impact, and prepares bounded repair proposals for a human decision. An approved repair is never an in-place overwrite: Ripple creates a new asset version, records the decision, computes its hash, and verifies the expected fact deterministically.
 
+### Live GitHub source monitoring
+
+An operator can connect multiple public GitHub repositories directly from the Command Center. Each monitor names one authoritative Markdown file, one to eight downstream knowledge files, a branch, and a 12 or 24 hour schedule. Ripple resolves the branch to an immutable commit, captures an exact baseline, and pins every selected file to that commit.
+
+The normal workflow requires no SQL or server-side configuration:
+
+1. Connect a public repository in the browser.
+2. Change an authoritative fact on GitHub.
+3. Press **Check now** for an immediate demonstration, or let the automatic schedule run.
+4. Inspect the cited commit, evidence-backed impacts, and bounded repair proposals.
+
+The real walkthrough source is [`GrimNej/ripple-source-lab`](https://github.com/GrimNej/ripple-source-lab). Its `main` branch remains at the clean baseline so the end-to-end change can be demonstrated live.
+
 | When the world changes                         | Ripple responds with                                                     |
 | ---------------------------------------------- | ------------------------------------------------------------------------ |
 | An authoritative source publishes a new fact   | Versioned content, exact evidence spans, and a reproducible content hash |
@@ -57,11 +70,12 @@ It maintains versioned source evidence, identifies material factual changes, map
   <img src="docs/assets/ripple-flow.svg" alt="Animated Ripple workflow from authoritative source capture to verified append-only repair" width="100%" />
 </p>
 
-1. **Capture:** Store the authoritative source version, content hash, and exact evidence spans.
-2. **Validate:** Separate material factual change from noise using bounded structured analysis and deterministic evidence checks.
-3. **Trace:** Map direct and inferred downstream relationships without allowing an unbounded graph.
-4. **Decide:** Give an operator the source change, current asset span, editable replacement, evidence chain, and explicit consequences.
-5. **Verify:** Apply atomically, create an append-only version, and record deterministic verification plus audit proof.
+1. **Connect:** Resolve an operator-selected public GitHub branch to one commit and capture the authoritative source plus downstream knowledge baseline.
+2. **Capture:** Store the authoritative source version, exact content hash, commit citation, and evidence spans.
+3. **Validate:** Separate material factual change from noise using bounded structured analysis and deterministic evidence checks.
+4. **Trace:** Map direct and inferred downstream relationships without allowing an unbounded graph.
+5. **Decide:** Give an operator the source change, current asset span, editable replacement, evidence chain, and explicit consequences.
+6. **Verify:** Apply atomically, create an append-only version, and record deterministic verification plus audit proof.
 
 ## System at a glance
 
@@ -90,13 +104,13 @@ Read the complete [security model](docs/SECURITY.md), [architecture decision rec
 
 Ripple organizes the operator journey into five focused workspaces:
 
-| Surface                  | Purpose                                                                                             |
-| ------------------------ | --------------------------------------------------------------------------------------------------- |
-| **Command Center**       | Baseline health, recent material changes, affected assets, and decisions requiring attention        |
-| **Change Event**         | Old/new source diff, evidence spans, bounded change atoms, and persisted pipeline progress          |
-| **Impact View**          | Small causal graph synchronized with a complete accessible evidence list                            |
-| **Patch Review**         | Current knowledge, proposed replacement, editable content, evidence, and apply/reject consequences  |
-| **Verification & Proof** | New version ID and hash, deterministic checks, task history, audit event, and bounded cost evidence |
+| Surface                  | Purpose                                                                                                |
+| ------------------------ | ------------------------------------------------------------------------------------------------------ |
+| **Command Center**       | Connect multiple GitHub sources, trigger checks, manage schedules, and see decisions needing attention |
+| **Change Event**         | Old/new source diff, evidence spans, bounded change atoms, and persisted pipeline progress             |
+| **Impact View**          | Small causal graph synchronized with a complete accessible evidence list                               |
+| **Patch Review**         | Current knowledge, proposed replacement, editable content, evidence, and apply/reject consequences     |
+| **Verification & Proof** | New version ID and hash, deterministic checks, task history, audit event, and bounded cost evidence    |
 
 Source registry and operational controls remain supporting panels rather than competing primary screens.
 
@@ -149,6 +163,6 @@ Snowflake provisioning, migration, rollback, and teardown are intentionally docu
 
 ## Delivery status
 
-Ripple is live at [ripple.grimnej.com](https://ripple.grimnej.com). The Snowflake foundation, authoritative task graph, structured analysis, evidence validation, bounded retries, atomic patch transaction, deterministic verification, authenticated edge boundary, production visual system, and Cloudflare release have passed their local and live acceptance gates.
+Ripple is live at [ripple.grimnej.com](https://ripple.grimnej.com). Multi-repository GitHub monitoring, immediate and scheduled checks, exact commit provenance, the Snowflake task graph, structured analysis, evidence validation, bounded retries, atomic patch application, deterministic verification, the authenticated edge boundary, and the production visual system have passed local and live acceptance gates.
 
 The binding engineering specification is [`RIPPLE_IMPLEMENTATION_BLUEPRINT_CORRECTED.md`](RIPPLE_IMPLEMENTATION_BLUEPRINT_CORRECTED.md). Contributor rules are in [`AGENTS.md`](AGENTS.md), and evidence for every meaningful slice is recorded in [`docs/BUILD_LOG.md`](docs/BUILD_LOG.md).

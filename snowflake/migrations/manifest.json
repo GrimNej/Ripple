@@ -97,8 +97,8 @@
       "forwardSha256": "5e47a82c5b2feb004d4695eadfc9cf90dc7ffdb96220b7898a702e49cd08a4ba",
       "rollbackFilename": "011_live_source_monitors.sql",
       "rollbackSha256": "769692a4f9ca70de8bb5f08b0195ba7e594ffb916143aa4cb0ca8498d29635ed",
-      "appliedAt": null,
-      "appliedCommit": null
+      "appliedAt": "2026-07-20T05:59:09.470-07:00",
+      "appliedCommit": "6172158d38114b15f043c791a8de9bf72bf9435e"
     }
   ]
 }

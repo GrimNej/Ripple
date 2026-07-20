@@ -42,3 +42,13 @@ CoCo is installed as `cortex` version 1.1.41. Published evidence is sanitized: n
 - **Persistent mutation:** None.
 - **Artifact:** [sanitized secure-view review](../artifacts/coco/2026-07-20-product-view-review.md)
 - **Related implementation commits:** `9aeb3fb`, `623beb4`, `8dd7b8f`
+
+## 2026-07-20: Live monitor review attempt
+
+- **Goal:** Ask CoCo to independently review migration `011` and the live monitor Snowpark handler for Snowflake syntax, compare-and-set concurrency, retry safety, immutable snapshot integrity, and least privilege.
+- **Mode:** Existing automation connection, built-in SQL read-only guard, no MCP, bounded turns, repository files only, and explicit identifier/content redaction.
+- **Result:** CoCo stopped at the 120-second browser-authentication callback timeout even though the separate Snowflake CLI key-pair identity remained healthy. No repository or Snowflake state was changed.
+- **Accepted, edited, or rejected:** No CoCo conclusion was available to accept. Deterministic review independently caught and fixed exact-content hash preservation before a monitor could be created. Live concurrency/idempotency structure, migration compilation, and end-to-end execution were then verified directly.
+- **Artifact:** [sanitized live-monitor review attempt](../artifacts/coco/2026-07-20-live-monitor-review-attempt.md)
+- **Related implementation commit:** `6172158`
+- **Decision:** Do not request another owner login or weaken authentication. Preserve the successful authenticated secure-view CoCo evidence and record this attempt honestly.
