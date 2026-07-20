@@ -72,6 +72,24 @@
       "rollbackSha256": "3962411947cc57d54a7f2358359b8ee335a334d0e74f48aef86babb2d7779b34",
       "appliedAt": "2026-07-19T02:44:24.810-07:00",
       "appliedCommit": "d83e4b47392e84c45d2fd18ff3a81fb5ac1d1be7"
+    },
+    {
+      "order": 9,
+      "forwardFilename": "009_run_patch_view.sql",
+      "forwardSha256": "cef584d858c6d339dee7ab557112b8029b078e42f9b447e3d2f700c127dd5d37",
+      "rollbackFilename": "009_run_patch_view.sql",
+      "rollbackSha256": "c4f12457dbaa02067292b34a79e449b246f197424307c9e59971b564fb2772d2",
+      "appliedAt": "2026-07-19T23:45:05.222-07:00",
+      "appliedCommit": "9aeb3fbeef42c7799d61a51da35c13b743547776"
+    },
+    {
+      "order": 10,
+      "forwardFilename": "010_patch_detail_view.sql",
+      "forwardSha256": "e35cb5e0be23f69aa8dc6d2ca06c167f6d4dfefdfe3467cd38d2a01ee0693b0a",
+      "rollbackFilename": "010_patch_detail_view.sql",
+      "rollbackSha256": "012d6db80438a055979eb49fea502aaf295e87bd689613c9a42322bccd4aecf8",
+      "appliedAt": "2026-07-19T23:56:39.587-07:00",
+      "appliedCommit": "9aeb3fbeef42c7799d61a51da35c13b743547776"
     }
   ]
 }
