@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/ripple-banner.svg" alt="Ripple — know what changed, see what it affects, repair it with proof" width="100%" />
+  <img src="docs/assets/ripple-banner.svg" alt="Ripple: know what changed, see what it affects, repair it with proof" width="100%" />
 </p>
 
 <p align="center">
@@ -56,11 +56,11 @@ It maintains versioned source evidence, identifies material factual changes, map
   <img src="docs/assets/ripple-flow.svg" alt="Animated Ripple workflow from authoritative source capture to verified append-only repair" width="100%" />
 </p>
 
-1. **Capture** — Store the authoritative source version, content hash, and exact evidence spans.
-2. **Validate** — Separate material factual change from noise using bounded structured analysis and deterministic evidence checks.
-3. **Trace** — Map direct and inferred downstream relationships without allowing an unbounded graph.
-4. **Decide** — Give an operator the source change, current asset span, editable replacement, evidence chain, and explicit consequences.
-5. **Verify** — Apply atomically, create an append-only version, and record deterministic verification plus audit proof.
+1. **Capture:** Store the authoritative source version, content hash, and exact evidence spans.
+2. **Validate:** Separate material factual change from noise using bounded structured analysis and deterministic evidence checks.
+3. **Trace:** Map direct and inferred downstream relationships without allowing an unbounded graph.
+4. **Decide:** Give an operator the source change, current asset span, editable replacement, evidence chain, and explicit consequences.
+5. **Verify:** Apply atomically, create an append-only version, and record deterministic verification plus audit proof.
 
 ## System at a glance
 
