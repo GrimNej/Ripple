@@ -31,6 +31,13 @@ async function errorBody(
 }
 
 describe("edge authentication boundary", () => {
+  it("reports an unauthenticated session without treating it as a request failure", async () => {
+    const response = await app.request("https://ripple.test/api/session", {}, env);
+
+    expect(response.status).toBe(200);
+    expect(await response.json()).toMatchObject({ data: { authenticated: false }, ok: true });
+  });
+
   it("rejects a missing session before Snowflake is contacted", async () => {
     const upstream = vi.fn<typeof fetch>();
     globalThis.fetch = upstream;
@@ -86,7 +93,7 @@ describe("edge authentication boundary", () => {
     const expired = await createSession(env, Date.now() - 3_600_000);
     for (const token of [expired.token, `${expired.token.slice(0, -1)}x`]) {
       const response = await app.request(
-        "https://ripple.test/api/session",
+        "https://ripple.test/api/dashboard",
         { headers: { cookie: `${SESSION_COOKIE}=${token}` } },
         env,
       );
@@ -244,5 +251,26 @@ describe("edge request defenses", () => {
       env,
     );
     expect(await response.json()).toMatchObject({ data: { isReady: true, runCount: 3 }, ok: true });
+  });
+
+  it("uses the fixed run patch projection", async () => {
+    globalThis.fetch = vi.fn(() =>
+      Promise.resolve(queryResponse([], [{ name: "PATCH_ID", type: "text" }])),
+    );
+    const auth = await authenticatedHeaders(env);
+    const response = await app.request(
+      "https://ripple.test/api/runs/run_01/patches",
+      { headers: auth.headers },
+      env,
+    );
+    const upstreamMock = vi.mocked(globalThis.fetch);
+    const upstreamInit: RequestInit | undefined = upstreamMock.mock.calls[0]?.[1];
+    if (typeof upstreamInit?.body !== "string") throw new Error("EXPECTED_STRING_BODY");
+    const upstreamBody = JSON.parse(upstreamInit.body) as { statement: string };
+
+    expect(response.status).toBe(200);
+    expect(upstreamBody.statement).toBe(
+      "SELECT * FROM RIPPLE.API.RUN_PATCH_V WHERE run_id = ? ORDER BY created_at, patch_id",
+    );
   });
 });

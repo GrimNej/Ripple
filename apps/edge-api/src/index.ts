@@ -81,6 +81,7 @@ function logRoute(path: string): string {
   const dynamicRoutes: [RegExp, string][] = [
     [/^\/api\/runs\/[^/]+\/graph$/u, "/api/runs/:runId/graph"],
     [/^\/api\/runs\/[^/]+\/findings$/u, "/api/runs/:runId/findings"],
+    [/^\/api\/runs\/[^/]+\/patches$/u, "/api/runs/:runId/patches"],
     [/^\/api\/runs\/[^/]+$/u, "/api/runs/:runId"],
     [/^\/api\/patches\/[^/]+\/(?:revise|apply|reject|verify)$/u, "/api/patches/:patchId/:action"],
     [/^\/api\/patches\/[^/]+$/u, "/api/patches/:patchId"],
@@ -108,7 +109,7 @@ app.use("*", async (context, next) => {
 });
 
 app.use("/api/*", async (context, next) => {
-  if (context.req.path === "/api/auth/login") {
+  if (["/api/auth/login", "/api/session"].includes(context.req.path)) {
     await next();
     return;
   }
@@ -159,17 +160,18 @@ app.post("/api/auth/logout", (context) => {
   return context.json(success({ authenticated: false }, context.get("correlationId")));
 });
 
-app.get("/api/session", (context) =>
-  context.json(
+app.get("/api/session", async (context) => {
+  const token = cookieValue(context.req.header("cookie"), SESSION_COOKIE);
+  const session = token ? await verifySession(context.env, token) : null;
+  return context.json(
     success(
-      {
-        authenticated: true,
-        expiresAt: new Date(context.get("session").exp * 1000).toISOString(),
-      },
+      session
+        ? { authenticated: true, expiresAt: new Date(session.exp * 1000).toISOString() }
+        : { authenticated: false },
       context.get("correlationId"),
     ),
-  ),
-);
+  );
+});
 
 app.get("/api/preflight/health", async (context) => {
   const snowflake = await callSnowflakeHealth(context.env, context.get("correlationId"));
@@ -220,6 +222,13 @@ app.get("/api/runs/:runId/findings", async (context) => {
   const runId = context.req.param("runId");
   requireSafePathId(runId, "RUN_NOT_FOUND");
   const rows = await snowflakeApi.findings(context.env, runId, context.get("correlationId"));
+  return context.json(success(rows, context.get("correlationId")));
+});
+
+app.get("/api/runs/:runId/patches", async (context) => {
+  const runId = context.req.param("runId");
+  requireSafePathId(runId, "RUN_NOT_FOUND");
+  const rows = await snowflakeApi.patches(context.env, runId, context.get("correlationId"));
   return context.json(success(rows, context.get("correlationId")));
 });
 

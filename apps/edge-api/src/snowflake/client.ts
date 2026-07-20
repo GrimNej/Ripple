@@ -357,6 +357,13 @@ export const snowflakeApi = {
       [patchId],
       correlationId,
     ),
+  patches: (env: CloudflareBindings, runId: string, correlationId: string) =>
+    query(
+      env,
+      "SELECT * FROM RIPPLE.API.RUN_PATCH_V WHERE run_id = ? ORDER BY created_at, patch_id",
+      [runId],
+      correlationId,
+    ),
   proof: (env: CloudflareBindings, correlationId: string) =>
     query(env, "SELECT * FROM RIPPLE.API.PROOF_V", [], correlationId),
   rejectPatch: (
