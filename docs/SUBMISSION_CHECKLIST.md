@@ -23,6 +23,7 @@ The official introductory session requirements are traced in [`OFFICIAL_SESSION_
 
 - [x] Static analysis, unit, property, Snowflake integration, API, Chromium E2E, keyboard, axe, visual regression, and chaos gates pass.
 - [x] Worker bundle is under 2.5 MB compressed and measured p95 CPU is under 8 ms.
+- [x] Public production origin serves the landing page and all five authenticated product surfaces over managed TLS.
 - [ ] Daily AI admission limits are active and at least 70% of remaining balance is reserved for the demo.
 - [ ] Fresh eligible-account reproduction succeeds.
 - [x] No unresolved P0 defect, committed secret, dead action, fake response, or unsupported claim remains.

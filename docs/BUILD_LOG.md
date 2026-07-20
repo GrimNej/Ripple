@@ -131,3 +131,13 @@ This is the consolidated implementation ledger. Times use Nepal Time (UTC+05:45)
 - **Decision or issue:** The authenticated patch-detail endpoint necessarily transports review content. CoCo's warning was accepted and checked against existing session protection, no-cache behavior, and content-free structured logs. Its future multi-tenant row-level-security observation remains outside the single-operator P0 boundary.
 - **Related commits:** `9aeb3fb`, `623beb4`, `8dd7b8f`
 - **Rollback point:** Documentation-only evidence; removing it does not alter Snowflake or runtime state.
+
+## 2026-07-20 13:48 NPT: Cloudflare production release
+
+- **Goal:** Publish the finished static product and narrow Hono API at the owner-provided production origin with encrypted bindings, managed TLS, and live browser acceptance.
+- **Files affected:** `apps/edge-api/wrangler.jsonc`, `apps/web/public/_headers`, `scripts/prepare_cloudflare_secrets.mjs`, README delivery state, and release evidence ledgers.
+- **Commands:** Read-only DNS and Worker inspection; production secret-bundle generation and name-only validation; `pnpm lint`, `pnpm typecheck`, `pnpm format:check`, `pnpm test`, `pnpm build`; `wrangler deploy --secrets-file`; public header probes; live Playwright Chromium and axe acceptance.
+- **Test evidence:** Cloudflare deployed Worker version `97a39b32-790a-48bf-8e5a-50d8ad1c63df` to `ripple.grimnej.com` with 114 static files and nine encrypted bindings. TLS, CSP, HSTS, clickjacking, MIME, referrer, permissions, API no-store, and immutable fingerprinted-asset cache headers are present. The live API authenticated successfully and returned the current Snowflake state of three material changes, six confirmed impacts, zero pending decisions, and two verified repairs. All four public Chromium scenarios passed: desktop and mobile visual baselines, serious/critical axe scans, all five authenticated surfaces with zero browser errors, and mobile keyboard navigation.
+- **Decision or issue:** Direct static assets do not pass through Worker middleware, so a Cloudflare `_headers` manifest now mirrors the runtime security policy. The zone injects Cloudflare Web Analytics; CSP permits only its exact script and beacon origins. A stale local `workerd` process briefly locked the static export directory and was terminated before the clean rebuild. No paid Cloudflare resource was created.
+- **Related commit:** `83e9411`
+- **Rollback point:** Revert `83e9411` and redeploy only if intentionally withdrawing the custom domain and production bindings. Cloudflare retains prior Worker versions for an emergency runtime rollback, but the two earlier versions lack the final static security policy and are not release candidates.

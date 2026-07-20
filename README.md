@@ -25,6 +25,7 @@
 </p>
 
 <p align="center">
+  <a href="https://ripple.grimnej.com"><strong>Open Ripple</strong></a> ·
   <a href="#the-platform">Platform</a> ·
   <a href="#how-ripple-works">Workflow</a> ·
   <a href="#system-at-a-glance">Architecture</a> ·
@@ -148,6 +149,6 @@ Snowflake provisioning, migration, rollback, and teardown are intentionally docu
 
 ## Delivery status
 
-The Snowflake foundation, authoritative task graph, structured analysis, evidence validation, bounded retries, atomic patch transaction, deterministic verification, and authenticated edge boundary have passed their local and live acceptance gates. The production visual system and public Cloudflare release are the active delivery stages.
+Ripple is live at [ripple.grimnej.com](https://ripple.grimnej.com). The Snowflake foundation, authoritative task graph, structured analysis, evidence validation, bounded retries, atomic patch transaction, deterministic verification, authenticated edge boundary, production visual system, and Cloudflare release have passed their local and live acceptance gates.
 
 The binding engineering specification is [`RIPPLE_IMPLEMENTATION_BLUEPRINT_CORRECTED.md`](RIPPLE_IMPLEMENTATION_BLUEPRINT_CORRECTED.md). Contributor rules are in [`AGENTS.md`](AGENTS.md), and evidence for every meaningful slice is recorded in [`docs/BUILD_LOG.md`](docs/BUILD_LOG.md).
