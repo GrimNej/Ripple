@@ -6,3 +6,4 @@ pnpm-lock.yaml
 RIPPLE_IMPLEMENTATION_BLUEPRINT_CORRECTED.md
 worker-dist
 worker-configuration.d.ts
+apps/web/public/_headers

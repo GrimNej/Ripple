@@ -4,6 +4,26 @@
   "main": "src/index.ts",
   "compatibility_date": "2026-07-19",
   "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": false,
+  "routes": [
+    {
+      "pattern": "ripple.grimnej.com",
+      "custom_domain": true,
+    },
+  ],
+  "secrets": {
+    "required": [
+      "ACCESS_CODE_HMAC",
+      "APP_ORIGIN",
+      "LOGIN_PEPPER",
+      "SESSION_SIGNING_SECRET",
+      "SNOWFLAKE_ACCOUNT_LOCATOR",
+      "SNOWFLAKE_HOST",
+      "SNOWFLAKE_PRIVATE_KEY",
+      "SNOWFLAKE_PUBLIC_KEY_FINGERPRINT",
+      "SNOWFLAKE_USER",
+    ],
+  },
   "assets": {
     "binding": "ASSETS",
     "directory": "../web/out",
