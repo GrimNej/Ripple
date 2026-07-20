@@ -111,3 +111,13 @@ This is the consolidated implementation ledger. Times use Nepal Time (UTC+05:45)
 - **Decision or issue:** The owner explicitly rejected Directions A and B, so they are historical artifacts only. Public-facing product copy now excludes event, demo, prototype, and golden-scenario language. Direction C is recommended, but production frontend implementation remains paused until the owner chooses C or D.
 - **Related commit:** `3c3b16d`
 - **Rollback point:** Revert the round-2 artifact commit to restore the prior README and visual research record; no production frontend or external platform state changed.
+
+## 2026-07-20 12:59 NPT: Direction C production product
+
+- **Goal:** Implement the owner-selected Cinematic Signal direction as a complete landing page, private authentication flow, and five live product surfaces while preserving Ripple's exact P0 action boundary.
+- **Files affected:** `apps/web/`, edge session and run-patch routes, migrations `009` and `010`, visual and security ledgers, official-session traceability, and browser baselines.
+- **Commands:** Next static production build; Wrangler dry run and local runtime; Vitest web/edge suites; Playwright Chromium at 1440 x 900 and 390 x 844; axe scans; live authenticated Snowflake reads; one UI-driven patch apply and deterministic verify; SQLFluff and migration-manifest verification.
+- **Test evidence:** Seven web tests and 23 edge tests pass. All five authenticated surfaces rendered live Snowflake data with zero browser errors. Both landing visual baselines pass, mobile navigation is keyboard operable, and axe reports no serious or critical violations. One numeric-limit repair created one immutable asset version atomically and reached `VERIFIED` through deterministic checks. The Impact View graph/list expose the same eight relationships.
+- **Decision or issue:** The owner selected Direction C. A restrained 1 to 1.5 px lift and higher-contrast quiet token improved small-copy legibility without changing headline scale or information density. Browser inspection found that Snowflake rejected the original correlated subquery inside `PATCH_DETAIL_V`; migration `010` replaced it with a window-ranked join. The final proof audit also reconciled deployment receipts for migrations `009` and `010`, bringing the live and immutable manifest counts to ten. No production security boundary was widened.
+- **Related commits:** `9aeb3fb`, `623beb4`, `8dd7b8f`
+- **Rollback point:** Revert `8dd7b8f` for the product interface, then apply paired rollback migrations `010` and `009` only if the run-patch read projections must also be removed.

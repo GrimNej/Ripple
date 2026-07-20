@@ -1,6 +1,6 @@
 # Visual direction research
 
-**Status:** Round 1 rejected by the product owner. Round 2 complete; awaiting explicit selection of Direction C or D before production UI implementation.
+**Status:** Direction C, Cinematic Signal, selected by the product owner and implemented across the public landing page, authentication, five product surfaces, and all operational states.
 
 **Research date:** 2026-07-19
 
@@ -101,10 +101,10 @@ Rendered surfaces:
 - [Patch Review](../design/visual-lock/kinetic-patch.png)
 - [Interactive prototype](../design/visual-lock/round-2.html#kinetic-landing)
 
-## Recommendation and decision boundary
+## Selection and production lock
 
-**Recommendation: Direction C — Cinematic Signal.** It delivers the stronger immediate “wow” moment while retaining the authority and emotional weight required for evidence-backed decisions. Its signal-ring motif also maps naturally from landing-page spectacle to causal graph, pipeline state, focus treatment, and verification seal.
+**Selected: Direction C, Cinematic Signal.** The owner selected Direction C before production implementation. Its signal-ring motif now maps from the landing composition to the causal graph, pipeline state, focus treatment, and verification seal.
 
 Direction D is intentionally not a light variant of C. It is more energetic, optimistic, and memorable at a glance, but its expressive density will require tighter discipline when extended to long technical content.
 
-Do not blend the directions after selection. The public landing page and five authenticated surfaces will all be implemented in the chosen system. Production frontend work remains paused until the owner explicitly selects Direction C or Direction D.
+Direction D remains a historical research artifact and must not be blended into production. The production lock uses Manrope, Instrument Serif, DM Mono, obsidian surfaces, coral and amber signals, mint verification, concentric causal rings, and reduced-motion-safe transitions. The smallest interface copy received a restrained 1 to 1.5 px legibility lift after owner review, with a higher-contrast quiet token validated by axe.

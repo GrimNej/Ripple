@@ -4,15 +4,20 @@ The initial JavaScript stack lock was verified against current package metadata 
 
 ## Runtime and build dependencies
 
-| Workspace | Package                | Version | Licence | Official source                          | Purpose / execution role                     |
-| --------- | ---------------------- | ------- | ------- | ---------------------------------------- | -------------------------------------------- |
-| Web       | `next`                 | 16.2.10 | MIT     | [Next.js](https://nextjs.org/)           | Static export compiler and application shell |
-| Web       | `react`                | 19.2.7  | MIT     | [React](https://react.dev/)              | Escaped, accessible component rendering      |
-| Web       | `react-dom`            | 19.2.7  | MIT     | [React](https://react.dev/)              | Browser DOM renderer                         |
-| Web       | `tailwindcss`          | 4.3.3   | MIT     | [Tailwind CSS](https://tailwindcss.com/) | Token-driven CSS build layer                 |
-| Web       | `@tailwindcss/postcss` | 4.3.3   | MIT     | [Tailwind CSS](https://tailwindcss.com/) | PostCSS integration                          |
-| Edge      | `hono`                 | 4.12.31 | MIT     | [Hono](https://hono.dev/)                | Cloudflare Worker routing only               |
-| Edge      | `zod`                  | 4.4.3   | MIT     | [Zod](https://zod.dev/)                  | Runtime validation for API and SQL envelopes |
+| Workspace | Package                 | Version | Licence | Official source                               | Purpose / execution role                      |
+| --------- | ----------------------- | ------- | ------- | --------------------------------------------- | --------------------------------------------- |
+| Web       | `next`                  | 16.2.10 | MIT     | [Next.js](https://nextjs.org/)                | Static export compiler and application shell  |
+| Web       | `react`                 | 19.2.7  | MIT     | [React](https://react.dev/)                   | Escaped, accessible component rendering       |
+| Web       | `react-dom`             | 19.2.7  | MIT     | [React](https://react.dev/)                   | Browser DOM renderer                          |
+| Web       | `tailwindcss`           | 4.3.3   | MIT     | [Tailwind CSS](https://tailwindcss.com/)      | Token-driven CSS build layer                  |
+| Web       | `@tailwindcss/postcss`  | 4.3.3   | MIT     | [Tailwind CSS](https://tailwindcss.com/)      | PostCSS integration                           |
+| Web       | `@tanstack/react-query` | 5.101.2 | MIT     | [TanStack Query](https://tanstack.com/query/) | Validated server-state and mutation lifecycle |
+| Web       | `@xyflow/react`         | 12.11.2 | MIT     | [React Flow](https://reactflow.dev/)          | Accessible causal impact graph                |
+| Web       | `@dagrejs/dagre`        | 3.0.0   | MIT     | [Dagre](https://github.com/dagrejs/dagre)     | Deterministic directed-graph layout           |
+| Web       | `motion`                | 12.42.2 | MIT     | [Motion](https://motion.dev/)                 | Reduced-motion-aware branded transitions      |
+| Web       | `lucide-react`          | 1.25.0  | ISC     | [Lucide](https://lucide.dev/)                 | Consistent interface iconography              |
+| Web/Edge  | `zod`                   | 4.4.3   | MIT     | [Zod](https://zod.dev/)                       | Browser, API, and SQL envelope validation     |
+| Edge      | `hono`                  | 4.12.31 | MIT     | [Hono](https://hono.dev/)                     | Cloudflare Worker routing only                |
 
 ## Development dependencies
 
@@ -26,9 +31,11 @@ The initial JavaScript stack lock was verified against current package metadata 
 | Root/Edge | `@types/node`                     | 26.1.1       | MIT               | [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)                    | Node tooling/test types only                                   |
 | Web       | `@types/react`                    | 19.2.17      | MIT               | [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)                    | React compile-time types                                       |
 | Web       | `@types/react-dom`                | 19.2.3       | MIT               | [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped)                    | React DOM compile-time types                                   |
+| Web       | `@playwright/test`                | 1.61.1       | Apache-2.0        | [Playwright](https://playwright.dev/)                                                    | Chromium interaction, responsive, and visual-regression gates  |
+| Web       | `@axe-core/playwright`            | 4.12.1       | MPL-2.0           | [axe-core](https://github.com/dequelabs/axe-core)                                        | Serious and critical accessibility gate                        |
 | Edge      | `wrangler`                        | 4.112.0      | MIT OR Apache-2.0 | [Cloudflare Wrangler](https://developers.cloudflare.com/workers/wrangler/)               | Local runtime, type generation, profiling, dry-run, deployment |
 | Edge      | `@cloudflare/workers-types`       | 5.20260719.1 | MIT OR Apache-2.0 | [Workers types](https://www.npmjs.com/package/@cloudflare/workers-types)                 | Current platform API types                                     |
-| Edge      | `vitest`                          | 4.1.10       | MIT               | [Vitest](https://vitest.dev/)                                                            | Unit and CPU preflight tests                                   |
+| Web/Edge  | `vitest`                          | 4.1.10       | MIT               | [Vitest](https://vitest.dev/)                                                            | Unit, contract, state-machine, and CPU preflight tests         |
 | Edge      | `@cloudflare/vitest-pool-workers` | 0.18.6       | MIT               | [Workers testing](https://developers.cloudflare.com/workers/testing/vitest-integration/) | Workerd-native integration test support                        |
 
 ## Resolution override

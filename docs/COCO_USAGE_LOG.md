@@ -20,3 +20,14 @@ CoCo is installed as `cortex` version 1.1.41. Published evidence is sanitized: n
 - **Mode:** Read-only SQL/repository access, no MCP, no mutation permissions, bounded turns.
 - **Result:** Both attempts stopped before review because the CoCo process required browser authentication and its callback timed out. No repository or Snowflake state was changed.
 - **Decision:** Do not weaken authentication or grant a broader role. Phase 3 was gated through the unattended project automation identity, executable task history, persisted stage/AI/finding counts, paired migrations, and local static/property tests. A successful CoCo Phase 3 review remains required before submission freeze.
+
+## 2026-07-20: Product secure-view review attempt
+
+- **Goal:** Ask CoCo to inspect `API.RUN_PATCH_V` and `API.PATCH_DETAIL_V` for single-row latest-verification semantics, content minimization, and fixed-allowlist suitability.
+- **Mode:** Read-only Snowflake metadata/count queries, no MCP, no edit/write/shell tools, bounded turns, and explicit identifier/content redaction.
+- **Result:** Print mode and non-interactive execution each stopped at the bounded 120-second browser-authentication callback timeout. No review output or persistent mutation was produced.
+- **Accepted, edited, or rejected:** Nothing was accepted, edited, or rejected because CoCo produced no conclusion.
+- **Independent evidence:** Migration lint/hash verification, application-role secure-view reads, 23 edge tests, five live browser surfaces, and one UI-driven atomic apply plus deterministic verification all pass.
+- **Artifact:** [sanitized attempt evidence](../artifacts/coco/2026-07-20-product-view-review-attempt.md)
+- **Related implementation commits:** `9aeb3fb`, `623beb4`, `8dd7b8f`
+- **Decision:** Preserve the authentication boundary and keep a successful CoCo review as a submission-freeze gate.

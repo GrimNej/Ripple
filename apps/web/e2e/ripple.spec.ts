@@ -21,12 +21,16 @@ async function expectNoSeriousAccessibilityViolations(page: Page) {
 async function authenticate(page: Page) {
   await page.goto("/workspace");
   const accessCodeInput = page.getByLabel("Operator access code");
-  if (await accessCodeInput.isVisible()) {
+  const navigation = page.getByRole("navigation", { name: "Workspace navigation" });
+  await expect
+    .poll(async () => (await accessCodeInput.count()) + (await navigation.count()))
+    .toBeGreaterThan(0);
+  if ((await navigation.count()) === 0) {
     if (!accessCode) throw new Error("RIPPLE_E2E_ACCESS_CODE is required for workspace tests.");
     await accessCodeInput.fill(accessCode);
     await page.getByRole("button", { name: "Enter workspace" }).click();
   }
-  await expect(page.getByRole("navigation", { name: "Workspace navigation" })).toBeAttached();
+  await expect(navigation).toBeAttached();
 }
 
 test("landing page preserves its visual hierarchy and accessibility", async ({ page }) => {
