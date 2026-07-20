@@ -155,7 +155,7 @@ async function sendPendingNotifications(
     const html = `<div style="font-family:Arial,sans-serif;max-width:640px;margin:auto;padding:32px;color:#171713"><p style="color:#67675f">Ripple source monitor</p><h1 style="font-size:28px">${escapeHtml(row.monitorName)} changed.</h1><p><strong>${changeCount}</strong> material changes produced <strong>${confirmedCount}</strong> confirmed impacts and <strong>${patchCount}</strong> repair proposals.</p><p>${uncertainCount} findings remain uncertain for human review.</p><p><a href="${escapeHtml(reviewUrl)}" style="display:inline-block;padding:12px 18px;background:#191914;color:white;text-decoration:none;border-radius:999px">Review in Ripple</a></p><p style="font-size:13px;color:#67675f">${escapeHtml(repository)} · ${escapeHtml(row.sourcePath)} · <a href="${escapeHtml(row.commitUrl)}">commit ${escapeHtml(row.commitSha.slice(0, 12))}</a></p></div>`;
     try {
       await env.EMAIL.send({
-        from: { email: "alerts@grimnej.com", name: "Ripple" },
+        from: { email: "ripple@notify.grimnej.com", name: "Ripple" },
         html,
         subject,
         text,

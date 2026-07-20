@@ -32,7 +32,7 @@
   "send_email": [
     {
       "name": "EMAIL",
-      "allowed_sender_addresses": ["alerts@grimnej.com"],
+      "allowed_sender_addresses": ["ripple@notify.grimnej.com"],
     },
   ],
   "triggers": {

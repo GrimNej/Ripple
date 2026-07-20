@@ -4,7 +4,7 @@
 - One monitor accepts one authoritative file, one branch, and one to eight downstream knowledge files. Source files are capped at 1 MiB, each asset at 256 KiB, and one capture at 2 MiB.
 - Automatic monitor intervals are currently 12 or 24 hours. The Cloudflare scheduler wakes every 15 minutes to admit due monitors; **Check now** is available for immediate runs.
 - Approved repairs create and activate governed Snowflake asset versions. Ripple does not write commits or pull requests back to GitHub in the current scope.
-- Email delivery depends on Cloudflare sender-domain enrollment. The Worker binding is deployed, but a live recipient receipt remains a release gate because the current CLI token cannot manage Email Sending enrollment.
+- Email delivery depends on Cloudflare sender-domain enrollment for `notify.grimnej.com`. The isolated subdomain avoids the existing Zoho MX records at the apex. The Worker binding is deployed, but a live recipient receipt remains a release gate because the current CLI token cannot manage Email Sending enrollment.
 - The supported factual changes are version requirements, endpoint replacements/deprecations, and numeric limits. Other edits remain visible at snapshot level but cannot produce a confirmed patch.
 - Standard Snowflake table uniqueness and foreign-key declarations are not treated as concurrency enforcement.
 - Audit history is application-append-only and tamper-evident within the application trust boundary. Snowflake administrative roles remain privileged.
