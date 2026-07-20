@@ -1,11 +1,12 @@
 "use client";
 
-import { ArrowRight, Check, Clock3, Play, ScanSearch } from "lucide-react";
+import type { UseQueryResult } from "@tanstack/react-query";
+import { ArrowRight, Check, Clock3, ScanSearch } from "lucide-react";
 
-import type { Finding } from "../../lib/contracts";
+import type { Finding, Monitor } from "../../lib/contracts";
+import { MonitorPanel } from "./monitor-panel";
 import { EmptySurface, SurfaceError, SurfaceLoading } from "./surface-state";
 import { surfaceError, type SurfaceProperties } from "./surface-types";
-import { useStartRun } from "./workspace-app";
 
 function displayType(value: string): string {
   return value.toLowerCase().replaceAll("_", " ");
@@ -15,8 +16,9 @@ function distinctChanges(findings: Finding[]): Finding[] {
   return [...new Map(findings.map((finding) => [finding.changeAtomId, finding])).values()];
 }
 
-export function CommandSurface(properties: SurfaceProperties) {
-  const startRun = useStartRun();
+export function CommandSurface(
+  properties: SurfaceProperties & Readonly<{ monitors: UseQueryResult<Monitor[]> }>,
+) {
   const error = surfaceError(properties);
   const retry = () => {
     void properties.dashboard.refetch();
@@ -29,16 +31,13 @@ export function CommandSurface(properties: SurfaceProperties) {
   if (error) return <SurfaceError error={error} retry={retry} />;
   if (!properties.dashboard.data) {
     return (
-      <EmptySurface
-        action={
-          <button className="button" onClick={() => startRun.mutate()} type="button">
-            <Play size={16} />
-            Run latest source pair
-          </button>
-        }
-        body="Launch the governed pipeline to compare the current source versions and trace every downstream consequence."
-        title="Your first change map starts here."
-      />
+      <div className="surface command-surface">
+        <MonitorPanel monitors={properties.monitors} />
+        <EmptySurface
+          body="Connect a source, capture its baseline, then check again after an authoritative fact changes."
+          title="Your first live change map starts here."
+        />
+      </div>
     );
   }
 
@@ -46,6 +45,8 @@ export function CommandSurface(properties: SurfaceProperties) {
   const findings = properties.findings.data ?? [];
   const changes = distinctChanges(findings);
   const patches = properties.patches.data ?? [];
+  const activeMonitorCount =
+    properties.monitors.data?.filter((monitor) => monitor.enabled).length ?? 0;
   const nextPatch = patches.find((patch) => patch.status === "REVIEW_REQUIRED") ?? patches[0];
 
   return (
@@ -62,16 +63,15 @@ export function CommandSurface(properties: SurfaceProperties) {
           </h1>
           <p>Every count below comes from the current Snowflake run.</p>
         </div>
-        <button
-          className="button"
-          disabled={startRun.isPending}
-          onClick={() => startRun.mutate()}
-          type="button"
-        >
-          {startRun.isPending ? "Starting pipeline" : "Run latest source pair"}
-          <Play size={16} />
-        </button>
+        <div className="source-health-summary">
+          <span>
+            {activeMonitorCount} live source{activeMonitorCount === 1 ? "" : "s"}
+          </span>
+          <b>Manual and automatic checks enabled</b>
+        </div>
       </header>
+
+      <MonitorPanel monitors={properties.monitors} />
 
       <section aria-label="Workspace summary" className="metric-strip">
         <article>

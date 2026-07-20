@@ -273,4 +273,56 @@ describe("edge request defenses", () => {
       "SELECT * FROM RIPPLE.API.RUN_PATCH_V WHERE run_id = ? ORDER BY created_at, patch_id",
     );
   });
+
+  it("connects a public GitHub source entirely through the authenticated API", async () => {
+    const commitSha = "a".repeat(40);
+    const upstream = vi
+      .fn<typeof fetch>()
+      .mockResolvedValueOnce(Response.json({ default_branch: "main" }))
+      .mockResolvedValueOnce(
+        Response.json({
+          commit: { committer: { date: "2026-07-20T12:00:00Z" } },
+          html_url: `https://github.com/GrimNej/source/commit/${commitSha}`,
+          sha: commitSha,
+        }),
+      )
+      .mockResolvedValueOnce(new Response("# Runtime\n\nPython 3.12 is required."))
+      .mockResolvedValueOnce(new Response("# Install\n\nUse Python 3.10."))
+      .mockResolvedValueOnce(
+        procedureResponse({ commitSha, ok: true, status: "BASELINE_CAPTURED" }),
+      );
+    globalThis.fetch = upstream;
+    const auth = await authenticatedHeaders(env, true);
+    const response = await app.request(
+      "https://ripple.test/api/monitors",
+      {
+        body: JSON.stringify({
+          assets: [
+            {
+              assetType: "INSTALL_GUIDE",
+              criticality: "HIGH",
+              path: "knowledge/install.md",
+              title: "Install guide",
+            },
+          ],
+          branch: "",
+          checkIntervalMinutes: 1440,
+          name: "Runtime policy",
+          notificationEmail: "",
+          repositoryUrl: "https://github.com/GrimNej/source",
+          sourcePath: "authoritative/runtime.md",
+        }),
+        headers: auth.headers,
+        method: "POST",
+      },
+      env,
+    );
+
+    expect(response.status).toBe(201);
+    expect(await response.json()).toMatchObject({
+      data: { commitSha, status: "BASELINE_CAPTURED" },
+      ok: true,
+    });
+    expect(upstream).toHaveBeenCalledTimes(5);
+  });
 });

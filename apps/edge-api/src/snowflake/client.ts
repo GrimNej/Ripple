@@ -31,7 +31,7 @@ const statementResponseSchema = z
   .loose();
 
 type StatementResponse = z.infer<typeof statementResponseSchema>;
-type BindValue = string | number;
+type BindValue = boolean | string | number;
 type ResultRow = Record<string, unknown>;
 
 export class SnowflakeClientError extends Error {
@@ -177,7 +177,10 @@ function bindings(values: readonly BindValue[]): Record<string, { type: string; 
   return Object.fromEntries(
     values.map((value, index) => [
       String(index + 1),
-      { type: typeof value === "number" ? "FIXED" : "TEXT", value: String(value) },
+      {
+        type: typeof value === "number" ? "FIXED" : typeof value === "boolean" ? "BOOLEAN" : "TEXT",
+        value: String(value),
+      },
     ]),
   );
 }
@@ -336,6 +339,13 @@ export const snowflakeApi = {
     ),
   dashboard: (env: CloudflareBindings, correlationId: string) =>
     query(env, "SELECT * FROM RIPPLE.API.DASHBOARD_V", [], correlationId),
+  dueMonitors: (env: CloudflareBindings, correlationId: string) =>
+    query(
+      env,
+      "SELECT * FROM RIPPLE.API.MONITOR_DUE_V ORDER BY created_at LIMIT 10",
+      [],
+      correlationId,
+    ),
   findings: (env: CloudflareBindings, runId: string, correlationId: string) =>
     query(
       env,
@@ -348,6 +358,44 @@ export const snowflakeApi = {
       env,
       "SELECT * FROM RIPPLE.API.RUN_GRAPH_V WHERE run_id = ? ORDER BY severity_score DESC, finding_id",
       [runId],
+      correlationId,
+    ),
+  ingestMonitor: (
+    env: CloudflareBindings,
+    input: {
+      correlationId: string;
+      idempotencyKey: string;
+      payloadJson: string;
+      triggerType: "CONNECT" | "MANUAL" | "SCHEDULED";
+    },
+  ) =>
+    call(
+      env,
+      "CALL RIPPLE.API.INGEST_MONITOR(?, ?, ?, ?)",
+      [input.payloadJson, input.triggerType, input.idempotencyKey, input.correlationId],
+      input.correlationId,
+    ),
+  markMonitorNotification: (
+    env: CloudflareBindings,
+    checkId: string,
+    status: "FAILED" | "SENT",
+    correlationId: string,
+  ) =>
+    call(env, "CALL RIPPLE.API.MARK_MONITOR_NOTIFICATION(?, ?)", [checkId, status], correlationId),
+  monitorNotifications: (env: CloudflareBindings, correlationId: string) =>
+    query(
+      env,
+      "SELECT * FROM RIPPLE.API.MONITOR_NOTIFICATION_V ORDER BY checked_at LIMIT 10",
+      [],
+      correlationId,
+    ),
+  monitors: (env: CloudflareBindings, correlationId: string) =>
+    query(env, "SELECT * FROM RIPPLE.API.MONITOR_V ORDER BY created_at", [], correlationId),
+  monitor: (env: CloudflareBindings, monitorId: string, correlationId: string) =>
+    query(
+      env,
+      "SELECT * FROM RIPPLE.API.MONITOR_V WHERE monitor_id = ?",
+      [monitorId],
       correlationId,
     ),
   patch: (env: CloudflareBindings, patchId: string, correlationId: string) =>
@@ -418,6 +466,26 @@ export const snowflakeApi = {
     ),
   run: (env: CloudflareBindings, runId: string, correlationId: string) =>
     query(env, "SELECT * FROM RIPPLE.API.RUN_SUMMARY_V WHERE run_id = ?", [runId], correlationId),
+  runProvenance: (env: CloudflareBindings, runId: string, correlationId: string) =>
+    query(
+      env,
+      "SELECT * FROM RIPPLE.API.RUN_PROVENANCE_V WHERE run_id = ?",
+      [runId],
+      correlationId,
+    ),
+  setMonitorEnabled: (
+    env: CloudflareBindings,
+    monitorId: string,
+    enabled: boolean,
+    expectedRowVersion: number,
+    correlationId: string,
+  ) =>
+    call(
+      env,
+      "CALL RIPPLE.API.SET_MONITOR_ENABLED(?, ?, ?)",
+      [monitorId, enabled, expectedRowVersion],
+      correlationId,
+    ),
   stages: (env: CloudflareBindings, runId: string, correlationId: string) =>
     query(
       env,

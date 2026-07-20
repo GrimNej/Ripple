@@ -191,10 +191,61 @@ export const mutationResultSchema = z
 
 export const logoutSchema = z.object({ authenticated: z.literal(false) });
 
+export const monitorAssetSchema = z.object({
+  assetType: z.enum(["README", "INSTALL_GUIDE", "SUPPORT_MACRO", "TROUBLESHOOTING", "WORKFLOW"]),
+  criticality: z.enum(["LOW", "MEDIUM", "HIGH", "CRITICAL"]),
+  path: z.string(),
+  title: z.string(),
+});
+
+export const monitorSchema = z.object({
+  assetManifest: z.array(monitorAssetSchema),
+  branchName: z.string(),
+  checkIntervalMinutes: count,
+  createdAt: z.string(),
+  enabled: z.boolean(),
+  lastCheckedAt: nullableText,
+  lastCommitSha: nullableText,
+  lastErrorCode: nullableText,
+  lastSnapshotId: nullableText,
+  latestCheckAt: nullableText,
+  latestCheckId: nullableText,
+  latestCheckStatus: nullableText,
+  latestRunId: nullableText,
+  monitorId: z.string(),
+  name: z.string(),
+  notificationEmail: nullableText,
+  provider: z.literal("GITHUB"),
+  repositoryName: z.string(),
+  repositoryOwner: z.string(),
+  rowVersion: count,
+  sourcePath: z.string(),
+  status: z.string(),
+  updatedAt: z.string(),
+});
+
+export const runProvenanceSchema = z
+  .object({
+    branchName: z.string(),
+    checkedAt: z.string(),
+    commitSha: z.string(),
+    commitUrl: z.url(),
+    monitorId: z.string(),
+    monitorName: z.string(),
+    previousCommitSha: nullableText,
+    repositoryName: z.string(),
+    repositoryOwner: z.string(),
+    runId: z.string(),
+    sourcePath: z.string(),
+  })
+  .nullable();
+
 export type Dashboard = z.infer<typeof dashboardSchema>;
 export type Finding = z.infer<typeof findingSchema>;
 export type GraphRow = z.infer<typeof graphRowSchema>;
+export type Monitor = z.infer<typeof monitorSchema>;
 export type PatchDetail = z.infer<typeof patchDetailSchema>;
 export type Proof = z.infer<typeof proofSchema>;
 export type RunDetail = z.infer<typeof runDetailSchema>;
 export type RunPatch = z.infer<typeof runPatchSchema>;
+export type RunProvenance = z.infer<typeof runProvenanceSchema>;

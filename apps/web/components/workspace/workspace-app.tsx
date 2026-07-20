@@ -19,16 +19,17 @@ import {
 } from "lucide-react";
 import { useEffect, useState, type ReactNode, type SyntheticEvent } from "react";
 
-import { apiRequest, clearCsrfToken, idempotencyKey, saveCsrfToken } from "../../lib/api";
+import { apiRequest, clearCsrfToken, saveCsrfToken } from "../../lib/api";
 import {
   dashboardSchema,
   findingSchema,
   loginSchema,
   logoutSchema,
-  mutationResultSchema,
+  monitorSchema,
   proofSchema,
   runDetailSchema,
   runPatchSchema,
+  runProvenanceSchema,
   sessionStatusSchema,
 } from "../../lib/contracts";
 import { Brand } from "../brand";
@@ -269,32 +270,23 @@ function WorkspaceData({ surface }: WorkspaceAppProperties) {
     queryKey: ["proof"],
     queryFn: () => apiRequest("/api/proof", proofSchema),
   });
+  const provenance = useQuery({
+    enabled: Boolean(runId) && surface === "change",
+    queryKey: ["provenance", runId],
+    queryFn: () => apiRequest(`/api/runs/${runId}/provenance`, runProvenanceSchema),
+  });
+  const monitors = useQuery({
+    enabled: surface === "command",
+    queryKey: ["monitors"],
+    queryFn: () => apiRequest("/api/monitors", monitorSchema.array()),
+  });
 
-  const common = { dashboard, findings, patches, run, runId };
-  if (surface === "command") return <CommandSurface {...common} />;
+  const common = { dashboard, findings, patches, provenance, run, runId };
+  if (surface === "command") return <CommandSurface {...common} monitors={monitors} />;
   if (surface === "change") return <ChangeSurface {...common} />;
   if (surface === "impact") return <ImpactSurface {...common} />;
   if (surface === "review") return <ReviewSurface {...common} />;
   return <ProofSurface {...common} proof={proof} />;
-}
-
-export const preparedScenario = {
-  newSnapshotId: "snapshot-golden-updated-v1",
-  oldSnapshotId: "snapshot-golden-baseline-v1",
-} as const;
-
-export function useStartRun() {
-  const queryClient = useQueryClient();
-  return useMutation({
-    mutationFn: () =>
-      apiRequest("/api/runs", mutationResultSchema, {
-        body: JSON.stringify({ ...preparedScenario, idempotencyKey: idempotencyKey() }),
-        method: "POST",
-      }),
-    onSuccess: async () => {
-      await queryClient.invalidateQueries({ queryKey: ["dashboard"] });
-    },
-  });
 }
 
 export function StatusIcon({ status }: Readonly<{ status: string }>) {

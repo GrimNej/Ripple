@@ -14,6 +14,9 @@ export async function testBindings(): Promise<CloudflareBindings> {
     ASSETS: {
       fetch: () => Promise.resolve(new Response("static asset")),
     } as unknown as Fetcher,
+    EMAIL: {
+      send: () => Promise.resolve({ messageId: "test-message" }),
+    } as unknown as SendEmail,
     LOGIN_PEPPER: "test-login-pepper-is-at-least-thirty-two-characters",
     SESSION_SIGNING_SECRET: "test-session-secret-is-at-least-thirty-two-characters",
     SNOWFLAKE_ACCOUNT_LOCATOR: "xy12345",

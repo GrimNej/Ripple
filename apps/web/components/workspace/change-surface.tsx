@@ -1,6 +1,14 @@
 "use client";
 
-import { ArrowRight, Check, CircleDashed, Clock3, FileText, ShieldCheck } from "lucide-react";
+import {
+  ArrowRight,
+  Check,
+  CircleDashed,
+  Clock3,
+  ExternalLink,
+  FileText,
+  ShieldCheck,
+} from "lucide-react";
 
 import type { Finding } from "../../lib/contracts";
 import { EmptySurface, SurfaceError, SurfaceLoading } from "./surface-state";
@@ -36,6 +44,7 @@ export function ChangeSurface(properties: SurfaceProperties) {
 
   const { run, stages } = properties.run.data;
   const changes = changesFrom(properties.findings.data ?? []);
+  const provenance = properties.provenance.data;
 
   return (
     <div className="surface change-surface">
@@ -54,6 +63,13 @@ export function ChangeSurface(properties: SurfaceProperties) {
             {humanize(run.status)}
           </span>
           <small>Started {new Date(run.createdAt).toLocaleString()}</small>
+          {provenance && (
+            <a href={provenance.commitUrl} rel="noreferrer" target="_blank">
+              <ExternalLink size={14} />
+              {provenance.repositoryOwner}/{provenance.repositoryName} · commit{" "}
+              {provenance.commitSha.slice(0, 12)}
+            </a>
+          )}
         </div>
       </header>
 

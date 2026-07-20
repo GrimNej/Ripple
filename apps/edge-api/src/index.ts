@@ -3,13 +3,16 @@ import { Hono } from "hono";
 
 import {
   applyPatchSchema,
+  createMonitorSchema,
   isSafeId,
   loginSchema,
   rejectPatchSchema,
   revisePatchSchema,
+  setMonitorStateSchema,
   startRunSchema,
   verifyPatchSchema,
 } from "./contracts";
+import { parseGitHubRepositoryUrl } from "./github";
 import { ApiError, correlationId, domainError, parseBody, requireOrigin } from "./http";
 import {
   createSession,
@@ -20,6 +23,12 @@ import {
   verifyCsrf,
   verifySession,
 } from "./security/session";
+import {
+  captureMonitor,
+  connectMonitor,
+  runScheduledMonitoring,
+  validateMonitorRow,
+} from "./monitoring";
 import { callSnowflakeHealth, SnowflakeClientError, snowflakeApi } from "./snowflake/client";
 
 type RippleEnv = {
@@ -76,15 +85,18 @@ function logRoute(path: string): string {
     "/api/proof",
     "/api/runs",
     "/api/session",
+    "/api/monitors",
   ]);
   if (fixedRoutes.has(path)) return path;
   const dynamicRoutes: [RegExp, string][] = [
     [/^\/api\/runs\/[^/]+\/graph$/u, "/api/runs/:runId/graph"],
     [/^\/api\/runs\/[^/]+\/findings$/u, "/api/runs/:runId/findings"],
     [/^\/api\/runs\/[^/]+\/patches$/u, "/api/runs/:runId/patches"],
+    [/^\/api\/runs\/[^/]+\/provenance$/u, "/api/runs/:runId/provenance"],
     [/^\/api\/runs\/[^/]+$/u, "/api/runs/:runId"],
     [/^\/api\/patches\/[^/]+\/(?:revise|apply|reject|verify)$/u, "/api/patches/:patchId/:action"],
     [/^\/api\/patches\/[^/]+$/u, "/api/patches/:patchId"],
+    [/^\/api\/monitors\/[^/]+\/(?:check|state)$/u, "/api/monitors/:monitorId/:action"],
   ];
   return dynamicRoutes.find(([pattern]) => pattern.test(path))?.[1] ?? "unmatched_api_route";
 }
@@ -188,6 +200,53 @@ app.get("/api/dashboard", async (context) => {
   return context.json(success(rows[0] ?? null, context.get("correlationId")));
 });
 
+app.get("/api/monitors", async (context) => {
+  const rows = await snowflakeApi.monitors(context.env, context.get("correlationId"));
+  return context.json(success(rows, context.get("correlationId")));
+});
+
+app.post("/api/monitors", async (context) => {
+  const body = await parseBody(context, createMonitorSchema);
+  const repository = parseGitHubRepositoryUrl(body.repositoryUrl);
+  const result = await connectMonitor(
+    context.env,
+    {
+      ...body,
+      ...repository,
+      monitorId: `monitor-${crypto.randomUUID().replaceAll("-", "")}`,
+    },
+    context.get("correlationId"),
+  );
+  return context.json(success(result, context.get("correlationId")), 201);
+});
+
+app.post("/api/monitors/:monitorId/check", async (context) => {
+  const monitorId = context.req.param("monitorId");
+  requireSafePathId(monitorId, "MONITOR_NOT_FOUND");
+  const rows = await snowflakeApi.monitor(context.env, monitorId, context.get("correlationId"));
+  const monitor = validateMonitorRow(
+    requireRows(rows, "MONITOR_NOT_FOUND", "The requested monitor was not found.")[0],
+  );
+  const result = await captureMonitor(context.env, monitor, "MANUAL", context.get("correlationId"));
+  return context.json(success(result, context.get("correlationId")), 202);
+});
+
+app.post("/api/monitors/:monitorId/state", async (context) => {
+  const monitorId = context.req.param("monitorId");
+  requireSafePathId(monitorId, "MONITOR_NOT_FOUND");
+  const body = await parseBody(context, setMonitorStateSchema);
+  const result = await snowflakeApi.setMonitorEnabled(
+    context.env,
+    monitorId,
+    body.enabled,
+    body.expectedRowVersion,
+    context.get("correlationId"),
+  );
+  const failure = domainError(result);
+  if (failure) throw failure;
+  return context.json(success(result, context.get("correlationId")));
+});
+
 app.post("/api/runs", async (context) => {
   const body = await parseBody(context, startRunSchema);
   const result = await snowflakeApi.startAnalysis(context.env, {
@@ -216,6 +275,13 @@ app.get("/api/runs/:runId/graph", async (context) => {
   requireSafePathId(runId, "RUN_NOT_FOUND");
   const rows = await snowflakeApi.graph(context.env, runId, context.get("correlationId"));
   return context.json(success(rows, context.get("correlationId")));
+});
+
+app.get("/api/runs/:runId/provenance", async (context) => {
+  const runId = context.req.param("runId");
+  requireSafePathId(runId, "RUN_NOT_FOUND");
+  const rows = await snowflakeApi.runProvenance(context.env, runId, context.get("correlationId"));
+  return context.json(success(rows[0] ?? null, context.get("correlationId")));
 });
 
 app.get("/api/runs/:runId/findings", async (context) => {
@@ -363,4 +429,9 @@ app.notFound((context) => {
 });
 
 export { app };
-export default app;
+export default {
+  fetch: app.fetch,
+  scheduled(_controller, env, context): void {
+    context.waitUntil(runScheduledMonitoring(env));
+  },
+} satisfies ExportedHandler<CloudflareBindings>;

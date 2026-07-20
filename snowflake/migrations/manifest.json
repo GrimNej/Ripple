@@ -90,6 +90,15 @@
       "rollbackSha256": "012d6db80438a055979eb49fea502aaf295e87bd689613c9a42322bccd4aecf8",
       "appliedAt": "2026-07-19T23:56:39.587-07:00",
       "appliedCommit": "9aeb3fbeef42c7799d61a51da35c13b743547776"
+    },
+    {
+      "order": 11,
+      "forwardFilename": "011_live_source_monitors.sql",
+      "forwardSha256": "5e47a82c5b2feb004d4695eadfc9cf90dc7ffdb96220b7898a702e49cd08a4ba",
+      "rollbackFilename": "011_live_source_monitors.sql",
+      "rollbackSha256": "769692a4f9ca70de8bb5f08b0195ba7e594ffb916143aa4cb0ca8498d29635ed",
+      "appliedAt": null,
+      "appliedCommit": null
     }
   ]
 }

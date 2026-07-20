@@ -101,3 +101,20 @@ test("workspace navigation stays keyboard reachable on mobile", async ({ page })
   await expect(toggle).toHaveAttribute("aria-expanded", "true");
   await expect(page.getByRole("link", { name: "Impact View" })).toBeVisible();
 });
+
+test("a connected source can be checked manually from the command center", async ({ page }) => {
+  test.skip(!accessCode, "RIPPLE_E2E_ACCESS_CODE is not configured.");
+  await authenticate(page);
+  const monitor = page.locator(".monitor-card").filter({ hasText: "Runtime policy" });
+  await expect(monitor).toContainText("GrimNej/ripple-source-lab");
+  await monitor.getByRole("button", { name: "Check now" }).click();
+  await expect(page.getByRole("status")).toContainText("The authoritative commit has not changed", {
+    timeout: 20_000,
+  });
+
+  await page.getByRole("button", { name: "Connect source" }).click();
+  await expect(page.getByRole("dialog", { name: "Connect GitHub" })).toBeVisible();
+  await expectNoSeriousAccessibilityViolations(page);
+  await page.getByRole("button", { name: "Cancel" }).click();
+  await expect(page.getByRole("dialog", { name: "Connect GitHub" })).not.toBeVisible();
+});
