@@ -8,7 +8,7 @@ The official introductory session requirements are traced in [`OFFICIAL_SESSION_
 - [ ] Reproducible bootstrap, seed, verify, teardown, and rollback documentation.
 - [ ] English deck and five-minute demo.
 - [ ] Dataset, fixture, source, font, and third-party licence disclosures.
-- [ ] Meaningful Snowflake, CoCo, Cortex AI, and Python implementation evidence.
+- [x] Meaningful Snowflake, CoCo, Cortex AI, and Python implementation evidence.
 
 ## Product proof
 

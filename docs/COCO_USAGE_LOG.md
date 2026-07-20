@@ -31,3 +31,14 @@ CoCo is installed as `cortex` version 1.1.41. Published evidence is sanitized: n
 - **Artifact:** [sanitized attempt evidence](../artifacts/coco/2026-07-20-product-view-review-attempt.md)
 - **Related implementation commits:** `9aeb3fb`, `623beb4`, `8dd7b8f`
 - **Decision:** Preserve the authentication boundary and keep a successful CoCo review as a submission-freeze gate.
+
+## 2026-07-20: Authenticated product secure-view review
+
+- **Goal:** Independently verify the single-row latest-verification projection, content-minimized run-patch list, and fixed-allowlist suitability of the two production secure views.
+- **Mode:** Human-authenticated Snowflake connection, built-in SQL read-only guard, no MCP, bounded turns, metadata and aggregate queries only, and explicit content/identifier redaction.
+- **Accepted:** `PATCH_DETAIL_V` returned no patch with more than one projected verification row; deterministic ordering resolves timestamp ties. `RUN_PATCH_V` omits proposed content, asset bodies, evidence payloads, and raw files. Both secure views are suitable for the Worker's fixed read allowlist.
+- **Checked without edit:** CoCo warned that patch detail contains full review content. The Worker already keeps this endpoint authenticated, uncached, and absent from structured logs, so no code change was required.
+- **Rejected from P0:** A future multi-tenant row-level-security requirement was not promoted because Ripple's approved P0 boundary is one private operator.
+- **Persistent mutation:** None.
+- **Artifact:** [sanitized secure-view review](../artifacts/coco/2026-07-20-product-view-review.md)
+- **Related implementation commits:** `9aeb3fb`, `623beb4`, `8dd7b8f`

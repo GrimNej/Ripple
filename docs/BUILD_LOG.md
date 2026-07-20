@@ -121,3 +121,13 @@ This is the consolidated implementation ledger. Times use Nepal Time (UTC+05:45)
 - **Decision or issue:** The owner selected Direction C. A restrained 1 to 1.5 px lift and higher-contrast quiet token improved small-copy legibility without changing headline scale or information density. Browser inspection found that Snowflake rejected the original correlated subquery inside `PATCH_DETAIL_V`; migration `010` replaced it with a window-ranked join. The final proof audit also reconciled deployment receipts for migrations `009` and `010`, bringing the live and immutable manifest counts to ten. No production security boundary was widened.
 - **Related commits:** `9aeb3fb`, `623beb4`, `8dd7b8f`
 - **Rollback point:** Revert `8dd7b8f` for the product interface, then apply paired rollback migrations `010` and `009` only if the run-patch read projections must also be removed.
+
+## 2026-07-20 13:32 NPT: Authenticated CoCo production review
+
+- **Goal:** Complete the mandatory meaningful CoCo evidence with an independent Snowflake review of the production patch projections.
+- **Files affected:** Sanitized CoCo artifact, usage log, build log, and submission checklist.
+- **Commands:** Human browser authentication; `cortex` with the Snowflake SQL read-only guard, no MCP, bounded turns, and metadata/aggregate-only instructions.
+- **Test evidence:** CoCo queried both secure views and confirmed zero duplicate projected verification rows, deterministic latest-result ordering, absence of content/evidence bodies from the run-patch list, and fixed-allowlist suitability.
+- **Decision or issue:** The authenticated patch-detail endpoint necessarily transports review content. CoCo's warning was accepted and checked against existing session protection, no-cache behavior, and content-free structured logs. Its future multi-tenant row-level-security observation remains outside the single-operator P0 boundary.
+- **Related commits:** `9aeb3fb`, `623beb4`, `8dd7b8f`
+- **Rollback point:** Documentation-only evidence; removing it does not alter Snowflake or runtime state.
