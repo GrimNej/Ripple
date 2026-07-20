@@ -19,6 +19,15 @@
   --focus: #a8ffd8;
   --shadow: 0 32px 90px rgba(0, 0, 0, 0.42);
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --text-micro: 17px;
+  --text-caption: 19px;
+  --text-label: 21px;
+  --text-ui: 22px;
+  --text-support: 24px;
+  --text-body-small: 26px;
+  --text-body: 30px;
+  --text-copy: 32px;
+  --text-small-heading: 34px;
 }
 
 * {
@@ -172,7 +181,7 @@ textarea:focus-visible,
   box-shadow: 0 9px 32px rgba(255, 115, 92, 0.17);
   color: #160e0c;
   font-family: var(--font-mono), monospace;
-  font-size: 12px;
+  font-size: var(--text-support);
   font-weight: 500;
   letter-spacing: 0.035em;
   transition:
@@ -198,7 +207,7 @@ textarea:focus-visible,
 .button--small {
   min-height: 44px;
   padding-inline: 17px;
-  font-size: 11px;
+  font-size: var(--text-ui);
 }
 
 .button--light {
@@ -214,7 +223,7 @@ textarea:focus-visible,
   margin: 0;
   color: var(--amber);
   font-family: var(--font-mono), monospace;
-  font-size: 11px;
+  font-size: var(--text-ui);
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -267,7 +276,7 @@ textarea:focus-visible,
   min-height: 44px;
   place-items: center;
   color: var(--muted);
-  font-size: 12px;
+  font-size: var(--text-support);
 }
 
 .landing-nav__links a::after {
@@ -330,7 +339,7 @@ textarea:focus-visible,
   max-width: 570px;
   margin: 0;
   color: #b5b3ad;
-  font-size: 16px;
+  font-size: var(--text-copy);
   line-height: 1.8;
 }
 
@@ -348,12 +357,12 @@ textarea:focus-visible,
   gap: 9px;
   color: #cac8c2;
   font-family: var(--font-mono), monospace;
-  font-size: 11px;
+  font-size: var(--text-ui);
 }
 
 .product-scene {
   position: relative;
-  min-height: 660px;
+  min-height: 760px;
   perspective: 1000px;
 }
 
@@ -427,14 +436,14 @@ textarea:focus-visible,
   display: flex;
   align-items: center;
   gap: 9px;
-  font-size: 11px;
+  font-size: var(--text-ui);
   font-weight: 700;
 }
 
 .window-state {
   color: var(--muted);
   font-family: var(--font-mono), monospace;
-  font-size: 8.5px;
+  font-size: var(--text-micro);
   font-weight: 400;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -455,7 +464,7 @@ textarea:focus-visible,
   justify-content: space-between;
   color: var(--coral);
   font-family: var(--font-mono), monospace;
-  font-size: 9.5px;
+  font-size: var(--text-caption);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -475,9 +484,10 @@ textarea:focus-visible,
 .mini-flow {
   display: grid;
   align-items: center;
+  gap: 16px;
   padding: 24px 0 28px;
   border-top: 1px solid var(--line);
-  grid-template-columns: auto 1fr auto 1fr auto;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .mini-flow__step {
@@ -495,7 +505,7 @@ textarea:focus-visible,
   place-items: center;
   color: var(--quiet);
   font-family: var(--font-mono), monospace;
-  font-size: 9.5px;
+  font-size: var(--text-caption);
   font-style: normal;
 }
 
@@ -504,12 +514,12 @@ textarea:focus-visible,
   flex-direction: column;
   gap: 4px;
   color: var(--quiet);
-  font-size: 9.5px;
+  font-size: var(--text-caption);
 }
 
 .mini-flow__step b {
   color: var(--ink);
-  font-size: 10.5px;
+  font-size: var(--text-label);
 }
 .mini-flow__step.is-done > i {
   border-color: var(--mint);
@@ -522,9 +532,7 @@ textarea:focus-visible,
 }
 
 .mini-flow__line {
-  height: 1px;
-  margin: 0 12px;
-  background: var(--line-bright);
+  display: none;
 }
 
 .mini-flow__line.is-live {
@@ -550,13 +558,13 @@ textarea:focus-visible,
   transform: translateY(-2px);
 }
 .window-cta span {
-  font-size: 12px;
+  font-size: var(--text-support);
   font-weight: 700;
 }
 .window-cta b {
   color: var(--coral);
   font-family: var(--font-mono), monospace;
-  font-size: 9.5px;
+  font-size: var(--text-caption);
 }
 .window-cta svg {
   justify-self: end;
@@ -583,21 +591,21 @@ textarea:focus-visible,
 .float-card--source span {
   color: var(--muted);
   font-family: var(--font-mono), monospace;
-  font-size: 8.5px;
+  font-size: var(--text-micro);
   text-transform: uppercase;
 }
 .float-card--source b {
-  font-size: 12px;
+  font-size: var(--text-support);
 }
 .float-card--source i {
   color: var(--amber);
   font-family: var(--font-mono), monospace;
-  font-size: 8.5px;
+  font-size: var(--text-micro);
   font-style: normal;
 }
 .float-card--verified {
   right: 1%;
-  bottom: 15%;
+  bottom: 2%;
   display: flex;
   gap: 11px;
   align-items: center;
@@ -612,11 +620,11 @@ textarea:focus-visible,
   gap: 4px;
 }
 .float-card--verified b {
-  font-size: 11px;
+  font-size: var(--text-ui);
 }
 .float-card--verified small {
   color: var(--muted);
-  font-size: 9.5px;
+  font-size: var(--text-caption);
 }
 
 .principles {
@@ -641,7 +649,7 @@ textarea:focus-visible,
   justify-content: space-between;
   color: var(--coral);
   font-family: var(--font-mono), monospace;
-  font-size: 11px;
+  font-size: var(--text-ui);
 }
 .principles h2 {
   margin: 47px 0 14px;
@@ -652,7 +660,7 @@ textarea:focus-visible,
   max-width: 34ch;
   margin: 0;
   color: var(--muted);
-  font-size: 13px;
+  font-size: var(--text-body-small);
   line-height: 1.75;
 }
 
@@ -688,7 +696,7 @@ textarea:focus-visible,
   max-width: 640px;
   margin: 0 0 32px;
   color: var(--muted);
-  font-size: 15px;
+  font-size: var(--text-body);
   line-height: 1.8;
 }
 
@@ -703,13 +711,13 @@ textarea:focus-visible,
 
 .landing-footer p {
   color: var(--muted);
-  font-size: 12px;
+  font-size: var(--text-support);
 }
 .landing-footer > span {
   justify-self: end;
   color: var(--quiet);
   font-family: var(--font-mono), monospace;
-  font-size: 9.5px;
+  font-size: var(--text-caption);
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
@@ -760,7 +768,7 @@ textarea:focus-visible,
   place-items: center;
   color: var(--muted);
   font-family: var(--font-mono), monospace;
-  font-size: 10.5px;
+  font-size: var(--text-label);
 }
 
 .auth-card {
@@ -786,7 +794,7 @@ textarea:focus-visible,
 .auth-card > p:not(.eyebrow) {
   margin: 0;
   color: var(--muted);
-  font-size: 13px;
+  font-size: var(--text-body-small);
   line-height: 1.7;
 }
 .auth-card form {
@@ -797,7 +805,7 @@ textarea:focus-visible,
 .auth-card label {
   color: var(--muted);
   font-family: var(--font-mono), monospace;
-  font-size: 9.5px;
+  font-size: var(--text-caption);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -819,12 +827,12 @@ textarea:focus-visible,
   align-items: center;
   margin-top: 22px;
   color: var(--quiet);
-  font-size: 10.5px;
+  font-size: var(--text-label);
 }
 .form-error {
   margin: 0;
   color: var(--danger);
-  font-size: 12px;
+  font-size: var(--text-support);
 }
 
 .auth-signal {
@@ -972,7 +980,7 @@ textarea:focus-visible,
   gap: 13px;
   color: var(--quiet);
   font-family: var(--font-mono), monospace;
-  font-size: 9.5px;
+  font-size: var(--text-caption);
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
@@ -1021,7 +1029,7 @@ textarea:focus-visible,
 .surface-heading > div > p:not(.eyebrow) {
   margin: 16px 0 0;
   color: var(--muted);
-  font-size: 12px;
+  font-size: var(--text-support);
 }
 .split-heading,
 .command-heading {
@@ -1048,7 +1056,7 @@ textarea:focus-visible,
   border-radius: 999px;
   color: var(--mint);
   font-family: var(--font-mono), monospace;
-  font-size: 9.5px;
+  font-size: var(--text-caption);
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
@@ -1057,7 +1065,7 @@ textarea:focus-visible,
 }
 .heading-status small {
   color: var(--quiet);
-  font-size: 10.5px;
+  font-size: var(--text-label);
 }
 
 .panel {
@@ -1082,13 +1090,13 @@ textarea:focus-visible,
 .panel-header > span:first-child {
   color: var(--coral);
   font-family: var(--font-mono), monospace;
-  font-size: 8.5px;
+  font-size: var(--text-micro);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 .panel-header h2 {
   margin: 5px 0 0;
-  font-size: 15px;
+  font-size: var(--text-body);
   font-weight: 680;
   letter-spacing: -0.025em;
 }
@@ -1099,7 +1107,7 @@ textarea:focus-visible,
   gap: 8px;
   color: var(--muted);
   font-family: var(--font-mono), monospace;
-  font-size: 9.5px;
+  font-size: var(--text-caption);
 }
 
 .metric-strip,
@@ -1129,7 +1137,7 @@ textarea:focus-visible,
 .proof-ribbon span {
   color: var(--muted);
   font-family: var(--font-mono), monospace;
-  font-size: 8.5px;
+  font-size: var(--text-micro);
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
@@ -1148,7 +1156,7 @@ textarea:focus-visible,
 .proof-ribbon small {
   align-self: end;
   color: var(--quiet);
-  font-size: 9.5px;
+  font-size: var(--text-caption);
 }
 .metric-good {
   display: inline-block;
@@ -1236,7 +1244,7 @@ textarea:focus-visible,
 .surface-message p span,
 .empty-surface > p:not(.eyebrow) {
   color: var(--muted);
-  font-size: 13px;
+  font-size: var(--text-body-small);
   line-height: 1.7;
 }
 .surface-message .button {
@@ -1320,12 +1328,12 @@ textarea:focus-visible,
   place-items: center;
   color: var(--coral);
   font-family: var(--font-mono), monospace;
-  font-size: 9.5px;
+  font-size: var(--text-caption);
 }
 .change-row > div small {
   color: var(--quiet);
   font-family: var(--font-mono), monospace;
-  font-size: 8.5px;
+  font-size: var(--text-micro);
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
@@ -1334,7 +1342,7 @@ textarea:focus-visible,
   align-items: center;
   gap: 9px;
   margin: 10px 0 0;
-  font-size: 13px;
+  font-size: var(--text-body-small);
   font-weight: 620;
 }
 .change-row del {
@@ -1352,7 +1360,7 @@ textarea:focus-visible,
 .impact-count {
   display: flex;
   color: var(--quiet);
-  font-size: 8.5px;
+  font-size: var(--text-micro);
   flex-direction: column;
   gap: 2px;
 }
@@ -1369,7 +1377,7 @@ textarea:focus-visible,
   gap: 5px;
   color: var(--muted);
   font-family: var(--font-mono), monospace;
-  font-size: 8.5px;
+  font-size: var(--text-micro);
 }
 
 .decision-panel > .panel-header > b {
@@ -1381,7 +1389,7 @@ textarea:focus-visible,
   background: rgba(255, 115, 92, 0.09);
   place-items: center;
   color: var(--coral);
-  font-size: 12px;
+  font-size: var(--text-support);
 }
 .decision-card {
   display: block;
@@ -1403,7 +1411,7 @@ textarea:focus-visible,
   justify-content: space-between;
   color: var(--coral);
   font-family: var(--font-mono), monospace;
-  font-size: 8.5px;
+  font-size: var(--text-micro);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -1412,7 +1420,7 @@ textarea:focus-visible,
   align-items: center;
   gap: 7px;
   margin: 27px 0 12px;
-  font-size: 17px;
+  font-size: var(--text-small-heading);
   letter-spacing: -0.04em;
 }
 .decision-card h3 svg {
@@ -1422,7 +1430,7 @@ textarea:focus-visible,
 .decision-card > p {
   margin: 0;
   color: var(--muted);
-  font-size: 12px;
+  font-size: var(--text-support);
   line-height: 1.6;
 }
 .decision-card footer {
@@ -1440,7 +1448,7 @@ textarea:focus-visible,
   gap: 6px;
   color: var(--quiet);
   font-family: var(--font-mono), monospace;
-  font-size: 8.5px;
+  font-size: var(--text-micro);
   font-weight: 400;
 }
 .decision-card footer b {
@@ -1463,15 +1471,15 @@ textarea:focus-visible,
 }
 .queue-clear span {
   color: var(--muted);
-  font-size: 10.5px;
+  font-size: var(--text-label);
 }
 .run-state {
   display: flex;
-  min-height: 49px;
+  min-height: 58px;
   align-items: center;
   justify-content: space-between;
   gap: 10px;
-  padding: 0 17px;
+  padding: 12px 17px;
   border-top: 1px solid var(--line);
 }
 .run-state span {
@@ -1480,16 +1488,16 @@ textarea:focus-visible,
   gap: 7px;
   color: var(--muted);
   font-family: var(--font-mono), monospace;
-  font-size: 8.5px;
+  font-size: var(--text-micro);
   text-transform: uppercase;
 }
 .run-state code {
-  max-width: 45%;
-  overflow: hidden;
+  max-width: 62%;
   color: var(--quiet);
   font-family: var(--font-mono), monospace;
-  font-size: 7.5px;
-  text-overflow: ellipsis;
+  font-size: var(--text-micro);
+  overflow-wrap: anywhere;
+  text-align: right;
 }
 
 /* Change Event */
@@ -1504,40 +1512,39 @@ textarea:focus-visible,
   border: 1px solid var(--line-bright);
   border-radius: 15px;
   background: rgba(17, 20, 22, 0.9);
-  grid-template-columns: minmax(220px, 0.35fr) 1fr;
+  grid-template-columns: minmax(270px, 0.35fr) 1fr;
 }
 .pipeline-band header > span {
   color: var(--coral);
   font-family: var(--font-mono), monospace;
-  font-size: 8.5px;
+  font-size: var(--text-micro);
   letter-spacing: 0.09em;
   text-transform: uppercase;
 }
 .pipeline-band h2 {
   margin: 8px 0 0;
-  font-size: 17px;
+  font-size: var(--text-small-heading);
   letter-spacing: -0.03em;
 }
 .pipeline-band ol {
-  display: flex;
+  display: grid;
   min-width: 0;
+  gap: 15px 22px;
   margin: 0;
   padding: 0;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   list-style: none;
 }
 .stage {
   position: relative;
   display: flex;
-  min-width: 116px;
+  min-width: 0;
   align-items: center;
   gap: 9px;
   flex: 1;
 }
 .stage::after {
-  height: 1px;
-  background: var(--line-bright);
-  content: "";
-  flex: 1;
+  display: none;
 }
 .stage:last-child::after {
   display: none;
@@ -1568,17 +1575,14 @@ textarea:focus-visible,
   gap: 4px;
 }
 .stage b {
-  overflow: hidden;
   font-family: var(--font-mono), monospace;
-  font-size: 8.5px;
+  font-size: var(--text-micro);
   font-weight: 500;
-  text-overflow: ellipsis;
   text-transform: capitalize;
-  white-space: nowrap;
 }
 .stage small {
   color: var(--quiet);
-  font-size: 8.5px;
+  font-size: var(--text-micro);
 }
 
 .change-layout {
@@ -1598,7 +1602,7 @@ textarea:focus-visible,
   border-radius: 999px;
   color: var(--mint);
   font-family: var(--font-mono), monospace;
-  font-size: 8.5px;
+  font-size: var(--text-micro);
   text-transform: uppercase;
 }
 .diff-stack {
@@ -1623,16 +1627,16 @@ textarea:focus-visible,
 .diff-block > header > span {
   color: var(--coral);
   font-family: var(--font-mono), monospace;
-  font-size: 9.5px;
+  font-size: var(--text-caption);
 }
 .diff-block > header b {
   font-family: var(--font-mono), monospace;
-  font-size: 8.5px;
+  font-size: var(--text-micro);
   text-transform: capitalize;
 }
 .diff-block > header small {
   color: var(--quiet);
-  font-size: 8.5px;
+  font-size: var(--text-micro);
 }
 .diff-line {
   display: grid;
@@ -1650,13 +1654,13 @@ textarea:focus-visible,
 }
 .diff-line p {
   margin: 0;
-  font-size: 13px;
+  font-size: var(--text-body-small);
   line-height: 1.5;
 }
 .diff-line small {
   color: var(--quiet);
   font-family: var(--font-mono), monospace;
-  font-size: 7.5px;
+  font-size: var(--text-micro);
 }
 .diff-line--old {
   background: rgba(255, 115, 92, 0.055);
@@ -1684,11 +1688,11 @@ textarea:focus-visible,
   gap: 6px;
   color: var(--mint);
   font-family: var(--font-mono), monospace;
-  font-size: 7.5px;
+  font-size: var(--text-micro);
 }
 .diff-block > footer code {
   font-family: var(--font-mono), monospace;
-  font-size: 7.5px;
+  font-size: var(--text-micro);
 }
 
 .event-summary dl {
@@ -1705,7 +1709,7 @@ textarea:focus-visible,
 }
 .event-summary dt {
   color: var(--muted);
-  font-size: 11px;
+  font-size: var(--text-ui);
 }
 .event-summary dd {
   margin: 0;
@@ -1733,11 +1737,11 @@ textarea:focus-visible,
   gap: 5px;
 }
 .event-note b {
-  font-size: 10.5px;
+  font-size: var(--text-label);
 }
 .event-note span {
   color: var(--muted);
-  font-size: 9.5px;
+  font-size: var(--text-caption);
   line-height: 1.5;
 }
 .event-summary > .button {
@@ -1751,12 +1755,12 @@ textarea:focus-visible,
   display: grid;
   min-height: 570px;
   gap: 18px;
-  grid-template-columns: minmax(0, 1.55fr) minmax(340px, 0.65fr);
+  grid-template-columns: minmax(0, 1.35fr) minmax(460px, 0.85fr);
 }
 .impact-map {
   display: grid;
   min-height: 570px;
-  grid-template-rows: 72px minmax(380px, 1fr) auto;
+  grid-template-rows: auto minmax(380px, 1fr) auto;
 }
 .flow-canvas {
   min-height: 390px;
@@ -1773,7 +1777,7 @@ textarea:focus-visible,
   box-shadow: 0 12px 26px rgba(0, 0, 0, 0.26);
   color: var(--ink) !important;
   font-family: var(--font-sans), sans-serif;
-  font-size: 11px !important;
+  font-size: var(--text-ui) !important;
   line-height: 1.35;
 }
 .react-flow__node-input {
@@ -1785,7 +1789,7 @@ textarea:focus-visible,
   background: rgba(255, 115, 92, 0.11) !important;
   box-shadow: 0 0 35px rgba(255, 115, 92, 0.08);
   color: var(--ink) !important;
-  font-size: 11px;
+  font-size: var(--text-ui);
 }
 .flow-node--change {
   border-color: rgba(255, 195, 110, 0.48) !important;
@@ -1819,7 +1823,7 @@ textarea:focus-visible,
 .react-flow__edge-text {
   fill: var(--muted);
   font-family: var(--font-mono), monospace;
-  font-size: 8.5px;
+  font-size: var(--text-micro);
 }
 .react-flow__edge-textbg {
   fill: #0c0f10;
@@ -1855,7 +1859,7 @@ textarea:focus-visible,
   border: 1px solid var(--line-bright);
   border-radius: 999px;
   font-family: var(--font-mono), monospace;
-  font-size: 8.5px;
+  font-size: var(--text-micro);
   text-transform: uppercase;
 }
 .status-label svg {
@@ -1874,7 +1878,7 @@ textarea:focus-visible,
   align-items: center;
   gap: 8px;
   margin: 0;
-  font-size: 11px;
+  font-size: var(--text-ui);
 }
 .edge-inspector p span {
   color: var(--muted);
@@ -1882,14 +1886,14 @@ textarea:focus-visible,
 .edge-inspector small {
   color: var(--quiet);
   font-family: var(--font-mono), monospace;
-  font-size: 7.5px;
+  font-size: var(--text-micro);
   text-transform: capitalize;
 }
 
 .evidence-list {
   display: grid;
   max-height: 670px;
-  grid-template-rows: 72px 1fr auto;
+  grid-template-rows: auto 1fr auto;
 }
 .evidence-list ol {
   min-height: 0;
@@ -1904,7 +1908,7 @@ textarea:focus-visible,
 .evidence-list li button {
   display: grid;
   width: 100%;
-  min-height: 110px;
+  min-height: 132px;
   align-items: center;
   gap: 12px;
   padding: 12px 15px;
@@ -1924,7 +1928,7 @@ textarea:focus-visible,
 .evidence-list li button > span:first-child {
   color: var(--coral);
   font-family: var(--font-mono), monospace;
-  font-size: 8.5px;
+  font-size: var(--text-micro);
 }
 .evidence-list li div {
   min-width: 0;
@@ -1932,27 +1936,23 @@ textarea:focus-visible,
 .evidence-list li small {
   color: var(--quiet);
   font-family: var(--font-mono), monospace;
-  font-size: 7.5px;
+  font-size: var(--text-micro);
   text-transform: capitalize;
 }
 .evidence-list li b {
   display: block;
   margin: 6px 0 7px;
-  overflow: hidden;
-  font-size: 11px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  font-size: var(--text-ui);
+  line-height: 1.25;
 }
 .evidence-list li p {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 5px;
   margin: 0;
-  overflow: hidden;
   color: var(--muted);
-  font-size: 8.5px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  font-size: var(--text-micro);
 }
 .evidence-state {
   padding: 6px 7px;
@@ -1960,7 +1960,7 @@ textarea:focus-visible,
   border-radius: 999px;
   color: var(--muted);
   font-family: var(--font-mono), monospace;
-  font-size: 7.5px;
+  font-size: var(--text-micro);
   text-transform: capitalize;
 }
 .evidence-state--confirmed {
@@ -1976,7 +1976,7 @@ textarea:focus-visible,
   gap: 8px;
   padding: 0 16px;
   color: var(--quiet);
-  font-size: 8.5px;
+  font-size: var(--text-micro);
 }
 .evidence-list > footer svg {
   color: var(--mint);
@@ -1998,12 +1998,12 @@ textarea:focus-visible,
   flex-direction: column;
   gap: 4px;
   color: var(--muted);
-  font-size: 10.5px;
+  font-size: var(--text-label);
 }
 .surface-next b {
   color: var(--coral);
   font-family: var(--font-mono), monospace;
-  font-size: 8.5px;
+  font-size: var(--text-micro);
   text-transform: uppercase;
 }
 
@@ -2043,14 +2043,14 @@ textarea:focus-visible,
 }
 .source-lines p {
   margin: 0;
-  font-size: 17px;
+  font-size: var(--text-small-heading);
   line-height: 1.45;
 }
 .source-lines small {
   align-self: end;
   color: var(--quiet);
   font-family: var(--font-mono), monospace;
-  font-size: 7.5px;
+  font-size: var(--text-micro);
 }
 .source-lines .is-removed {
   background: rgba(255, 115, 92, 0.055);
@@ -2074,7 +2074,7 @@ textarea:focus-visible,
   padding: 0 16px;
   color: var(--quiet);
   font-family: var(--font-mono), monospace;
-  font-size: 7.5px;
+  font-size: var(--text-micro);
 }
 .source-change > footer span,
 .repair-editor > footer span:last-child {
@@ -2084,7 +2084,7 @@ textarea:focus-visible,
   color: var(--mint);
 }
 .source-change > footer code {
-  font-size: 7.5px;
+  font-size: var(--text-micro);
 }
 .repair-editor textarea {
   width: 100%;
@@ -2097,7 +2097,7 @@ textarea:focus-visible,
   background: #0e1112;
   color: var(--ink);
   font-family: var(--font-mono), monospace;
-  font-size: 12px;
+  font-size: var(--text-support);
   line-height: 1.75;
 }
 .repair-editor textarea:focus {
@@ -2118,17 +2118,17 @@ textarea:focus-visible,
 .content-delta span {
   color: var(--coral);
   font-family: var(--font-mono), monospace;
-  font-size: 7.5px;
+  font-size: var(--text-micro);
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 .content-delta p {
-  max-height: 50px;
   margin: 8px 0 0;
-  overflow: hidden;
   color: var(--quiet);
-  font-size: 9.5px;
+  font-size: var(--text-caption);
   line-height: 1.5;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
 }
 .evidence-rail ol {
   margin: 0;
@@ -2152,7 +2152,7 @@ textarea:focus-visible,
   place-items: center;
   color: var(--coral);
   font-family: var(--font-mono), monospace;
-  font-size: 8.5px;
+  font-size: var(--text-micro);
   font-style: normal;
 }
 .evidence-rail li p {
@@ -2163,15 +2163,15 @@ textarea:focus-visible,
 }
 .evidence-rail li b {
   font-family: var(--font-mono), monospace;
-  font-size: 8.5px;
+  font-size: var(--text-micro);
   text-transform: uppercase;
 }
 .evidence-rail li span {
-  font-size: 10.5px;
+  font-size: var(--text-label);
 }
 .evidence-rail li small {
   color: var(--quiet);
-  font-size: 8.5px;
+  font-size: var(--text-micro);
 }
 .evidence-rail > a {
   display: flex;
@@ -2184,7 +2184,7 @@ textarea:focus-visible,
   border-radius: 8px;
   color: var(--mint);
   font-family: var(--font-mono), monospace;
-  font-size: 8.5px;
+  font-size: var(--text-micro);
 }
 
 .apply-bar {
@@ -2235,11 +2235,11 @@ textarea:focus-visible,
   gap: 5px;
 }
 .apply-proof b {
-  font-size: 11px;
+  font-size: var(--text-ui);
 }
 .apply-proof span {
   color: var(--muted);
-  font-size: 9.5px;
+  font-size: var(--text-caption);
   line-height: 1.5;
 }
 .apply-actions {
@@ -2257,7 +2257,7 @@ textarea:focus-visible,
   background: transparent;
   color: var(--muted);
   font-family: var(--font-mono), monospace;
-  font-size: 8.5px;
+  font-size: var(--text-micro);
 }
 
 /* Verification */
@@ -2275,7 +2275,7 @@ textarea:focus-visible,
 .proof-ribbon sup {
   color: var(--quiet);
   font-family: var(--font-mono), monospace;
-  font-size: 12px;
+  font-size: var(--text-support);
 }
 .proof-layout {
   display: grid;
@@ -2317,12 +2317,12 @@ textarea:focus-visible,
 .verification-seal b {
   color: var(--mint);
   font-family: var(--font-mono), monospace;
-  font-size: 10.5px;
+  font-size: var(--text-label);
   text-transform: uppercase;
 }
 .verification-seal small {
   color: var(--quiet);
-  font-size: 9.5px;
+  font-size: var(--text-caption);
 }
 .record-body dl {
   display: grid;
@@ -2338,27 +2338,27 @@ textarea:focus-visible,
 }
 .record-body dt {
   color: var(--quiet);
-  font-size: 9.5px;
+  font-size: var(--text-caption);
 }
 .record-body dd {
   min-width: 0;
   margin: 0;
   overflow: hidden;
-  font-size: 10.5px;
+  font-size: var(--text-label);
   text-align: right;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 .record-body code {
   font-family: var(--font-mono), monospace;
-  font-size: 8.5px;
+  font-size: var(--text-micro);
 }
 .record-note {
   display: flex;
   gap: 8px;
   margin: 18px 0 0;
   color: var(--muted);
-  font-size: 9.5px;
+  font-size: var(--text-caption);
   line-height: 1.5;
 }
 .record-note svg {
@@ -2381,7 +2381,7 @@ textarea:focus-visible,
 }
 .record-empty span {
   color: var(--muted);
-  font-size: 9.5px;
+  font-size: var(--text-caption);
 }
 .record-empty a {
   display: flex;
@@ -2390,7 +2390,7 @@ textarea:focus-visible,
   gap: 6px;
   color: var(--mint);
   font-family: var(--font-mono), monospace;
-  font-size: 8.5px;
+  font-size: var(--text-micro);
 }
 .task-history ol {
   margin: 0;
@@ -2426,7 +2426,7 @@ textarea:focus-visible,
 .task-history li b {
   overflow: hidden;
   font-family: var(--font-mono), monospace;
-  font-size: 8.5px;
+  font-size: var(--text-micro);
   font-weight: 500;
   text-overflow: ellipsis;
   text-transform: capitalize;
@@ -2435,7 +2435,7 @@ textarea:focus-visible,
 .task-history li small,
 .task-history time {
   color: var(--quiet);
-  font-size: 8.5px;
+  font-size: var(--text-micro);
 }
 .governance-panel ul {
   margin: 0;
@@ -2460,11 +2460,11 @@ textarea:focus-visible,
   gap: 4px;
 }
 .governance-panel li b {
-  font-size: 9.5px;
+  font-size: var(--text-caption);
 }
 .governance-panel li span {
   color: var(--quiet);
-  font-size: 8.5px;
+  font-size: var(--text-micro);
 }
 .governance-panel > a {
   display: flex;
@@ -2474,7 +2474,7 @@ textarea:focus-visible,
   margin: 7px 17px 17px;
   color: var(--mint);
   font-family: var(--font-mono), monospace;
-  font-size: 8.5px;
+  font-size: var(--text-micro);
 }
 
 @media (max-width: 1180px) {
@@ -2642,7 +2642,7 @@ textarea:focus-visible,
     font-size: clamp(48px, 14vw, 72px);
   }
   .hero-copy__body {
-    font-size: 14px;
+    font-size: var(--text-body);
   }
   .hero-actions {
     align-items: stretch;
@@ -2765,7 +2765,7 @@ textarea:focus-visible,
   .sidebar a span,
   .sidebar button span {
     display: inline;
-    font-size: 12px;
+    font-size: var(--text-support);
   }
   .workspace-shell {
     width: 100%;
@@ -2930,7 +2930,7 @@ textarea:focus-visible,
     width: calc(100% - 28px);
   }
   .product-scene {
-    min-height: 485px;
+    min-height: 570px;
   }
   .window-state {
     display: none;

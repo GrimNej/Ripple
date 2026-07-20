@@ -3,6 +3,10 @@ import { z } from "zod";
 const count = z
   .union([z.number().int().nonnegative(), z.string()])
   .transform((value) => (typeof value === "number" ? value : Number.parseInt(value, 10)));
+const nonnegativeNumber = z
+  .union([z.number(), z.string().min(1)])
+  .transform((value) => (typeof value === "number" ? value : Number(value)))
+  .pipe(z.number().nonnegative());
 const nullableText = z.string().nullable();
 
 export const sessionSchema = z.object({
@@ -85,7 +89,7 @@ export const findingSchema = z.object({
   oldClaim: z.string(),
   runId: z.string(),
   severity: z.string(),
-  severityScore: count,
+  severityScore: nonnegativeNumber,
   sourceExcerpt: nullableText.optional(),
   status: z.string(),
 });
