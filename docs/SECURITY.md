@@ -15,6 +15,7 @@ Every mutation requires the plaintext CSRF token in `X-Ripple-CSRF`; the Worker 
 - AI has no tools/network, receives explicit untrusted-content boundaries, returns a strict schema, and cannot confirm evidence until server-side offset/hash validation passes.
 - Compare-and-set state, expected versions, request hashes, and idempotency replay defend every mutation.
 - Patch apply first wins a proposal CAS, then creates and activates one immutable asset version in the same explicit transaction. A singleton CAS audit head prevents concurrent successful mutations from forking the tamper-evident chain.
+- Transactional alerts send only from `ripple@notify.grimnej.com` to Cloudflare-verified destination addresses. Email Routing is enabled on that isolated subdomain only; the apex `grimnej.com` Zoho MX records are not part of Ripple's mail boundary.
 
 ## Secret handling
 

@@ -161,3 +161,13 @@ This is the consolidated implementation ledger. Times use Nepal Time (UTC+05:45)
 - **Decision or issue:** The first live connection exposed trimming before SHA-256 recomputation; exact GitHub text is now preserved and regression-tested. CoCo's repository review attempt again hit its browser callback timeout, so no new conclusion was claimed. Cloudflare accepted the email binding, but sender enrollment and a live delivery receipt still require a dashboard-authorized email setup.
 - **Related implementation commit:** `6172158`
 - **Rollback point:** Redeploy the prior Worker version and apply `snowflake/migrations/rollback/011_live_source_monitors.sql` only after accepting loss of monitor/check state. The main demo repository remains independently reversible through Git history.
+
+## 2026-07-23 08:54 NPT: Free-plan email delivery release gate
+
+- **Goal:** Complete real transactional alert delivery without adding a paid service or disturbing the owner's existing Zoho mail configuration.
+- **Files affected:** Cost, security, limitation, and build ledgers. Cloudflare external state gained one verified destination address and Email Routing DNS restricted to `notify.grimnej.com`.
+- **Commands:** Current Cloudflare Email Service documentation review; Wrangler identity, scope, destination, and send probes; read-only DNS requirement inspection; scoped Email Routing DNS creation for `notify.grimnej.com`; one real CLI delivery check.
+- **Test evidence:** Cloudflare reports the routing subdomain `ready`, the account destination address `verified`, and the test message `Delivered`. The owner confirmed that the message from Ripple arrived in the destination inbox.
+- **Decision or issue:** Email Sending to arbitrary recipients requires the Workers Paid plan, so it was not enabled. The free verified-destination path sends from `ripple@notify.grimnej.com`; the three subdomain MX records and SPF record do not alter the apex Zoho MX records.
+- **Related commit:** Email implementation and isolated sender binding `402ddd2`; this entry records the external release gate.
+- **Rollback point:** Remove the Email Routing DNS configuration for `notify.grimnej.com` and the verified destination address to stop outbound alerts. Apex `grimnej.com` mail remains independently configured throughout.
